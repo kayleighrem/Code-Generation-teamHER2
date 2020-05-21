@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="swagger-spring" />
+        <module name="CodeGenHER2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="swagger-spring" target="1.7" />
+      <module name="CodeGenHER2" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
