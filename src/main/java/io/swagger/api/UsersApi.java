@@ -84,6 +84,10 @@ public interface UsersApi {
     ResponseEntity<Void> updateUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Users body
 ,@ApiParam(value = "ID of user that needs to be deleted" ,required=true) @RequestHeader(value="token", required=true) String token
 ,@ApiParam(value = "ID of user that needs to be updated",required=true) @PathVariable("userId") Long userId
+
+
 );
+
+
 
 }

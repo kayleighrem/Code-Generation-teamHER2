@@ -1,5 +1,7 @@
 package io.swagger;
 
+import io.swagger.api.IBANCheck;
+import nl.garvelink.iban.IBAN;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
