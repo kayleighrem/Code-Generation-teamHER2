@@ -43,6 +43,10 @@ public class TransactionsApiController implements TransactionsApi {
 ) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+
+
+
+
     }
 
     public ResponseEntity<Void> newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid @RequestBody Transaction body
