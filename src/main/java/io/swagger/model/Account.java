@@ -3,12 +3,14 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 /**
  * Account
  */
@@ -99,4 +101,33 @@ public class Account   {
     }
     return o.toString().replace("\n", "\n    ");
   }
+  public enum enumAccounts {
+    BASIC_ACCOUNT("basic account"),
+    SAVINGS_ACCOUNT("savings account");
+
+    private String value;
+
+    enumAccounts(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static enumAccounts fromValue(String text) {
+      for (enumAccounts b : enumAccounts.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
 }
+
+
+

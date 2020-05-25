@@ -1,7 +1,6 @@
 package io.swagger.api;
 
 import io.swagger.model.Account;
-import io.swagger.model.Accounts;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -39,7 +38,7 @@ public class AccountsApiController implements AccountsApi {
         this.request = request;
     }
 
-    public ResponseEntity<Account> accountsGet(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "accounts", required = true) Accounts accounts
+    public ResponseEntity<Account> accountsGet(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "accounts", required = true) Account enumAccounts
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
@@ -55,7 +54,7 @@ public class AccountsApiController implements AccountsApi {
     }
 
     public ResponseEntity<Void> accountsPost(@ApiParam(value = "Name of the new account",required=true) @PathVariable("accountName") String accountName
-,@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "accounts", required = true) Accounts accounts
+,@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "accounts", required = true) Account enumAccounts
 ,@ApiParam(value = "the ammount you want to save *optionel") @Valid @RequestParam(value = "target saving", required = false) Long targetSaving
 ) {
         String accept = request.getHeader("Accept");
