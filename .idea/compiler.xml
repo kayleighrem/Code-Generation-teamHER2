@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="CodeGenHER2" />
+        <module name="Code-Generation-teamHER2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Code-Generation-teamHER2" target="1.7" />
       <module name="CodeGenHER2" target="1.7" />
     </bytecodeTargetLevel>
   </component>

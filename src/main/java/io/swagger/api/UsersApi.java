@@ -3,91 +3,88 @@
  * https://github.com/swagger-api/swagger-codegen
  * Do not edit the class manually.
  */
-package io.swagger.api;
+        package io.swagger.api;
 
-import io.swagger.model.Users;
 import io.swagger.annotations.*;
+import io.swagger.model.Users;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Map;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Api(value = "users", description = "the users API")
 public interface UsersApi {
 
     @ApiOperation(value = "Create user", nickname = "createUser", notes = "", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "users", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "users", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "successful operation") })
     @RequestMapping(value = "/users",
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
+            consumes = { "application/json" },
+            method = RequestMethod.POST)
     ResponseEntity<Void> createUser(@ApiParam(value = "Created user object" ,required=true )  @Valid @RequestBody Users body
-);
+    );
 
 
     @ApiOperation(value = "deletes a user", nickname = "deleteUser", notes = "", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "employees", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "great success!"),
-        @ApiResponse(code = 405, message = "invalid input") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "employees", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "great success!"),
+            @ApiResponse(code = 405, message = "invalid input") })
     @RequestMapping(value = "/users/{userId}",
-        method = RequestMethod.DELETE)
+            method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteUser(@ApiParam(value = "ID of user that needs to be deleted",required=true) @PathVariable("userId") Long userId
-,@ApiParam(value = "ID of user that needs to be deleted" ,required=true) @RequestHeader(value="token", required=true) String token
-);
+            ,@ApiParam(value = "ID of user that needs to be deleted" ,required=true) @RequestHeader(value="token", required=true) String token
+    );
 
 
     @ApiOperation(value = "get list of all users", nickname = "getAllUsers", notes = "", response = Users.class, responseContainer = "List", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "employees", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful", response = Users.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "employees", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful", response = Users.class, responseContainer = "List"),
+            @ApiResponse(code = 401, message = "Unauthorized") })
     @RequestMapping(value = "/users",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
+            produces = { "application/json" },
+            method = RequestMethod.GET)
     ResponseEntity<List<Users>> getAllUsers();
 
 
     @ApiOperation(value = "get user by id", nickname = "getUserById", notes = "", response = Users.class, authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "users", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Great success!", response = Users.class),
-        @ApiResponse(code = 401, message = "Unauthorized!") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "users", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Great success!", response = Users.class),
+            @ApiResponse(code = 401, message = "Unauthorized!") })
     @RequestMapping(value = "/users/{userId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
+            produces = { "application/json" },
+            method = RequestMethod.GET)
     ResponseEntity<Users> getUserById(@Min(1)@ApiParam(value = "",required=true, allowableValues="") @PathVariable("userId") Integer userId
-);
+    );
 
 
     @ApiOperation(value = "Update a user", nickname = "updateUser", notes = "", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "users", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "great success!"),
-        @ApiResponse(code = 405, message = "invalid input") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "users", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "great success!"),
+            @ApiResponse(code = 405, message = "invalid input") })
     @RequestMapping(value = "/users/{userId}",
-        consumes = { "application/json" },
-        method = RequestMethod.PUT)
+            consumes = { "application/json" },
+            method = RequestMethod.PUT)
     ResponseEntity<Void> updateUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Users body
-,@ApiParam(value = "ID of user that needs to be deleted" ,required=true) @RequestHeader(value="token", required=true) String token
-,@ApiParam(value = "ID of user that needs to be updated",required=true) @PathVariable("userId") Long userId
+            ,@ApiParam(value = "ID of user that needs to be deleted" ,required=true) @RequestHeader(value="token", required=true) String token
+            ,@ApiParam(value = "ID of user that needs to be updated",required=true) @PathVariable("userId") Long userId
+    );
 
-
-);
-
-
-
+    @ApiOperation(value = "Logs user into the system", nickname = "loginUser", notes = "", response = String.class, tags={ "user", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "successful operation", response = String.class),
+            @ApiResponse(code = 400, message = "Invalid username/password supplied") })
+    @RequestMapping(value = "/users/login",
+            produces = { "application/json", "application/xml" },
+            method = RequestMethod.GET)
+    ResponseEntity<String> loginUser(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username
+            ,@NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password
+    );
 }

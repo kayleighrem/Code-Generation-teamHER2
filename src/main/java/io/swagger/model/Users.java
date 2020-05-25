@@ -1,13 +1,10 @@
 package io.swagger.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+
+import java.util.Objects;
 
 /**
  * Users
@@ -30,6 +27,9 @@ public class Users   {
   @JsonProperty("isEmployee")
   private Boolean isEmployee = null;
 
+  @JsonProperty("password")
+  private String password = null;
+
   public Users userId(Integer userId) {
     this.userId = userId;
     return this;
@@ -38,10 +38,10 @@ public class Users   {
   /**
    * Get userId
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "35444", value = "")
-  
-    public Integer getUserId() {
+
+  public Integer getUserId() {
     return userId;
   }
 
@@ -57,10 +57,10 @@ public class Users   {
   /**
    * Get name
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Robin", value = "")
-  
-    public String getName() {
+
+  public String getName() {
     return name;
   }
 
@@ -76,10 +76,10 @@ public class Users   {
   /**
    * Get lastname
    * @return lastname
-  **/
+   **/
   @ApiModelProperty(example = "de Jong", value = "")
-  
-    public String getLastname() {
+
+  public String getLastname() {
     return lastname;
   }
 
@@ -95,15 +95,20 @@ public class Users   {
   /**
    * Get email
    * @return email
-  **/
+   **/
   @ApiModelProperty(example = "robin.dejong@gmail.com", value = "")
-  
-    public String getEmail() {
+
+  public String getEmail() {
     return email;
   }
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public Users password(String password) {
+    this.password = password;
+    return this;
   }
 
   public Users isEmployee(Boolean isEmployee) {
@@ -112,12 +117,26 @@ public class Users   {
   }
 
   /**
+   * Get password
+   * @return password
+   **/
+  @ApiModelProperty(value = "")
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  /**
    * Get isEmployee
    * @return isEmployee
-  **/
+   **/
   @ApiModelProperty(example = "false", value = "")
-  
-    public Boolean isIsEmployee() {
+
+  public Boolean isIsEmployee() {
     return isEmployee;
   }
 
@@ -136,10 +155,10 @@ public class Users   {
     }
     Users users = (Users) o;
     return Objects.equals(this.userId, users.userId) &&
-        Objects.equals(this.name, users.name) &&
-        Objects.equals(this.lastname, users.lastname) &&
-        Objects.equals(this.email, users.email) &&
-        Objects.equals(this.isEmployee, users.isEmployee);
+            Objects.equals(this.name, users.name) &&
+            Objects.equals(this.lastname, users.lastname) &&
+            Objects.equals(this.email, users.email) &&
+            Objects.equals(this.isEmployee, users.isEmployee);
   }
 
   @Override
@@ -151,7 +170,7 @@ public class Users   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Users {\n");
-    
+
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
