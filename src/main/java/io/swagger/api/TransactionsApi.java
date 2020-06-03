@@ -5,24 +5,15 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.Transaction;
 import io.swagger.annotations.*;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.bind.annotation.CookieValue;
+import io.swagger.model.Transaction;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Map;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Api(value = "transactions", description = "the transactions API")
 public interface TransactionsApi {
@@ -35,7 +26,7 @@ public interface TransactionsApi {
         @ApiResponse(code = 405, message = "Bad Input") })
     @RequestMapping(value = "/transactions",
         method = RequestMethod.GET)
-    ResponseEntity<Void> getTransactions(@Min(1)@ApiParam(value = "The user's id", allowableValues = "") @Valid @RequestParam(value = "userid", required = false) Integer userid
+    List<Transaction> getTransactions(@Min(1)@ApiParam(value = "The user's id", allowableValues = "") @Valid @RequestParam(value = "userid", required = false) Integer userid
 ,@Min(1)@ApiParam(value = "The id of a specific transaction", allowableValues = "") @Valid @RequestParam(value = "transactionid", required = false) Integer transactionid
 );
 
@@ -48,9 +39,9 @@ public interface TransactionsApi {
     @RequestMapping(value = "/transactions",
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid @RequestBody Transaction body
+    void newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid @RequestBody Transaction body
 ,@NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = true) Integer id
-);
+            , @RequestBody Transaction transaction);
 
 
     @ApiOperation(value = "Deposit an amount to the user's account", nickname = "postDeposit", notes = "", authorizations = {
@@ -62,9 +53,9 @@ public interface TransactionsApi {
         @ApiResponse(code = 405, message = "Bad Input") })
     @RequestMapping(value = "/transactions/deposit",
         method = RequestMethod.POST)
-    ResponseEntity<Void> postDeposit(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
+    void postDeposit(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
 ,@ApiParam(value = "The amount to deposit" ,required=true) @RequestHeader(value="amount", required=true) Double amount
-);
+            , @RequestBody Transaction transaction);
 
 
     @ApiOperation(value = "Withdraw an amount to the user's account", nickname = "postWithdraw", notes = "", authorizations = {
@@ -76,8 +67,8 @@ public interface TransactionsApi {
         @ApiResponse(code = 405, message = "Bad Input") })
     @RequestMapping(value = "/transactions/withdraw",
         method = RequestMethod.POST)
-    ResponseEntity<Void> postWithdraw(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
+    void postWithdraw(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
 ,@ApiParam(value = "The amount to withdraw" ,required=true) @RequestHeader(value="amount", required=true) Double amount
-);
+            , @RequestBody Transaction transaction);
 
 }

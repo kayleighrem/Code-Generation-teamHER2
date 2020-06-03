@@ -1,6 +1,5 @@
 package io.swagger.api;
 
-import nl.garvelink.iban.IBAN;
 import nl.garvelink.iban.Modulo97;
 
 public class IBANCheck
