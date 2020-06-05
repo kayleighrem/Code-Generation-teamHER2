@@ -7,10 +7,10 @@ import io.swagger.api.Services.TransactionService;
 import io.swagger.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -20,7 +20,7 @@ import java.util.List;
 
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
-@Controller
+@RestController
 public class TransactionsApiController implements TransactionsApi {
 
     private TransactionService transService;
@@ -50,8 +50,8 @@ public class TransactionsApiController implements TransactionsApi {
 
 
 
-    public void newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid @RequestBody Transaction body
-, @NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = true) Integer id
+    public void newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid  Transaction body
+, @NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = false) Integer id
 , @RequestBody Transaction transaction)
     {
         transService.newTransaction(transaction);

@@ -25,27 +25,17 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="security werkt nu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Views/Deposit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Views/PerformTransaction.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Views/TransactionPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Views/Withdraw.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Repositories/AccountRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Repositories/TransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/AccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/TransactionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_1_5_22_RELEASE.xml" beforeDir="false" />
+    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="Opzet Transaction functionaliteit, html pagina's toegevoegd, folders voor service en repo bestanden">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nz_net_ultraq_thymeleaf_thymeleaf_layout_dialect_1_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_0_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_1_5_22_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_0_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/Swagger2SpringBoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/Swagger2SpringBoot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/IBANCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/IBANCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/h2Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/model/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/swagger-spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-spring.iml" afterDir="false" />
@@ -79,6 +69,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -136,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591086738750</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Opzet Transaction functionaliteit, html pagina's toegevoegd, folders voor service en repo bestanden">
+      <created>1591187509290</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1591187509290</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,7 +165,8 @@
     <MESSAGE value="test kayleigh" />
     <MESSAGE value="terugzetten shit kayleigh, index.html aangemaakt" />
     <MESSAGE value="security werkt nu" />
-    <option name="LAST_COMMIT_MESSAGE" value="security werkt nu" />
+    <MESSAGE value="Opzet Transaction functionaliteit, html pagina's toegevoegd, folders voor service en repo bestanden" />
+    <option name="LAST_COMMIT_MESSAGE" value="Opzet Transaction functionaliteit, html pagina's toegevoegd, folders voor service en repo bestanden" />
   </component>
   <component name="WindowStateProjectService">
     <state x="586" y="198" key="#Inspections" timestamp="1590160280853">
@@ -194,22 +193,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590158970011" />
-    <state width="1102" height="354" key="GridCell.Tab.0.bottom" timestamp="1591181289433">
+    <state width="914" height="372" key="GridCell.Tab.0.bottom" timestamp="1591368552841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1102" height="354" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591181289433" />
-    <state width="1102" height="354" key="GridCell.Tab.0.center" timestamp="1591181289433">
+    <state width="914" height="372" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591368552841" />
+    <state width="914" height="372" key="GridCell.Tab.0.center" timestamp="1591368552841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1102" height="354" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591181289433" />
-    <state width="1102" height="354" key="GridCell.Tab.0.left" timestamp="1591181289433">
+    <state width="914" height="372" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591368552841" />
+    <state width="914" height="372" key="GridCell.Tab.0.left" timestamp="1591368552840">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1102" height="354" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591181289433" />
-    <state width="1102" height="354" key="GridCell.Tab.0.right" timestamp="1591181289433">
+    <state width="914" height="372" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591368552840" />
+    <state width="914" height="372" key="GridCell.Tab.0.right" timestamp="1591368552841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1102" height="354" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591181289433" />
+    <state width="914" height="372" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591368552841" />
+    <state width="1184" height="346" key="GridCell.Tab.1.bottom" timestamp="1591350070936">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1184" height="346" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591350070936" />
+    <state width="1184" height="346" key="GridCell.Tab.1.center" timestamp="1591350070936">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1184" height="346" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591350070936" />
+    <state width="1184" height="346" key="GridCell.Tab.1.left" timestamp="1591350070936">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1184" height="346" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591350070936" />
+    <state width="1184" height="346" key="GridCell.Tab.1.right" timestamp="1591350070936">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1184" height="346" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591350070936" />
     <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1591174977272">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -230,18 +245,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="48" y="89" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591093392504" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591086835250">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591187515189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591086835250" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591187515189" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590419553737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590419553737" />
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590415749743">
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591346150700">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590415749743" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591346150700" />
     <state x="626" y="308" key="git4idea.merge.GitPullDialog" timestamp="1590070546511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
