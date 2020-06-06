@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Login</title>
+</head>
+<body style="background-color:#ededed;">
+    <div style="background-color:#337ab7;height:50px;">
+        <div class="container-fluid">
+            <form th:action="@{/login}" method="POST" class="form-signin">
+                <h3 class="form-signin-heading" th:text="Login"></h3>
+                <br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" />
+                <br /> <input type="text" id="password" name="password" th:placeholder="Password" class="form-control" />
+
+                <div align="center" th:if="${param.error}">
+                    <p style="font-size: 20; color: #FF1C19;">Email or Password is invalid</p>
+                </div>
+                <button class="brn brn-lg btn-primary" name="Submit" value="Login" type="submit" th:text="Login"></button>
+                <a href="/recover-password">Forgot password?</a>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
 /**
@@ -13,6 +15,8 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 public class Users   {
   @JsonProperty("userId")
+  @Id
+  @GeneratedValue
   private Integer userId = null;
 
   @JsonProperty("name")
@@ -34,6 +38,14 @@ public class Users   {
     this.userId = userId;
     return this;
   }
+
+public Users(String name, String lastname, String email, Boolean isEmployee, String password) {
+    this.name = name;
+    this.lastname = lastname;
+    this.email = email;
+    this.isEmployee = isEmployee;
+    this.password = password;
+}
 
   /**
    * Get userId
