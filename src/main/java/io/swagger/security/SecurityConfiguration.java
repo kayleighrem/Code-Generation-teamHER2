@@ -1,4 +1,6 @@
+/*
 package io.swagger.security;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +33,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+        http.headers().frameOptions().disable();
         http.authorizeRequests()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/transaction/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/transaction/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
@@ -49,12 +53,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         System.out.println("Authorize done...");
     }
 
-      /*
-        In order for this to work, go to https://localhost:8443/api/login
-       */
+
+        //In order for this to work, go to https://localhost:8443/api/login
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
+*/

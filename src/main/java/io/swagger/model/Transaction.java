@@ -1,43 +1,56 @@
 package io.swagger.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
+import org.threeten.bp.OffsetDateTime;
+
+import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import java.util.Objects;
 
 /**
  * Transaction
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
+@Entity
 public class Transaction   {
+  @Id
+  @Column(name="Trans_ID")
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
   @JsonProperty("id")
-  private Long id = null;
+  private Integer id = null;
 
+  @Column(name="Trans_From")
   @JsonProperty("from")
-  private Long from = null;
+  private String from = null;
 
+  @Column(name="Trans_To")
   @JsonProperty("to")
-  private Long to = null;
+  private String to = null;
 
+  @Column(name="Trans_userPerf")
   @JsonProperty("userPerforming")
-  private String userPerforming = null;
+  private Integer userPerforming = null;
 
+  @Column(name="Trans_Date")
   @JsonProperty("transactionDate")
   private OffsetDateTime transactionDate = null;
 
+  @Column(name="Trans_Amount")
   @JsonProperty("amount")
   private Double amount = null;
+
+
+
 
   /**
    * Gets or Sets status
    */
+
   public enum StatusEnum {
     PENDING("pending"),
     
@@ -68,9 +81,10 @@ public class Transaction   {
     }
   }
   @JsonProperty("status")
+  @Column(name="Trans_Status")
   private StatusEnum status = null;
 
-  public Transaction id(Long id) {
+  public Transaction id(Integer id) {
     this.id = id;
     return this;
   }
@@ -81,15 +95,15 @@ public class Transaction   {
   **/
   @ApiModelProperty(example = "1234", value = "")
   
-    public Long getId() {
+    public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
-  public Transaction from(Long from) {
+  public Transaction from(String from) {
     this.from = from;
     return this;
   }
@@ -100,15 +114,15 @@ public class Transaction   {
   **/
   @ApiModelProperty(value = "")
   
-    public Long getFrom() {
+    public String getFrom() {
     return from;
   }
 
-  public void setFrom(Long from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
-  public Transaction to(Long to) {
+  public Transaction to(String to) {
     this.to = to;
     return this;
   }
@@ -119,15 +133,15 @@ public class Transaction   {
   **/
   @ApiModelProperty(value = "")
   
-    public Long getTo() {
+    public String getTo() {
     return to;
   }
 
-  public void setTo(Long to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
-  public Transaction userPerforming(String userPerforming) {
+  public Transaction userPerforming(Integer userPerforming) {
     this.userPerforming = userPerforming;
     return this;
   }
@@ -138,11 +152,11 @@ public class Transaction   {
   **/
   @ApiModelProperty(example = "Hans", value = "")
   
-    public String getUserPerforming() {
+    public Integer getUserPerforming() {
     return userPerforming;
   }
 
-  public void setUserPerforming(String userPerforming) {
+  public void setUserPerforming(Integer userPerforming) {
     this.userPerforming = userPerforming;
   }
 
@@ -253,4 +267,23 @@ public class Transaction   {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public Transaction(Integer id, String to, String from, Integer userPerforming, OffsetDateTime transactionDate, Double amount)
+  {
+    this.id = id;
+    this.to = to;
+    this.from = from;
+    this.userPerforming = userPerforming;
+    this.transactionDate = transactionDate;
+    this.amount = amount;
+  }
+
+  public Transaction()
+  {
+    super();
+  }
+
+
 }
+
+
