@@ -1,0 +1,173 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"BRANCH:master\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </select>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"51012bc9-d7d2-4187-a6fb-760cb29791e9\" name=\"Default Changelist\" comment=\"Transactions worden opgeslagen in perm database, get/post werkt\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__com_github_eirslett_frontend_maven_plugin_1_10_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__com_github_eirslett_frontend_plugin_core_1_10_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_1_3_2.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_jsr250_api_1_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__javax_enterprise_cdi_api_1_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_19.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_exec_1_3.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_5.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_9.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_11.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_3_5_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_3_5_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_3_5_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_plugin_tools_maven_plugin_annotations_3_2.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_classworlds_2_5_2.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_component_annotations_1_5_5.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_3_0_22.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_sisu_org_eclipse_sisu_inject_0_3_3.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_sisu_org_eclipse_sisu_plexus_0_3_3.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_plexus_plexus_build_api_0_0_7.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/static/testing.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/database.mv.db\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/database.mv.db\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/io/swagger/configuration/HomeController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/io/swagger/configuration/HomeController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/swagger-spring.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/swagger-spring.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/application.properties\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1cAosDTtxvATwYt6BYNhwtW7vwN\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$USER_HOME$/Documents/Inholland/Jaar 2/periode 4/java advanced/Petstore\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Project\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"Errors\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Swagger2SpringBoot\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"11\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.swagger.Swagger2SpringBoot\" />\r\n      <module name=\"swagger-spring\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.swagger.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Swagger2SpringBoot\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"51012bc9-d7d2-4187-a6fb-760cb29791e9\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1589980963105</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1589980963105</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"test kayleigh\">\r\n      <created>1590070600911</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1590070600911</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"security werkt nu\">\r\n      <created>1591086738750</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1591086738750</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Opzet Transaction functionaliteit, html pagina's toegevoegd, folders voor service en repo bestanden\">\r\n      <created>1591187509290</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1591187509290</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Transactions worden opgeslagen in perm database, get/post werkt\">\r\n      <created>1591368939489</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1591368939489</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"UnknownFeatures\">\r\n    <option featureType=\"com.intellij.fileTypeFactory\" implementationName=\"*.js\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"master\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"test kayleigh\" />\r\n    <MESSAGE value=\"terugzetten shit kayleigh, index.html aangemaakt\" />\r\n    <MESSAGE value=\"security werkt nu\" />\r\n    <MESSAGE value=\"Opzet Transaction functionaliteit, html pagina's toegevoegd, folders voor service en repo bestanden\" />\r\n    <MESSAGE value=\"Transactions worden opgeslagen in perm database, get/post werkt\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Transactions worden opgeslagen in perm database, get/post werkt\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"586\" y=\"198\" key=\"#Inspections\" timestamp=\"1590160280853\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"586\" y=\"198\" key=\"#Inspections/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590160280853\" />\r\n    <state x=\"202\" y=\"143\" width=\"586\" height=\"761\" key=\"#Swagger2SpringBoot\" timestamp=\"1591087724850\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"202\" y=\"143\" width=\"586\" height=\"761\" key=\"#Swagger2SpringBoot/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591087724850\" />\r\n    <state x=\"765\" y=\"226\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1591186182903\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"765\" y=\"226\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591186182903\" />\r\n    <state x=\"1289\" y=\"270\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog\" timestamp=\"1591174242459\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"1289\" y=\"270\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591174242459\" />\r\n    <state x=\"1076\" y=\"270\" key=\"#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog\" timestamp=\"1591172528146\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"1076\" y=\"270\" key=\"#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591172528146\" />\r\n    <state x=\"740\" y=\"275\" key=\"FileChooserDialogImpl\" timestamp=\"1590158970011\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"740\" y=\"275\" key=\"FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590158970011\" />\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1591448499070\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591448499070\" />\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.center\" timestamp=\"1591448499070\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591448499070\" />\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.left\" timestamp=\"1591448499070\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591448499070\" />\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.right\" timestamp=\"1591448499070\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1224\" height=\"372\" key=\"GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591448499070\" />\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1591350070936\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591350070936\" />\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.center\" timestamp=\"1591350070936\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591350070936\" />\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.left\" timestamp=\"1591350070936\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591350070936\" />\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.right\" timestamp=\"1591350070936\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1184\" height=\"346\" key=\"GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591350070936\" />\r\n    <state x=\"490\" y=\"175\" key=\"Maven.ArtifactSearchDialog\" timestamp=\"1591174977272\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"490\" y=\"175\" key=\"Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591174977272\" />\r\n    <state x=\"184\" y=\"86\" key=\"MergeDialog\" timestamp=\"1590415762919\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"184\" y=\"86\" key=\"MergeDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590415762919\" />\r\n    <state x=\"848\" y=\"388\" width=\"442\" height=\"264\" key=\"MultipleFileMergeDialog\" timestamp=\"1590071203919\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"848\" y=\"388\" width=\"442\" height=\"264\" key=\"MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590071203919\" />\r\n    <state x=\"643\" y=\"222\" key=\"RollbackChangesDialog\" timestamp=\"1590418833199\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"643\" y=\"222\" key=\"RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590418833199\" />\r\n    <state x=\"48\" y=\"89\" key=\"SettingsEditor\" timestamp=\"1591093392504\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"48\" y=\"89\" key=\"SettingsEditor/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591093392504\" />\r\n    <state x=\"552\" y=\"253\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1591368941185\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"552\" y=\"253\" key=\"Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591368941185\" />\r\n    <state x=\"92\" y=\"92\" width=\"1736\" height=\"856\" key=\"com.intellij.history.integration.ui.views.FileHistoryDialog\" timestamp=\"1590419553737\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"92\" y=\"92\" width=\"1736\" height=\"856\" key=\"com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590419553737\" />\r\n    <state x=\"769\" y=\"434\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1591368849181\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"769\" y=\"434\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591368849181\" />\r\n    <state x=\"626\" y=\"308\" key=\"git4idea.merge.GitPullDialog\" timestamp=\"1590070546511\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"626\" y=\"308\" key=\"git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590070546511\" />\r\n    <state x=\"342\" y=\"181\" key=\"new project wizard\" timestamp=\"1590070300219\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"342\" y=\"181\" key=\"new project wizard/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1590070300219\" />\r\n    <state x=\"623\" y=\"225\" width=\"672\" height=\"678\" key=\"search.everywhere.popup\" timestamp=\"1591448021881\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"623\" y=\"225\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1591448021881\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 38cfcbb9e796109f3950c595059c7c99155666b7)
++++ .idea/workspace.xml	(date 1591474623756)
+@@ -25,40 +25,14 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="Transactions worden opgeslagen in perm database, get/post werkt">
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_eirslett_frontend_maven_plugin_1_10_0.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_eirslett_frontend_plugin_core_1_10_0.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_1_3_2.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_jsr250_api_1_0.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_enterprise_cdi_api_1_0.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_19.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_exec_1_3.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_5.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_9.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_11.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_3_5_0.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_3_5_0.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_3_5_0.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_plugin_tools_maven_plugin_annotations_3_2.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_classworlds_2_5_2.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_component_annotations_1_5_5.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_3_0_22.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_sisu_org_eclipse_sisu_inject_0_3_3.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_sisu_org_eclipse_sisu_plexus_0_3_3.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_plexus_plexus_build_api_0_0_7.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/testing.html" afterDir="false" />
++    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="tests met webcontroller">
++      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/database.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.mv.db" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/configuration/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/configuration/HomeController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/swagger-spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-spring.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/data.sql" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/static/testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/testing.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/sql/data.sql" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -98,6 +72,11 @@
+     <property name="project.structure.proportion" value="0.15" />
+     <property name="project.structure.side.proportion" value="0.0" />
+     <property name="settings.editor.selected.configurable" value="Errors" />
++  </component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="D:\Users\Pepp2\Documents\Code-Generation-teamHER2\src\main\resources\static\js" />
++    </key>
+   </component>
+   <component name="RunManager">
+     <configuration name="Swagger2SpringBoot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+@@ -160,7 +139,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1591368939489</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="tests met webcontroller">
++      <created>1591448777953</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1591448777953</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="UnknownFeatures">
+@@ -196,7 +182,8 @@
+     <MESSAGE value="security werkt nu" />
+     <MESSAGE value="Opzet Transaction functionaliteit, html pagina's toegevoegd, folders voor service en repo bestanden" />
+     <MESSAGE value="Transactions worden opgeslagen in perm database, get/post werkt" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Transactions worden opgeslagen in perm database, get/post werkt" />
++    <MESSAGE value="tests met webcontroller" />
++    <option name="LAST_COMMIT_MESSAGE" value="tests met webcontroller" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="586" y="198" key="#Inspections" timestamp="1590160280853">
+@@ -223,22 +210,22 @@
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590158970011" />
+-    <state width="1224" height="372" key="GridCell.Tab.0.bottom" timestamp="1591448499070">
++    <state width="1224" height="384" key="GridCell.Tab.0.bottom" timestamp="1591456033132">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+-    <state width="1224" height="372" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591448499070" />
+-    <state width="1224" height="372" key="GridCell.Tab.0.center" timestamp="1591448499070">
++    <state width="1224" height="384" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591456033132" />
++    <state width="1224" height="384" key="GridCell.Tab.0.center" timestamp="1591456033132">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+-    <state width="1224" height="372" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591448499070" />
+-    <state width="1224" height="372" key="GridCell.Tab.0.left" timestamp="1591448499070">
++    <state width="1224" height="384" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591456033132" />
++    <state width="1224" height="384" key="GridCell.Tab.0.left" timestamp="1591456033132">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+-    <state width="1224" height="372" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591448499070" />
+-    <state width="1224" height="372" key="GridCell.Tab.0.right" timestamp="1591448499070">
++    <state width="1224" height="384" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591456033132" />
++    <state width="1224" height="384" key="GridCell.Tab.0.right" timestamp="1591456033132">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+-    <state width="1224" height="372" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591448499070" />
++    <state width="1224" height="384" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591456033132" />
+     <state width="1184" height="346" key="GridCell.Tab.1.bottom" timestamp="1591350070936">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+@@ -271,22 +258,22 @@
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+     <state x="643" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590418833199" />
+-    <state x="48" y="89" key="SettingsEditor" timestamp="1591093392504">
++    <state x="48" y="89" key="SettingsEditor" timestamp="1591474622032">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+-    <state x="48" y="89" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591093392504" />
+-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591368941185">
++    <state x="48" y="89" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591474622032" />
++    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591448780173">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591368941185" />
++    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591448780173" />
+     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590419553737">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590419553737" />
+-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591368849181">
++    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591448733702">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591368849181" />
++    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591448733702" />
+     <state x="626" y="308" key="git4idea.merge.GitPullDialog" timestamp="1590070546511">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+Index: src/main/resources/static/js/main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/resources/static/js/main.js	(date 1591455891930)
++++ src/main/resources/static/js/main.js	(date 1591455891930)
+@@ -0,0 +1,12 @@
++async function Main(){
++  const specURL = "https://codegeneration.blob.core.windows.net/codegeneration/api_design.yml"
++  
++  let swaggerClient = await new SwaggerClient(specURL)
++  let result = await swaggerClient.apis.Articles.GetArticles()
++  let resultsObject = JSON.parse(result.data)
++  
++  let results = resultsObject.Results
++  console.log(results)
++  // Todo: use the results here to create a table
++}
++Main()

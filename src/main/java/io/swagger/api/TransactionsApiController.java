@@ -87,5 +87,12 @@ public class TransactionsApiController implements TransactionsApi {
         return "result";
     }
 
+    @GetMapping("/login")
+    public String login() {
+
+
+        return "login";
+    }
+
 
 }
