@@ -1,22 +1,26 @@
 package io.swagger.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import javax.persistence.*;
+import java.util.Objects;
 /**
  * Account
  */
 @Validated
+@Entity
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 public class Account   {
+
+  @Id
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  @JsonProperty("id")
+  private Integer id = null;
+
   @JsonProperty("showAccounts")
   private Integer showAccounts = null;
 
@@ -31,10 +35,10 @@ public class Account   {
   /**
    * Get showAccounts
    * @return showAccounts
-  **/
+   **/
   @ApiModelProperty(value = "")
-  
-    public Integer getShowAccounts() {
+
+  public Integer getShowAccounts() {
     return showAccounts;
   }
 
@@ -50,10 +54,10 @@ public class Account   {
   /**
    * Get showSavings
    * @return showSavings
-  **/
+   **/
   @ApiModelProperty(value = "")
-  
-    public Integer getShowSavings() {
+
+  public Integer getShowSavings() {
     return showSavings;
   }
 
@@ -72,7 +76,7 @@ public class Account   {
     }
     Account account = (Account) o;
     return Objects.equals(this.showAccounts, account.showAccounts) &&
-        Objects.equals(this.showSavings, account.showSavings);
+            Objects.equals(this.showSavings, account.showSavings);
   }
 
   @Override
@@ -84,7 +88,7 @@ public class Account   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Account {\n");
-    
+
     sb.append("    showAccounts: ").append(toIndentedString(showAccounts)).append("\n");
     sb.append("    showSavings: ").append(toIndentedString(showSavings)).append("\n");
     sb.append("}");
@@ -128,6 +132,3 @@ public class Account   {
     }
   }
 }
-
-
-

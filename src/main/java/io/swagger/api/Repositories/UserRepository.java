@@ -1,4 +1,4 @@
-/*package io.swagger.api.Repositories;
+package io.swagger.api.Repositories;
 
 import io.swagger.model.Users;
 import org.springframework.data.repository.CrudRepository;
@@ -10,4 +10,3 @@ public interface UserRepository extends CrudRepository<Users,Long>
 
 
 }
-*/
