@@ -130,12 +130,17 @@ public class UsersApiController implements UsersApi {
         return "register";
     }
 
-
-
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") Users user)  {
         user.setIsEmployee(false);
         userService.createUser(user);
         return "register";
+    }
+
+    @RequestMapping(value="/login" , method=RequestMethod.POST)
+    public String LoginInfo(@ModelAttribute("user") Users user)  {
+        user.getUserId();
+//        userService.createUser(user);
+        return "login";
     }
 }

@@ -19,12 +19,5 @@ public class UserService {
     public void createUser(Users user)
     {
         userRepository.save(user);
-
-
-    }
-
-    public void test()
-    {
-        System.out.println("hey");
     }
 }

@@ -12,9 +12,6 @@ public class AuthenticationController {
 
     private UserService userService;
 
-
-
-
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
