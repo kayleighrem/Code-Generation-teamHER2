@@ -17,6 +17,7 @@ import java.util.Objects;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Entity
+
 public class Transaction   {
   @Id
   @Column(name="Trans_ID")

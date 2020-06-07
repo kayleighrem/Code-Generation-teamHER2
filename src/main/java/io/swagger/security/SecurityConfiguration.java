@@ -2,8 +2,6 @@ package io.swagger.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    /*
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -30,7 +29,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/transaction/**").hasRole("ADMIN")
@@ -49,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll();
         System.out.println("Authorize done...");
     }
-
+    */
       /*
         In order for this to work, go to https://localhost:8443/api/login
        */
@@ -59,6 +57,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated().and().csrf().disable();
+        http.headers().frameOptions().disable();
+    }
 
 }

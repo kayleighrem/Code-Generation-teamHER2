@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -16,23 +14,29 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Entity
 public class Users   {
-  @JsonProperty("userId")
   @Id
-  @GeneratedValue
+  @Column(name="uid")
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  @JsonProperty("id")
   private Integer userId = null;
 
+  @Column(name="uname")
   @JsonProperty("name")
   private String name = null;
 
+  @Column(name="ulastname")
   @JsonProperty("lastname")
   private String lastname = null;
 
+  @Column(name="uemail")
   @JsonProperty("email")
   private String email = null;
 
+  @Column(name="uisemp")
   @JsonProperty("isEmployee")
   private Boolean isEmployee = null;
 
+  @Column(name="upass")
   @JsonProperty("password")
   private String password = null;
 
@@ -41,12 +45,13 @@ public class Users   {
     return this;
   }
 
-public Users(String name, String lastname, String email, Boolean isEmployee, String password) {
+public Users(String name, String lastname, String email, Boolean isEmployee, String password,Integer userId) {
     this.name = name;
     this.lastname = lastname;
     this.email = email;
     this.isEmployee = isEmployee;
     this.password = password;
+    this.userId = userId;
 }
 
   /**
@@ -134,6 +139,7 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
    * Get password
    * @return password
    **/
+
   @ApiModelProperty(value = "")
 
   public String getPassword() {
@@ -143,6 +149,11 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
   public void setPassword(String password) {
     this.password = password;
   }
+
+
+
+
+
 
   /**
    * Get isEmployee
@@ -172,12 +183,13 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
             Objects.equals(this.name, users.name) &&
             Objects.equals(this.lastname, users.lastname) &&
             Objects.equals(this.email, users.email) &&
-            Objects.equals(this.isEmployee, users.isEmployee);
+            Objects.equals(this.isEmployee, users.isEmployee)&&
+            Objects.equals(this.password, users.password) ;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, name, lastname, email, isEmployee);
+    return Objects.hash(userId, name, lastname, email, isEmployee,password);
   }
 
   @Override
@@ -190,6 +202,7 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    isEmployee: ").append(toIndentedString(isEmployee)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -203,5 +216,13 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+
+
+
+
+  public Users()
+  {
+    super();
   }
 }
