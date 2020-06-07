@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import org.threeten.bp.OffsetDateTime;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -38,11 +38,11 @@ public class Transaction   {
 
   @Column(name="Trans_Date")
   @JsonProperty("transactionDate")
-  private OffsetDateTime transactionDate = null;
+  private Date transactionDate = null;
 
   @Column(name="Trans_Amount")
   @JsonProperty("amount")
-  private Double amount = null;
+  private Double amount = 100d;
 
 
 
@@ -160,7 +160,7 @@ public class Transaction   {
     this.userPerforming = userPerforming;
   }
 
-  public Transaction transactionDate(OffsetDateTime transactionDate) {
+  public Transaction transactionDate(Date transactionDate) {
     this.transactionDate = transactionDate;
     return this;
   }
@@ -172,11 +172,11 @@ public class Transaction   {
   @ApiModelProperty(value = "")
   
     @Valid
-    public OffsetDateTime getTransactionDate() {
+    public Date getTransactionDate() {
     return transactionDate;
   }
 
-  public void setTransactionDate(OffsetDateTime transactionDate) {
+  public void setTransactionDate(Date transactionDate) {
     this.transactionDate = transactionDate;
   }
 
@@ -268,7 +268,7 @@ public class Transaction   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Transaction(Integer id, String to, String from, Integer userPerforming, OffsetDateTime transactionDate, Double amount)
+  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, Double amount)
   {
     this.id = id;
     this.to = to;

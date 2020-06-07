@@ -5,6 +5,7 @@ import io.swagger.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,6 +32,9 @@ public class TransactionService
 
     public void newTransaction(Transaction transaction)
     {
+        Date date = new Date();
+        transaction.setTransactionDate(date);
+
         transRepo.save(transaction);
     }
 
@@ -42,6 +46,11 @@ public class TransactionService
     public void withdrawTransaction(Transaction transaction)
     {
         //
+    }
+
+    public void test()
+    {
+        System.out.println("echo");
     }
 
 

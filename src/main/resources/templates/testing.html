@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Transaction</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Please enter the required fields</h1>
+<form action="#" th:action="@{/test}" th:object="${transaction}" method="post">
+    <p>Id: <input type="number" th:field="*{id}" /></p>
+    <p>From: <input type="text" th:field="*{from}" /></p>
+    <p>To: <input type="text" th:field="*{to}" /></p>
+    <p>Amount: <input type="number" th:field="*{amount}" /></p>
+
+
+
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

@@ -7,10 +7,9 @@ import io.swagger.api.Services.TransactionService;
 import io.swagger.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -19,8 +18,11 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
+
+
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
-@RestController
+@Controller
 public class TransactionsApiController implements TransactionsApi {
 
     private TransactionService transService;
@@ -70,5 +72,20 @@ public class TransactionsApiController implements TransactionsApi {
     {
         transService.getTransactions();
     }
+
+
+    @GetMapping("/test")
+    public String greetingForm(Model model) {
+        model.addAttribute("transaction", new Transaction());
+        return "testing";
+    }
+
+    @PostMapping("/test")
+    public String transactionSubmit(@ModelAttribute Transaction transaction) {
+        transService.newTransaction(transaction);
+
+        return "result";
+    }
+
 
 }
