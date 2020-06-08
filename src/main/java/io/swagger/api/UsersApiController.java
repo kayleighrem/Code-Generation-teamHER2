@@ -124,8 +124,13 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public void CheckInlog() {
-
+    public boolean CheckInlog(Users user) {
+        for ( Users u : userService.getUsers()) {
+            if (user.getEmail().toString().equals(u.getEmail().toString()) && user.getPassword().equals(u.getPassword())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean CheckIfEmailExists(Users user) {
@@ -144,22 +149,31 @@ public class UsersApiController implements UsersApi {
     }
 
     @RequestMapping(value="/register" , method=RequestMethod.POST)
-    public String processLoginInfo(@ModelAttribute("user") Users user)  {
+    public String processLoginInfo(@ModelAttribute("user") Users user, Model model)  {
+        String error = "Er bestaat al een gebruiker met dit emailadres.";
         user.setIsEmployee(false);
         if (CheckIfEmailExists(user) == true) {
             System.out.printf("bestaat al");
+            model.addAttribute("errormessage", error);
         }
         else {
             System.out.printf("nieuw");
             userService.createUser(user);
+            return "login";
         }
         return "register";
     }
 
     @RequestMapping(value="/login" , method=RequestMethod.POST)
-    public String LoginInfo(@ModelAttribute("user") Users user)  {
-        user.getUserId();
-//        userService.createUser(user);
-        return "login";
+    public String LoginInfo(@ModelAttribute("user") Users user, Model model)  {
+        String error = "username of password niet juist";
+
+        if ( CheckInlog(user) == true) {
+            return "index";
+        }
+        else {
+            model.addAttribute("errormessage", error);
+            return "login";
+        }
     }
 }

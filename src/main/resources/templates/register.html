@@ -8,6 +8,7 @@
 <h1>Please enter the required fields</h1>
 <form action="#" th:action="@{/register}" th:object="${user}" method="post">
 
+    <p th:text="${errormessage}"></p>
     <p>Name: <input type="text" th:field="*{name}" /></p>
     <p>lastName: <input type="text" th:field="*{lastname}" /></p>
     <p>Email: <input type="text" th:field="*{email}" /></p>
