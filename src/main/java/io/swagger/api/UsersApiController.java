@@ -124,6 +124,19 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+    public void CheckInlog() {
+
+    }
+
+    public boolean CheckIfEmailExists(Users user) {
+        for ( Users u : userService.getUsers()) {
+            if (user.getEmail().toString().equals(u.getEmail().toString())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @GetMapping("/register")
     public String userForm(Model model) {
         model.addAttribute("user", new Users());
@@ -133,7 +146,13 @@ public class UsersApiController implements UsersApi {
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") Users user)  {
         user.setIsEmployee(false);
-        userService.createUser(user);
+        if (CheckIfEmailExists(user) == true) {
+            System.out.printf("bestaat al");
+        }
+        else {
+            System.out.printf("nieuw");
+            userService.createUser(user);
+        }
         return "register";
     }
 

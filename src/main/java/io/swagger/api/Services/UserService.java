@@ -5,6 +5,8 @@ import io.swagger.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -19,5 +21,10 @@ public class UserService {
     public void createUser(Users user)
     {
         userRepository.save(user);
+    }
+
+    public List<Users> getUsers()
+    {
+        return (List<Users>) userRepository.findAll();
     }
 }
