@@ -1,6 +1,5 @@
 package io.swagger.api.Services;
 
-import io.swagger.api.IBANCheck;
 import io.swagger.api.Repositories.TransactionRepository;
 import io.swagger.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,21 +32,18 @@ public class TransactionService
 
     public String newTransaction(Transaction transaction)
     {
-        String toIBAN = transaction.getTo();
-        IBANCheck check = new IBANCheck();
-        Boolean perform = check.ibanCheck(toIBAN);
+       // String toIBAN = transaction.getTo();
+      //  IBANCheck check = new IBANCheck();
+     //   Boolean perform = true;
 
-        if(perform)
-        {
+
+
             Date date = new Date();
-            transaction.setTransactionDate(date);
+            transaction.setTransactionDate(null);
             transRepo.save(transaction);
             return "Transaction Success!";
-        }
-        else
-        {
-            return "Transaction Failed";
-        }
+
+
 
     }
 

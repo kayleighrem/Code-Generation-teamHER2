@@ -1,22 +1,30 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Transaction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="login.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <title>Register</title>
 </head>
 <body>
-<h1>Please enter the required fields</h1>
-<form action="#" th:action="@{/register}" th:object="${user}" method="post">
 
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>ID: <input type="text" th:field="*{userId}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p>Email: <input type="text" th:field="*{email}" /></p>
-    <p>lastName: <input type="text" th:field="*{lastname}" /></p>
+<div class="container-fluid">
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+        <h3 class="form-signin-heading" th:text="Register"></h3>
+        <h5>Please enter the required fields</h5>
+        <br /><p th:text="${errormessage}"></p>
 
+        <br /> <input type="text" th:field="*{name}" id="name" name="name" th:placeholder="Name" class="form-control" />
+        <br /> <input type="text" th:field="*{lastname}" id="lastName" name="lastName" th:placeholder="Lastname" class="form-control" />
+        <br /> <input type="text" th:field="*{email}" id="email" name="email" th:placeholder="Email" class="form-control" />
+        <br /> <input type="text" th:field="*{password}" id="password" name="password" th:placeholder="Password" class="form-control" />
 
-
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+        <br />
+        <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit"></button><a href="login"> Back to login</a>
+    </form>
+</div>
 </body>
 </html>

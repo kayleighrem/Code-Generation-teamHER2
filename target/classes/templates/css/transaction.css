@@ -1,0 +1,12 @@
+form
+{
+
+    max-width:600px;
+    text-align:center;
+}
+
+input
+{
+        border: none;
+        border-bottom: 2px solid red;
+}
