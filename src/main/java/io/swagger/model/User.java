@@ -8,12 +8,12 @@ import javax.persistence.*;
 import java.util.Objects;
 
 /**
- * Users
+ * User
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Entity
-public class Users   {
+public class User {
   @Id
   @Column(name="uid")
   @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -40,12 +40,12 @@ public class Users   {
   @JsonProperty("password")
   private String password = null;
 
-  public Users userId(Integer userId) {
+  public User userId(Integer userId) {
     this.userId = userId;
     return this;
   }
 
-public Users(String name, String lastname, String email, Boolean isEmployee, String password,Integer userId) {
+public User(String name, String lastname, String email, Boolean isEmployee, String password,Integer userId) {
     this.name = name;
     this.lastname = lastname;
     this.email = email;
@@ -68,7 +68,7 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
     this.userId = userId;
   }
 
-  public Users name(String name) {
+  public User name(String name) {
     this.name = name;
     return this;
   }
@@ -87,7 +87,7 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
     this.name = name;
   }
 
-  public Users lastname(String lastname) {
+  public User lastname(String lastname) {
     this.lastname = lastname;
     return this;
   }
@@ -106,7 +106,7 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
     this.lastname = lastname;
   }
 
-  public Users email(String email) {
+  public User email(String email) {
     this.email = email;
     return this;
   }
@@ -125,12 +125,12 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
     this.email = email;
   }
 
-  public Users password(String password) {
+  public User password(String password) {
     this.password = password;
     return this;
   }
 
-  public Users isEmployee(Boolean isEmployee) {
+  public User isEmployee(Boolean isEmployee) {
     this.isEmployee = isEmployee;
     return this;
   }
@@ -178,13 +178,13 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Users users = (Users) o;
-    return Objects.equals(this.userId, users.userId) &&
-            Objects.equals(this.name, users.name) &&
-            Objects.equals(this.lastname, users.lastname) &&
-            Objects.equals(this.email, users.email) &&
-            Objects.equals(this.isEmployee, users.isEmployee)&&
-            Objects.equals(this.password, users.password) ;
+    User user = (User) o;
+    return Objects.equals(this.userId, user.userId) &&
+            Objects.equals(this.name, user.name) &&
+            Objects.equals(this.lastname, user.lastname) &&
+            Objects.equals(this.email, user.email) &&
+            Objects.equals(this.isEmployee, user.isEmployee)&&
+            Objects.equals(this.password, user.password) ;
   }
 
   @Override
@@ -218,10 +218,7 @@ public Users(String name, String lastname, String email, Boolean isEmployee, Str
     return o.toString().replace("\n", "\n    ");
   }
 
-
-
-
-  public Users()
+  public User()
   {
     super();
   }

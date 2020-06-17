@@ -1,12 +1,12 @@
 package io.swagger.api;
 
 import io.swagger.model.Transaction;
-import io.swagger.model.Users;
+import io.swagger.model.User;
 
 public class TransactionCheck
 {
     //Performs check on min/max amount and transaction limit
-    private boolean transactionCheck(Transaction currentTransaction,Users userPerforming)
+    private boolean transactionCheck(Transaction currentTransaction, User userPerforming)
     {
         boolean transactionAllowed = false;
 

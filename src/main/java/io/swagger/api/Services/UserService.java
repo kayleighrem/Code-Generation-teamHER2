@@ -1,7 +1,7 @@
 package io.swagger.api.Services;
 
 import io.swagger.api.Repositories.UserRepository;
-import io.swagger.model.Users;
+import io.swagger.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +18,13 @@ public class UserService {
     }
 
 
-    public void createUser(Users user)
+    public void createUser(User user)
     {
         userRepository.save(user);
     }
 
-    public List<Users> getUsers()
+    public List<User> getUser()
     {
-        return (List<Users>) userRepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 }

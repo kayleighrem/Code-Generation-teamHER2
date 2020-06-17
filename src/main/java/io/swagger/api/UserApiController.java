@@ -3,7 +3,7 @@ package io.swagger.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiParam;
 import io.swagger.api.Services.UserService;
-import io.swagger.model.Users;
+import io.swagger.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,9 @@ import java.io.IOException;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
-public class UsersApiController implements UsersApi {
+public class UserApiController implements UserApi {
 
-    private static final Logger log = LoggerFactory.getLogger(UsersApiController.class);
+    private static final Logger log = LoggerFactory.getLogger(UserApiController.class);
 
     private final ObjectMapper objectMapper;
 
@@ -33,12 +33,12 @@ public class UsersApiController implements UsersApi {
     private UserService userService;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public UsersApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public UserApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
-    public ResponseEntity<Void> createUser(@ApiParam(value = "Created user object" ,required=true )  @Valid @RequestBody Users body
+    public ResponseEntity<Void> createUser(@ApiParam(value = "Created user object" ,required=true )  @Valid @RequestBody User body
     ) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
@@ -51,36 +51,36 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<List<Users>> getAllUsers() {
+    public ResponseEntity<List<User>> getAllUser() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<Users>>(objectMapper.readValue("[ {\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n  \"lastname\" : \"de Jong\"\n}, {\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n  \"lastname\" : \"de Jong\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<User>>(objectMapper.readValue("[ {\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n  \"lastname\" : \"de Jong\"\n}, {\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n  \"lastname\" : \"de Jong\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<Users>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<List<Users>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<User>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Users> getUserById(@Min(1)@ApiParam(value = "",required=true, allowableValues="") @PathVariable("userId") Integer userId
+    public ResponseEntity<User> getUserById(@Min(1)@ApiParam(value = "",required=true, allowableValues="") @PathVariable("userId") Integer userId
     ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<Users>(objectMapper.readValue("{\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n  \"lastname\" : \"de Jong\"\n}", Users.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<User>(objectMapper.readValue("{\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n  \"lastname\" : \"de Jong\"\n}", User.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<Users>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<Users>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<User>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Users body
+    public ResponseEntity<Void> updateUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody User body
             ,@ApiParam(value = "ID of user that needs to be deleted" ,required=true) @RequestHeader(value="token", required=true) String token
             ,@ApiParam(value = "ID of user that needs to be updated",required=true) @PathVariable("userId") Long userId
     ) {
@@ -88,19 +88,19 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Users> getUserByName(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing.",required=true) @PathVariable("email") String email
+    public ResponseEntity<User> getUserByName(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing.",required=true) @PathVariable("email") String email
     ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<Users>(objectMapper.readValue("{\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n \"password\" : \"testpwd\",\n  \"lastname\" : \"de Jong\"\n}", Users.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<User>(objectMapper.readValue("{\n  \"isEmployee\" : false,\n  \"name\" : \"Robin\",\n  \"userId\" : 35444,\n  \"email\" : \"robin.dejong@gmail.com\",\n \"password\" : \"testpwd\",\n  \"lastname\" : \"de Jong\"\n}", User.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<Users>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<Users>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<User>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> loginUser(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "email", required = true) String email
@@ -124,8 +124,8 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public boolean CheckInlog(Users user) {
-        for ( Users u : userService.getUsers()) {
+    public boolean CheckInlog(User user) {
+        for ( User u : userService.getUser()) {
             if (user.getEmail().toString().equals(u.getEmail().toString()) && user.getPassword().equals(u.getPassword())) {
                 return true;
             }
@@ -133,8 +133,8 @@ public class UsersApiController implements UsersApi {
         return false;
     }
 
-    public boolean CheckIfEmailExists(Users user) {
-        for ( Users u : userService.getUsers()) {
+    public boolean CheckIfEmailExists(User user) {
+        for ( User u : userService.getUser()) {
             if (user.getEmail().toString().equals(u.getEmail().toString())) {
                 return true;
             }
@@ -144,12 +144,12 @@ public class UsersApiController implements UsersApi {
 
     @GetMapping("/register")
     public String userForm(Model model) {
-        model.addAttribute("user", new Users());
+        model.addAttribute("user", new User());
         return "register";
     }
 
     @RequestMapping(value="/register" , method=RequestMethod.POST)
-    public String processLoginInfo(@ModelAttribute("user") Users user, Model model)  {
+    public String processLoginInfo(@ModelAttribute("user") User user, Model model)  {
         String error = "Er bestaat al een gebruiker met dit emailadres.";
         user.setIsEmployee(false);
         if (CheckIfEmailExists(user) == true) {
@@ -165,7 +165,7 @@ public class UsersApiController implements UsersApi {
     }
 
     @RequestMapping(value="/login" , method=RequestMethod.POST)
-    public String LoginInfo(@ModelAttribute("user") Users user, Model model)  {
+    public String LoginInfo(@ModelAttribute("user") User user, Model model)  {
         String error = "username of password niet juist";
 
         if ( CheckInlog(user) == true) {
