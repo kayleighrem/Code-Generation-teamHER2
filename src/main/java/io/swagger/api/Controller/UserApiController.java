@@ -1,8 +1,9 @@
-package io.swagger.api;
+package io.swagger.api.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiParam;
 import io.swagger.api.Services.UserService;
+import io.swagger.api.Api.UserApi;
 import io.swagger.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,12 +143,21 @@ public class UserApiController implements UserApi {
         return false;
     }
 
+
+//    Get mapping url's
     @GetMapping("/register")
     public String userForm(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }
 
+    @RequestMapping(value="/index" , method=RequestMethod.GET)
+    public String Index(@ModelAttribute("user") User user, Model model)  {
+        return "index";
+    }
+
+
+//    Work with the mapping url's
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") User user, Model model)  {
         String error = "Er bestaat al een gebruiker met dit emailadres.";
@@ -169,7 +179,8 @@ public class UserApiController implements UserApi {
         String error = "username of password niet juist";
 
         if ( CheckInlog(user) == true) {
-            return "index";
+            String redirectUrl = "/index";
+            return "redirect:" + redirectUrl;
         }
         else {
             model.addAttribute("errormessage", error);

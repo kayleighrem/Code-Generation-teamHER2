@@ -1,4 +1,4 @@
-package io.swagger.controller;
+package io.swagger.api.Controller;
 
 import io.swagger.api.Services.UserService;
 import org.springframework.stereotype.Controller;
