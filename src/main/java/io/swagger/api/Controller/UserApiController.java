@@ -2,8 +2,8 @@ package io.swagger.api.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiParam;
-import io.swagger.api.Services.UserService;
 import io.swagger.api.Api.UserApi;
+import io.swagger.api.Services.UserService;
 import io.swagger.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +15,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
 public class UserApiController implements UserApi {
@@ -144,6 +148,13 @@ public class UserApiController implements UserApi {
     }
 
 
+
+
+
+
+
+
+
 //    Get mapping url's
     @GetMapping("/register")
     public String userForm(Model model) {
@@ -153,7 +164,26 @@ public class UserApiController implements UserApi {
 
     @RequestMapping(value="/index" , method=RequestMethod.GET)
     public String Index(@ModelAttribute("user") User user, Model model)  {
+        HttpSession session=request.getSession(false);
+        String sessionuser = session.getAttribute("loggedin_user").toString();
+
+        if(session!=null){
+            System.out.println(session.getAttribute("loggedin_user"));
+            model.addAttribute("sessionuser", sessionuser);
+        }
+        else{
+//            out.print("Please login first");
+//            request.getRequestDispatcher("login.html").include(request, response);
+            System.out.println("jammer");
+        }
         return "index";
+    }
+
+    @GetMapping("/logout")
+    public String logout(@ModelAttribute("user") User user,Model model) {
+        logoutUser();
+        SessionInfo(user);
+        return "/login";
     }
 
 
@@ -179,6 +209,7 @@ public class UserApiController implements UserApi {
         String error = "username of password niet juist";
 
         if ( CheckInlog(user) == true) {
+            SessionInfo(user);
             String redirectUrl = "/index";
             return "redirect:" + redirectUrl;
         }
@@ -186,5 +217,15 @@ public class UserApiController implements UserApi {
             model.addAttribute("errormessage", error);
             return "login";
         }
+    }
+
+    public void SessionInfo(User user) {
+        HttpSession session = request.getSession();
+        session.setAttribute("loggedin_user", user.getEmail());
+        String username = (String)session.getAttribute("loggedin_user");
+
+        System.out.println("session id: " + session.getId());
+        System.out.println("Session creation time: " + new Date(session.getCreationTime()));
+        System.out.println("Session user: " + session.getAttribute("loggedin_user"));
     }
 }
