@@ -13,9 +13,8 @@
 
 <div class="container-fluid">
     <form action="#" th:action="@{/account}" th:object="${user}" method="post">
-<!--        //hier komt accountnaam-account id van de session-->
+<!--        hier komt accountnaam-account id van de session-->
         <h3 class="form-signin-heading" th:text="Accountname"></h3>
-        <h5>Please enter the required fields</h5>
         <br /><p th:text="${errormessage}"></p>
 
         <br /><a>Iban</a>

@@ -8,61 +8,116 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import java.util.Objects;
+
 /**
  * Account
  */
 @Validated
-@Entity
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
+@Entity
 public class Account   {
-
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
-  @JsonProperty("id")
-  private Integer id = null;
+  @Column(name="Iban")
+  @JsonProperty("Iban ")
+  private Integer Iban = null;
 
-  @JsonProperty("showAccounts")
-  private Integer showAccounts = null;
 
-  @JsonProperty("showSavings")
-  private Integer showSavings = null;
+  @Column(name="userId")
+  @JsonProperty("userId")
+  private Integer userId = null;
 
-  public Account showAccounts(Integer showAccounts) {
-    this.showAccounts = showAccounts;
+  @Column(name="accountAmount")
+  @JsonProperty("accountAmount")
+  private Integer accountAmount = null;
+
+  /**
+   * Gets or Sets typeAccount
+   */
+  public enum TypeAccountEnum {
+    BASIC("basic"),
+
+    SAVING("saving");
+
+    private String value;
+
+    TypeAccountEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeAccountEnum fromValue(String text) {
+      for (TypeAccountEnum b : TypeAccountEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+  @JsonProperty("typeAccount")
+  private TypeAccountEnum typeAccount = null;
+
+  public Account id(Integer id) {
+    this.userId = id;
     return this;
   }
 
   /**
-   * Get showAccounts
-   * @return showAccounts
+   * Get id
+   * @return id
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "1234", value = "")
 
-  public Integer getShowAccounts() {
-    return showAccounts;
+  public Integer getId() {
+    return userId;
   }
 
-  public void setShowAccounts(Integer showAccounts) {
-    this.showAccounts = showAccounts;
+  public void setId(Integer id) {
+    this.userId = id;
   }
 
-  public Account showSavings(Integer showSavings) {
-    this.showSavings = showSavings;
+  public Account acountAmount(Integer acountAmount) {
+    this.accountAmount = acountAmount;
     return this;
   }
 
   /**
-   * Get showSavings
-   * @return showSavings
+   * Get acountAmount
+   * @return acountAmount
    **/
   @ApiModelProperty(value = "")
 
-  public Integer getShowSavings() {
-    return showSavings;
+  public Integer getAcountAmount() {
+    return accountAmount;
   }
 
-  public void setShowSavings(Integer showSavings) {
-    this.showSavings = showSavings;
+  public void setAcountAmount(Integer acountAmount) {
+    this.accountAmount = acountAmount;
+  }
+
+  public Account typeAccount(TypeAccountEnum typeAccount) {
+    this.typeAccount = typeAccount;
+    return this;
+  }
+
+  /**
+   * Get typeAccount
+   * @return typeAccount
+   **/
+  @ApiModelProperty(example = "basic", value = "")
+
+  public TypeAccountEnum getTypeAccount() {
+    return typeAccount;
+  }
+
+  public void setTypeAccount(TypeAccountEnum typeAccount) {
+    this.typeAccount = typeAccount;
   }
 
 
@@ -75,13 +130,14 @@ public class Account   {
       return false;
     }
     Account account = (Account) o;
-    return Objects.equals(this.showAccounts, account.showAccounts) &&
-            Objects.equals(this.showSavings, account.showSavings);
+    return Objects.equals(this.userId, account.userId) &&
+            Objects.equals(this.accountAmount, account.accountAmount) &&
+            Objects.equals(this.typeAccount, account.typeAccount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(showAccounts, showSavings);
+    return Objects.hash(userId, accountAmount, typeAccount);
   }
 
   @Override
@@ -89,8 +145,9 @@ public class Account   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Account {\n");
 
-    sb.append("    showAccounts: ").append(toIndentedString(showAccounts)).append("\n");
-    sb.append("    showSavings: ").append(toIndentedString(showSavings)).append("\n");
+    sb.append("    id: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    acountAmount: ").append(toIndentedString(accountAmount)).append("\n");
+    sb.append("    typeAccount: ").append(toIndentedString(typeAccount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -104,31 +161,5 @@ public class Account   {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
-  }
-  public enum enumAccounts {
-    BASIC_ACCOUNT("basic account"),
-    SAVINGS_ACCOUNT("savings account");
-
-    private String value;
-
-    enumAccounts(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static enumAccounts fromValue(String text) {
-      for (enumAccounts b : enumAccounts.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 }
