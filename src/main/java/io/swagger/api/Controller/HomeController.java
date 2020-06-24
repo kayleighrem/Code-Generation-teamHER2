@@ -1,4 +1,4 @@
-package io.swagger.configuration;
+package io.swagger.api.Controller;
 
 public class HomeController {
 

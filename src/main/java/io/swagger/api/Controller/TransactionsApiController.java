@@ -1,9 +1,10 @@
-package io.swagger.api;
+package io.swagger.api.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiParam;
 import io.swagger.api.Repositories.TransactionRepository;
 import io.swagger.api.Services.TransactionService;
+import io.swagger.api.Api.TransactionsApi;
 import io.swagger.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
