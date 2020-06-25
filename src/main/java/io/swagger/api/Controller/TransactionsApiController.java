@@ -2,15 +2,14 @@ package io.swagger.api.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiParam;
+import io.swagger.api.Api.TransactionsApi;
 import io.swagger.api.Repositories.TransactionRepository;
 import io.swagger.api.Services.TransactionService;
-import io.swagger.api.Api.TransactionsApi;
 import io.swagger.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -84,36 +83,58 @@ public class TransactionsApiController implements TransactionsApi {
     {
         transService.getTransactions();
     }
-    private Transaction currentTrans;
 
-    @GetMapping("/transaction")
+    @RequestMapping(path = "/transaction", method = RequestMethod.GET)
     public String greetingForm(Model model,HttpSession session) {
-//        String warning = "of toch wel??";
         System.out.println(session.getAttribute("transaction"));
         model.addAttribute("transaction", new Transaction());
-        model.addAttribute("listall", transService.getTransactions());
-//        model.addAttribute("warning",warning);
         return "transactionperform";
     }
 
     @PostMapping("/transaction")
-    public String transactionSubmit(@ModelAttribute Transaction transaction, BindingResult result, HttpSession session) {
-        transaction.setUserPerforming(2);
-
-        transaction.status(Transaction.StatusEnum.ERROR);
-        currentTrans = transaction;
-        session.setAttribute("transaction",transaction);
+    public String transactionSubmit(@ModelAttribute Transaction transaction, HttpSession session,Model model) {
+        String result = transService.newTransaction(transaction);
         System.out.println(transaction);
-        if (result.hasErrors()) {
-            return "error"; //This should return some kind of error
-        }
-        String code = transService.newTransaction(transaction);
-        return "result";
+        model.addAttribute("errormessage",result);
+        model.addAttribute("transaction", new Transaction());
+        return "transactionperform";
     }
 
-    @GetMapping("/login")
-    public String login(HttpSession session) {
-        System.out.println(session.getAttribute("transaction"));
-        return "login";
+    @GetMapping("/deposit")
+    public String Deposit(Model model) {
+        model.addAttribute("transaction", new Transaction());
+        return "transactiondeposit";
+    }
+
+    @PostMapping("/deposit")
+    public String PostDeposit(Model model,@ModelAttribute Transaction transaction) {
+        String result = transService.depositTransaction(transaction);
+        model.addAttribute("errormessage",result);
+        model.addAttribute("transaction", new Transaction());
+        return "transactiondeposit";
+    }
+
+    @GetMapping("/withdraw")
+    public String Log(Model model) {
+        model.addAttribute("transaction", new Transaction());
+        return "transactionwithdraw";
+    }
+
+    @PostMapping("/withdraw")
+    public String PostWithdraw(Model model,@ModelAttribute Transaction transaction) {
+        String result = transService.depositTransaction(transaction);
+        model.addAttribute("errormessage",result);
+        model.addAttribute("transaction", new Transaction());
+        return "transactionwithdraw";
+    }
+    @GetMapping("/log")
+    public String Withdraw(Model model) {
+        model.addAttribute("listall", transService.getTransactions());
+        return "transactionlog";
+    }
+
+    @GetMapping("/transhome")
+    public String Home() {
+        return "transactionhome";
     }
 }

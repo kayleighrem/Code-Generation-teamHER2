@@ -6,7 +6,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
-
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
@@ -15,4 +14,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
+
+
+
+
+
 }

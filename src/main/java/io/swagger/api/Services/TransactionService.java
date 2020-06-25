@@ -2,6 +2,7 @@ package io.swagger.api.Services;
 
 import io.swagger.api.Repositories.TransactionRepository;
 import io.swagger.model.Transaction;
+import nl.garvelink.iban.Modulo97;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,6 @@ import java.util.List;
 @Service
 public class TransactionService
 {
-
     @Autowired
     private TransactionRepository transRepo;
 
@@ -32,35 +32,30 @@ public class TransactionService
 
     public String newTransaction(Transaction transaction)
     {
-       // String toIBAN = transaction.getTo();
-      //  IBANCheck check = new IBANCheck();
-     //   Boolean perform = true;
-
-
-
+        transaction.setUserPerforming(2);
+        transaction.status(Transaction.StatusEnum.ERROR);
+        String IBAN = transaction.getTo();
+        if(Modulo97.verifyCheckDigits(IBAN))
+        {
             Date date = new Date();
             transaction.setTransactionDate(null);
             transRepo.save(transaction);
             return "Transaction Success!";
-
-
+        }
+        else
+        {
+            return "Invalid IBAN";
+        }
 
     }
 
-    public void depositTransaction(Transaction transaction)
+    public String depositTransaction(Transaction transaction)
     {
-        //
+        return "Deposit Error Message";
     }
 
-    public void withdrawTransaction(Transaction transaction)
+    public String withdrawTransaction(Transaction transaction)
     {
-        //
+        return "Withdraw Error Message";
     }
-
-    public void test()
-    {
-        System.out.println("echo");
-    }
-
-
 }

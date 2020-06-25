@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 import java.io.IOException;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
-public class AccountsApiController implements AccountsApi {
+public class AccountsApiController implements io.swagger.api.AccountsApi {
 
     private static final Logger log = LoggerFactory.getLogger(AccountsApiController.class);
 
