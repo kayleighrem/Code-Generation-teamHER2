@@ -143,9 +143,12 @@ public class UserApiController implements UserApi {
 
         try { // look if there's a session
             HttpSession session=request.getSession(false);
-            String sessionuser = session.getAttribute("loggedin_user").toString();
+//            String fname = session.getAttribute("session_firstname").toString();
+//            String lname = session.getAttribute("session_lastname").toString();
+//            String fullname = fname + " " + lname;
             if(session!=null){ // if there is a session, go to the index page
-                model.addAttribute("sessionuser", sessionuser);
+//                model.addAttribute("session_fullname", fullname);
+                Navbar(model);
                 return "index";
             }
         }
@@ -155,28 +158,39 @@ public class UserApiController implements UserApi {
         return "";
     }
 
-//    Work with the mapping url's
+    public void Navbar(Model model) {
+        HttpSession session=request.getSession(false);
+        String fname = session.getAttribute("session_firstname").toString();
+        String lname = session.getAttribute("session_lastname").toString();
+        String fullname = fname + " " + lname;
+        model.addAttribute("session_fullname", fullname);
+    }
+
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") User user, Model model) throws SendFailedException {
         String error = "Er bestaat al een gebruiker met dit emailadres.";
-        //user.setIsEmployee(false);
         if (userService.CheckIfEmailExists(user.getEmail()) == true) {
             model.addAttribute("errormessage", error);
         }
         else {
-//            userService.createUser(user);
             userService.registerNewUserAccount(user);
             return "login";
         }
         return "register";
     }
 
+    @GetMapping("/login")
+    public String login(HttpSession session) {
+        return "login";
+    }
+
     @RequestMapping(value="/login" , method=RequestMethod.POST)
     public String LoginInfo(@ModelAttribute("user") User user, Model model)  {
         String error = "username of password niet juist";
 
-        if ( userService.CheckInlog(user) == true) {
-            SessionInfo(user); // just some terminal line info
+        if ( userService.CheckInlog(user) != null) {
+            User u = userService.CheckInlog(user);
+            SessionInfo(u); // just some terminal line info
             String redirectUrl = "/index";
             return "redirect:" + redirectUrl;
         }
@@ -186,25 +200,33 @@ public class UserApiController implements UserApi {
         }
     }
 
-    @GetMapping("/login")
-    public String login(HttpSession session) {
-        return "login";
-    }
-
     @GetMapping("/transactionhome")
     public String transactionhome(HttpSession session) {
         return "transactionhome";
     }
 
+    @GetMapping("/updateaccount")
+    public String UpdateAccount(HttpSession session, Model model) {
+        Navbar(model);
+        return "updateaccount";
+    }
+
     public void SessionInfo(User user) {
         HttpSession session = request.getSession();
         session.setAttribute("loggedin_user", user.getEmail());
+        session.setAttribute("session_uid", user.getUserId());
+        session.setAttribute("session_firstname", user.getName());
+        session.setAttribute("session_lastname", user.getLastname());
+        session.setAttribute("session_email", user.getEmail());
+
         String username = (String)session.getAttribute("loggedin_user");
 
         System.out.println("session id: " + session.getId());
         System.out.println("Session creation time: " + new Date(session.getCreationTime()));
         System.out.println("Session user: " + session.getAttribute("loggedin_user"));
-        System.out.println("Session user: " + username);
-
+        System.out.println("Session id user: " + session.getAttribute("session_uid"));
+        System.out.println("Session firstname user: " + session.getAttribute("session_firstname"));
+        System.out.println("Session lastname user: " + session.getAttribute("session_lastname"));
+        System.out.println("Session email user: " + session.getAttribute("session_email"));
     }
 }

@@ -25,14 +25,15 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="session works, logout works, link from index.html to transactionhome">
+    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="password encoder en decoder added">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/includes/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/updateaccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/AuthenticationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/UserApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/configuration/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/configuration/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/security/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,14 +76,15 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="io.swagger.security" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kayle\IdeaProjects\Code-Generation-teamHER2\src\main\resources\templates\includes" />
+      <recent name="C:\Users\kayle\IdeaProjects\Code-Generation-teamHER2\src\main\resources\templates" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kayle\IdeaProjects\Code-Generation-teamHER2\src\main\resources\templates\css" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\kayle\IdeaProjects\Code-Generation-teamHER2\src\main\resources\templates" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="io.swagger.security" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -186,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593075064097</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="password encoder en decoder added">
+      <created>1593079768054</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1593079768054</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -228,7 +237,8 @@
     <MESSAGE value="register check WERKT! :D" />
     <MESSAGE value="login en register werkt, checkt ook, bootstrap toegevoegd" />
     <MESSAGE value="session works, logout works, link from index.html to transactionhome" />
-    <option name="LAST_COMMIT_MESSAGE" value="session works, logout works, link from index.html to transactionhome" />
+    <MESSAGE value="password encoder en decoder added" />
+    <option name="LAST_COMMIT_MESSAGE" value="password encoder en decoder added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="586" y="198" key="#Inspections" timestamp="1590160280853">
@@ -251,25 +261,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591472941717" />
-    <state width="1877" height="364" key="GridCell.Tab.0.bottom" timestamp="1593079534172">
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom" timestamp="1593095911298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593095911298" />
     <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591618171920" />
-    <state width="1877" height="364" key="GridCell.Tab.0.center" timestamp="1593079534172">
+    <state width="1877" height="364" key="GridCell.Tab.0.center" timestamp="1593095911298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
+    <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593095911298" />
     <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591618171920" />
-    <state width="1877" height="364" key="GridCell.Tab.0.left" timestamp="1593079534172">
+    <state width="1877" height="364" key="GridCell.Tab.0.left" timestamp="1593095911298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
+    <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593095911298" />
     <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591618171920" />
-    <state width="1877" height="364" key="GridCell.Tab.0.right" timestamp="1593079534172">
+    <state width="1877" height="364" key="GridCell.Tab.0.right" timestamp="1593095911298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
+    <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593095911298" />
     <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591618171920" />
     <state width="1877" height="346" key="GridCell.Tab.1.bottom" timestamp="1591531638731">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -308,10 +318,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591561915597" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1593075068234">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1593080299034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593075068234" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593080299034" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591617564378" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590419553737">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -339,5 +349,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591613995334" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593083447946">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593083447946" />
   </component>
 </project>

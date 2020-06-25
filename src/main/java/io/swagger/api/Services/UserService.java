@@ -62,13 +62,13 @@ public class UserService {
         return false;
     }
 
-    public boolean CheckInlog(User user) {
+    public User CheckInlog(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         for ( User u : getUser()) {
             if (user.getEmail().equals(u.getEmail()) && encoder.matches(user.getPassword(), u.getPassword()) == true) {
-                return true;
+                return u;
             }
         }
-        return false;
+        return null;
     }
 }
