@@ -12,7 +12,7 @@
 <body>
 
 <div class="container-fluid">
-    <form action="#" th:action="@{/account}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/account}" th:object="${account}" method="post">
 <!--        hier komt accountnaam-account id van de session-->
         <h3 class="form-signin-heading" th:text="Accountname"></h3>
         <br /><p th:text="${errormessage}"></p>

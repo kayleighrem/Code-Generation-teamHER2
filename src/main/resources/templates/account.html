@@ -12,18 +12,16 @@
 <body>
 
 <div class="container-fluid">
-<!--    <form action="#" th:action="@{/account}" th:object="${account}" method="post">-->
-<!--        hier komt accountnaam-account id van de session-->
-        <h3 class="form-signin-heading" th:text="Accountname"></h3>
+    <form action="#" th:action="@{/account}" th:object="${account}" method="post">
+
         <br /><p th:text="${errormessage}"></p>
 
-        <br /><a>Iban</a>
-        <br /> <a>bedrag</a>
+
 
 
         <br />
-       </button><a href="transaction"> go to transactions</a>
-<!--    </form>-->
+       <a href="transaction"> go to transactions</a>
+    </form>
 </div>
 </body>
 </html>

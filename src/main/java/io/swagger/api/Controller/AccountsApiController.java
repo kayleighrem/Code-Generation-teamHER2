@@ -67,11 +67,6 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     }
 
 
-    @RequestMapping(value= "add", method = RequestMethod.POST)
-    public String processAddCheeseForm(Model model){
-        model.addAttribute("accountType", io.swagger.model.accountType.values());
-        return "account/add";
-    }
 
 
     @GetMapping("/account")
@@ -79,6 +74,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
 //        model.addAttribute("account", new Account());
 //        serviceAccount.GetAllEnums();
         System.out.println("test2");
+        serviceAccount.generatedIban(99999999);
         return "account";
     }
     @GetMapping("/accountcreation")
