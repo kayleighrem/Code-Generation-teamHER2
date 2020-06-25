@@ -6,6 +6,7 @@ import io.swagger.api.Services.AccountService;
 import io.swagger.model.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
 
     private final HttpServletRequest request;
 
+    @Autowired
     private AccountService serviceAccount;
 
     @org.springframework.beans.factory.annotation.Autowired
@@ -67,19 +69,36 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     }
 
 
+    @RequestMapping(value= "add", method = RequestMethod.POST)
+    public String processAddCheeseForm(Model model){
+        model.addAttribute("accountType", io.swagger.model.accountType.values());
+        return "account/add";
+    }
 
 
     @GetMapping("/account")
     public String acountForm(Model model) {
-//        model.addAttribute("account", new Account());
-//        serviceAccount.GetAllEnums();
-        System.out.println("test2");
-        serviceAccount.generatedIban(99999999);
+//        Account account = new Account();
+//        account.typeAccount(Account.TypeAccountEnum.BASIC);
+//        System.out.println(account);
+//
+//     model.addAttribute("account", account);
+//        serviceAccount.newAccount(account);
         return "account";
     }
     @GetMapping("/accountcreation")
     public String acountCreation(Model model) {
         model.addAttribute("accountcreation", new Account());
+        return "accountCreation";
+    }
+
+    @PostMapping("/accountcreation")
+    public String newAccount(@ModelAttribute Account account, Model model) {
+        if(account==null)
+        {
+            return "null";
+        }
+        serviceAccount.newAccount(account);
         return "accountCreation";
     }
 }

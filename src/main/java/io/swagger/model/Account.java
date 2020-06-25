@@ -18,19 +18,19 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Entity
 public class Account   {
-  @Id
+
   @Column(name="Iban")
-  @JsonProperty("Iban ")
-  private Integer Iban = null;
+  @JsonProperty("Iban")
+  private String Iban = "IBAN";
 
-
+  @Id
   @Column(name="userId")
   @JsonProperty("userId")
-  private Integer userId = null;
+  private Integer userId = 2;
 
   @Column(name="accountAmount")
   @JsonProperty("accountAmount")
-  private Integer accountAmount = null;
+  private Integer accountAmount = 200;
 
   /**
    * Gets or Sets typeAccount
@@ -77,7 +77,7 @@ public class Account   {
     this.userId = id;
     return this;
   }
-private accountType type;
+//private accountType type;
   /**
    * Get id
    * @return id
@@ -90,6 +90,17 @@ private accountType type;
 
   public void setId(Integer id) {
     this.userId = id;
+  }
+
+
+
+
+  public String getIBAN() {
+    return Iban;
+  }
+
+  public void setIBAN(String Iban) {
+    this.Iban = Iban;
   }
 
   public Account acountAmount(Integer acountAmount) {
@@ -142,12 +153,13 @@ private accountType type;
     Account account = (Account) o;
     return Objects.equals(this.userId, account.userId) &&
             Objects.equals(this.accountAmount, account.accountAmount) &&
+            Objects.equals(this.Iban, account.Iban) &&
             Objects.equals(this.typeAccount, account.typeAccount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, accountAmount, typeAccount);
+    return Objects.hash(userId, accountAmount, typeAccount,Iban);
   }
 
   @Override
@@ -158,6 +170,7 @@ private accountType type;
     sb.append("    id: ").append(toIndentedString(userId)).append("\n");
     sb.append("    acountAmount: ").append(toIndentedString(accountAmount)).append("\n");
     sb.append("    typeAccount: ").append(toIndentedString(typeAccount)).append("\n");
+    sb.append("    IBan: ").append(toIndentedString(Iban)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -172,4 +185,15 @@ private accountType type;
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public Account(String Iban, Integer accountAmount,Integer userId)
+  {
+    this.Iban = Iban;
+    this.accountAmount = accountAmount;
+    this.userId = userId;
+  }
+
+  public Account()
+  {super();}
+
 }

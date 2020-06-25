@@ -62,7 +62,7 @@ public class TransactionsApiController implements TransactionsApi {
 , @NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = false) Integer id
 , @RequestBody Transaction transaction)
     {
-        transService.newTransaction(transaction,new User());
+
     }
 
     /*
@@ -87,14 +87,13 @@ public class TransactionsApiController implements TransactionsApi {
 
     @RequestMapping(path = "/transaction", method = RequestMethod.GET)
     public String greetingForm(Model model,HttpSession session) {
-        System.out.println(session.getAttribute("transaction"));
         model.addAttribute("transaction", new Transaction());
         return "transactionperform";
     }
 
     @PostMapping("/transaction")
     public String transactionSubmit(@ModelAttribute Transaction transaction, HttpSession session,Model model) {
-        String result = transService.newTransaction(transaction,new User());
+        String result = transService.newTransaction(transaction,session);
         System.out.println(transaction);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
@@ -129,13 +128,19 @@ public class TransactionsApiController implements TransactionsApi {
         return "transactionwithdraw";
     }
     @GetMapping("/log")
-    public String Withdraw(Model model) {
-        model.addAttribute("listall", transService.getTransactions());
+    public String Withdraw(Model model,HttpSession session) {
+        User user = (User) session.getAttribute("loggedin_user");
+        Integer uid = user.getUserId();
+        model.addAttribute("listall", transService.getTransactionsById(uid));
         return "transactionlog";
     }
 
     @GetMapping("/transhome")
-    public String Home(HttpSession session) {
+    public String Home(HttpSession session,Model model) {
+        User user= (User) session.getAttribute("loggedin_user");
+        String uName = user.getName();
+        System.out.println(uName);
+        model.addAttribute("username",uName);
         return "transactionhome";
     }
 }

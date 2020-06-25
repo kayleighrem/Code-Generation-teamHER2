@@ -598,3 +598,27 @@ insert into transaction (trans_id, trans_amount, trans_from, trans_status, trans
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-06-25 16:00:53 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE *[*] FROM TRANSACTION"; expected "identifier"; SQL statement:
+DELETE * FROM TRANSACTION [42001-193]
+2020-06-25 17:29:20 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "IBAN"; SQL statement:
+select account0_.iban as iban1_0_0_, account0_.account_amount as account_2_0_0_, account0_.type as type3_0_0_, account0_.type_account as type_acc4_0_0_, account0_.user_id as user_id5_0_0_ from account account0_ where account0_.iban=? [22018-193]
+2020-06-25 17:29:23 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "IBAN"; SQL statement:
+select account0_.iban as iban1_0_0_, account0_.account_amount as account_2_0_0_, account0_.type as type3_0_0_, account0_.type_account as type_acc4_0_0_, account0_.user_id as user_id5_0_0_ from account account0_ where account0_.iban=? [22018-193]
+2020-06-25 17:30:45 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "IBAN3030TEST"; SQL statement:
+select account0_.iban as iban1_0_0_, account0_.account_amount as account_2_0_0_, account0_.type as type3_0_0_, account0_.type_account as type_acc4_0_0_, account0_.user_id as user_id5_0_0_ from account account0_ where account0_.iban=? [22018-193]
+2020-06-25 17:31:34 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "NL02ABNA0123456789"; SQL statement:
+select account0_.iban as iban1_0_0_, account0_.account_amount as account_2_0_0_, account0_.type as type3_0_0_, account0_.type_account as type_acc4_0_0_, account0_.user_id as user_id5_0_0_ from account account0_ where account0_.iban=? [22018-193]
+2020-06-25 17:33:04 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "NL02ABNA0123456789"; SQL statement:
+select account0_.iban as iban1_0_0_, account0_.account_amount as account_2_0_0_, account0_.type as type3_0_0_, account0_.type_account as type_acc4_0_0_, account0_.user_id as user_id5_0_0_ from account account0_ where account0_.iban=? [22018-193]
+2020-06-25 17:35:47 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "IBAN"; SQL statement:
+select account0_.iban as iban1_0_0_, account0_.account_amount as account_2_0_0_, account0_.type as type3_0_0_, account0_.type_account as type_acc4_0_0_, account0_.user_id as user_id5_0_0_ from account account0_ where account0_.iban=? [22018-193]
+2020-06-25 17:38:01 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP ACCOUNT[*]"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"; SQL statement:
+DROP ACCOUNT [42001-193]

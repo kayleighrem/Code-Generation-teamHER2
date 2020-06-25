@@ -42,8 +42,10 @@ public class Swagger2SpringBoot implements CommandLineRunner {
         return args ->
         {
             Arrays.asList(
-                    new Transaction(1,"Hans","Gerda",1,null,100.0d)
+                    new Transaction(1,"Hans","Gerda",1,null,100.0d,"default")
             ).forEach(transaction -> transRepo.save(transaction));
+
+
 
         };
     }

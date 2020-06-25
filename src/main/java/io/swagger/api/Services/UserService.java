@@ -71,4 +71,17 @@ public class UserService {
         }
         return null;
     }
+
+    public User getUserByLogin(User user)
+    {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        for(User u : getUser())
+        {
+            if(u.getEmail().equals(user.getEmail()) && encoder.matches(user.getPassword(),u.getPassword()))
+            {
+                return u;
+            }
+        }
+        return new User();
+    }
 }

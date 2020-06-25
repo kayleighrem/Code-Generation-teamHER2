@@ -11,13 +11,7 @@
     <h1>REST Banking</h1>
 </div>
 <hr class="header-line"/>
-<header class="container-fluid">
-    <div class="lead">
-        <a href="transhome">Home</a>
-        <a href="logout">Logout</a>
-    </div>
-    <hr class="header-line"/>
-</header>
+
 <div class="container-fluid">
         <a href="deposit" class="btn btn-primary">Deposit</a>
         <a href="withdraw" class="btn btn-primary">Withdraw</a>
@@ -28,7 +22,7 @@
 <footer class="card-footer">
     <div class=".container">
         <div class="lead">
-            <p>Logged in as: </p>
+            <p th:text="${username}"></p>
         </div>
     </div>
 </footer>

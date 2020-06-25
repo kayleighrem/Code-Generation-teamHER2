@@ -45,6 +45,10 @@ public class Transaction   {
   @JsonProperty("amount")
   private Double amount = 100d;
 
+  @Column(name="Trans_Description")
+  @JsonProperty("description")
+  private String description = null;
+
 
 
 
@@ -84,6 +88,25 @@ public class Transaction   {
   @JsonProperty("status")
   @Column(name="Trans_Status")
   private StatusEnum status = null;
+
+  public Transaction description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   **/
+  @ApiModelProperty(example = "1234", value = "")
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
   public Transaction id(Integer id) {
     this.id = id;
@@ -254,6 +277,7 @@ public class Transaction   {
     sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -269,7 +293,7 @@ public class Transaction   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, Double amount)
+  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, Double amount,String description)
   {
     this.id = id;
     this.to = to;
@@ -277,6 +301,7 @@ public class Transaction   {
     this.userPerforming = userPerforming;
     this.transactionDate = transactionDate;
     this.amount = amount;
+    this.description = description;
   }
 
   public Transaction()

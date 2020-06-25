@@ -140,7 +140,6 @@ public class UserApiController implements UserApi {
 
     @RequestMapping(value="/index" , method=RequestMethod.GET)
     public String Index(@ModelAttribute("user") User user, Model model)  {
-
         try { // look if there's a session
             HttpSession session=request.getSession(false);
 //            String fname = session.getAttribute("session_firstname").toString();
@@ -157,7 +156,6 @@ public class UserApiController implements UserApi {
         };
         return "";
     }
-
     public void Navbar(Model model) {
         HttpSession session=request.getSession(false);
         String fname = session.getAttribute("session_firstname").toString();
@@ -165,7 +163,6 @@ public class UserApiController implements UserApi {
         String fullname = fname + " " + lname;
         model.addAttribute("session_fullname", fullname);
     }
-
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") User user, Model model) throws SendFailedException {
         String error = "Er bestaat al een gebruiker met dit emailadres.";
@@ -178,16 +175,13 @@ public class UserApiController implements UserApi {
         }
         return "register";
     }
-
     @GetMapping("/login")
     public String login(HttpSession session) {
         return "login";
     }
-
     @RequestMapping(value="/login" , method=RequestMethod.POST)
     public String LoginInfo(@ModelAttribute("user") User user, Model model)  {
         String error = "username of password niet juist";
-
         if ( userService.CheckInlog(user) != null) {
             User u = userService.CheckInlog(user);
             SessionInfo(u); // just some terminal line info
@@ -199,18 +193,15 @@ public class UserApiController implements UserApi {
             return "login";
         }
     }
-
     @GetMapping("/transactionhome")
     public String transactionhome(HttpSession session) {
         return "transactionhome";
     }
-
     @GetMapping("/updateaccount")
     public String UpdateAccount(HttpSession session, Model model) {
         Navbar(model);
         return "updateaccount";
     }
-
     public void SessionInfo(User user) {
         HttpSession session = request.getSession();
         session.setAttribute("loggedin_user", user.getEmail());
@@ -218,9 +209,7 @@ public class UserApiController implements UserApi {
         session.setAttribute("session_firstname", user.getName());
         session.setAttribute("session_lastname", user.getLastname());
         session.setAttribute("session_email", user.getEmail());
-
         String username = (String)session.getAttribute("loggedin_user");
-
         System.out.println("session id: " + session.getId());
         System.out.println("Session creation time: " + new Date(session.getCreationTime()));
         System.out.println("Session user: " + session.getAttribute("loggedin_user"));
