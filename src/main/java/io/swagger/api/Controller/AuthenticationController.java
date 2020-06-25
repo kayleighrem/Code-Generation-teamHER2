@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AuthenticationController {
 
-
     private UserService userService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -18,5 +17,4 @@ public class AuthenticationController {
         modelAndView.setViewName("home"); // resources/template/home.html
         return modelAndView;
     }
-
 }

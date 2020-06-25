@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.SendFailedException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -22,7 +23,6 @@ import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
@@ -120,42 +120,13 @@ public class UserApiController implements UserApi {
                 return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
-
-
-
-
-
 
     public ResponseEntity<Void> logoutUser() {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
-
-    public boolean CheckInlog(User user) {
-        for ( User u : userService.getUser()) {
-            if (user.getEmail().toString().equals(u.getEmail().toString()) && user.getPassword().equals(u.getPassword())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean CheckIfEmailExists(User user) {
-        for ( User u : userService.getUser()) {
-            if (user.getEmail().toString().equals(u.getEmail().toString())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-
-
-
 
 
 
@@ -169,43 +140,32 @@ public class UserApiController implements UserApi {
 
     @RequestMapping(value="/index" , method=RequestMethod.GET)
     public String Index(@ModelAttribute("user") User user, Model model)  {
-        HttpSession session=request.getSession(false);
-        String sessionuser = session.getAttribute("loggedin_user").toString();
 
-        if(session!=null){
-            System.out.println(session.getAttribute("loggedin_user"));
-            model.addAttribute("sessionuser", sessionuser);
+        try { // look if there's a session
+            HttpSession session=request.getSession(false);
+            String sessionuser = session.getAttribute("loggedin_user").toString();
+            if(session!=null){ // if there is a session, go to the index page
+                model.addAttribute("sessionuser", sessionuser);
+                return "index";
+            }
         }
-        else{
-//            out.print("Please login first");
-//            request.getRequestDispatcher("login.html").include(request, response);
-            System.out.println("jammer");
-        }
-        return "index";
+        catch (NullPointerException e) { // if no one is logged in (no session), go to the login page
+            return "login";
+        };
+        return "";
     }
-
-//    @GetMapping("/logout")
-//    public String logout(@ModelAttribute("user") User user,Model model) {
-//        System.out.println("logout" + user.getEmail());
-//        logoutUser();
-//        System.out.println("logged out" + user.getEmail());
-//        SessionInfo(user);
-//        return "/login";
-//    }
-
 
 //    Work with the mapping url's
     @RequestMapping(value="/register" , method=RequestMethod.POST)
-    public String processLoginInfo(@ModelAttribute("user") User user, Model model)  {
+    public String processLoginInfo(@ModelAttribute("user") User user, Model model) throws SendFailedException {
         String error = "Er bestaat al een gebruiker met dit emailadres.";
-        user.setIsEmployee(false);
-        if (CheckIfEmailExists(user) == true) {
-            System.out.printf("bestaat al");
+        //user.setIsEmployee(false);
+        if (userService.CheckIfEmailExists(user.getEmail()) == true) {
             model.addAttribute("errormessage", error);
         }
         else {
-            System.out.printf("nieuw");
-            userService.createUser(user);
+//            userService.createUser(user);
+            userService.registerNewUserAccount(user);
             return "login";
         }
         return "register";
@@ -215,8 +175,8 @@ public class UserApiController implements UserApi {
     public String LoginInfo(@ModelAttribute("user") User user, Model model)  {
         String error = "username of password niet juist";
 
-        if ( CheckInlog(user) == true) {
-            SessionInfo(user);
+        if ( userService.CheckInlog(user) == true) {
+            SessionInfo(user); // just some terminal line info
             String redirectUrl = "/index";
             return "redirect:" + redirectUrl;
         }
@@ -244,5 +204,7 @@ public class UserApiController implements UserApi {
         System.out.println("session id: " + session.getId());
         System.out.println("Session creation time: " + new Date(session.getCreationTime()));
         System.out.println("Session user: " + session.getAttribute("loggedin_user"));
+        System.out.println("Session user: " + username);
+
     }
 }

@@ -151,10 +151,6 @@ public User(String name, String lastname, String email, Boolean isEmployee, Stri
   }
 
 
-
-
-
-
   /**
    * Get isEmployee
    * @return isEmployee
