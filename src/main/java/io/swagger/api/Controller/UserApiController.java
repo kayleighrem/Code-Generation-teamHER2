@@ -230,3 +230,4 @@ public class UserApiController implements UserApi {
         System.out.println("Session email user: " + session.getAttribute("session_email"));
     }
 }
+// test
