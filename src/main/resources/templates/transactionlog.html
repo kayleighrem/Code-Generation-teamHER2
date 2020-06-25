@@ -1,38 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Log</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="./css/transaction.css"/>
+    <!--    <link href="../static/css/transaction.css" th:href="@{/css/transaction.css}" rel="stylesheet"/>-->
+
+    <title>Withdrawal</title>
 </head>
 <body>
-<div class="logo">
-    <p>REST Banking</p>
+<div class="container-fluid">
+    <h1>REST Banking</h1>
 </div>
 <hr class="header-line"/>
-<header class="link-container">
-    <div class="links">
+<header class="container-fluid">
+    <div class="lead">
         <a href="transhome">Home</a>
-        <a href="#">Logout</a>
+        <a href="logout">Logout</a>
     </div>
+    <hr class="header-line"/>
 </header>
-<hr class="header-line"/>
-<div class="user-container">
-    <div class="user-information">
-        <p>Logged in as: </p>
-    </div>
+
+
+<div class="container-fluid">
+    <h3>Transaction Log</h3>
+    <p class="blockquote">Review your transaction history</p>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Recipient</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+            <tbody>
+                <th:block th:each="transaction : ${listall}">
+                    <tr>
+                        <th scope ="row" th:text="${transaction.id}"></th>
+                        <td th:text="${transaction.to}"></td>
+                        <td th:text="${transaction.from}"></td>
+                        <td th:text="${transaction.amount}"></td>
+                        <td th:text="${transaction.transactionDate}"></td>
+                    </tr>
+                </th:block>
+                </tbody>
+        </table>
 </div>
-<div class="container-content">
-    <th:block th:each="transaction : ${listall}">
-        <tr>
-            To:<td th:text="${transaction.to}"></td>
-            From:<td th:text="${transaction.from}"></td>
-            <br/>
-        </tr>
-    </th:block>
-    <p>Log</p>
-</div>
+<br /><p th:text="${errormessage}"></p>
+<p th:text="${warning}"></p>
 </body>
+<footer class="card-footer">
+    <div class=".container">
+        <div class="lead">
+            <p>Logged in as: </p>
+        </div>
+    </div>
+</footer>
 </html>
