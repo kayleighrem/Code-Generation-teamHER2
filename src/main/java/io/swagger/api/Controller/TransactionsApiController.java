@@ -6,6 +6,7 @@ import io.swagger.api.Api.TransactionsApi;
 import io.swagger.api.Repositories.TransactionRepository;
 import io.swagger.api.Services.TransactionService;
 import io.swagger.model.Transaction;
+import io.swagger.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -61,7 +62,7 @@ public class TransactionsApiController implements TransactionsApi {
 , @NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = false) Integer id
 , @RequestBody Transaction transaction)
     {
-        transService.newTransaction(transaction);
+        transService.newTransaction(transaction,new User());
     }
 
     /*
@@ -93,7 +94,7 @@ public class TransactionsApiController implements TransactionsApi {
 
     @PostMapping("/transaction")
     public String transactionSubmit(@ModelAttribute Transaction transaction, HttpSession session,Model model) {
-        String result = transService.newTransaction(transaction);
+        String result = transService.newTransaction(transaction,new User());
         System.out.println(transaction);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
@@ -122,7 +123,7 @@ public class TransactionsApiController implements TransactionsApi {
 
     @PostMapping("/withdraw")
     public String PostWithdraw(Model model,@ModelAttribute Transaction transaction) {
-        String result = transService.depositTransaction(transaction);
+        String result = transService.withdrawTransaction(transaction);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
         return "transactionwithdraw";
@@ -134,7 +135,12 @@ public class TransactionsApiController implements TransactionsApi {
     }
 
     @GetMapping("/transhome")
-    public String Home() {
+    public String Home(HttpSession session) {
+        System.out.println("Home");
+        System.out.println(session.getAttribute("loggedin_user"));
         return "transactionhome";
+
+
+
     }
 }

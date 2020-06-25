@@ -5,6 +5,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+//    @Bean
+//    WebMvcConfigurer webMvcConfigurer()
+//    {
+//        return new WebMvcConfigurerAdapter() {
+//        @Override
+//        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//            registry
+//                    .addResourceHandler("/resources/**")
+//                    .addResourceLocations("/resources/");
+//        }
+//
+//        };
+//    }
+
+
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {

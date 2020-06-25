@@ -4,40 +4,44 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link th:href="@{/css/transaction.css}" rel="stylesheet" type="text/css"/>
+<!--    <link href="../static/css/transaction.css" th:href="@{/css/transaction.css}" rel="stylesheet"/>-->
 
     <title>Perform</title>
 </head>
 <body>
-<div class="logo">
-    <p>REST Banking</p>
+<div class="container-fluid">
+    <h1>REST Banking</h1>
 </div>
 <hr class="header-line"/>
-<header class="link-container"/>
-    <div class="links">
+<header class="container-fluid">
+    <div class="lead">
         <a href="transhome">Home</a>
-        <a href="#">Logout</a>
+        <a href="logout">Logout</a>
     </div>
 <hr class="header-line"/>
-<div class="user-container">
-    <div class="user-information">
-        <p>Logged in as: </p>
-    </div>
-</div>
-<br /><p th:text="${errormessage}"></p>
-<div class="container-content">
-    <p>Please enter the required fields</p>
+</header>
+
+
+<div class="container-fluid">
+    <h3>Perform a transaction</h3>
+    <p class="blockquote">In order to perform a transaction, we'll need some information</p>
     <form action="#" th:action="@{/transaction}" th:object="${transaction}" method="post">
-        <p>Id: <input type="number" th:field="*{id}" /></p>
-        <p>From: <input type="text" th:field="*{from}" /></p>
-        <p>To: <input type="text" th:field="*{to}" /></p>
-        <p>Amount: <input type="number" th:field="*{amount}" /></p>
-        <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+        <div class="form-group">
+        <p class="text-left">* Recipient's IBAN: <input class="form-control" type="text" th:field="*{to}" /></p>
+        <p class="text-left">* Amount: <input class="form-control" type="number" th:field="*{amount}" /></p>
+<!--            <p class="text-left">* Description: <input class="form-control" type="number" th:field="*{description}" /></p>-->
+        <input class="btn btn-primary" type="submit" value="Submit" /> <input class="btn btn-primary" type="reset" value="Reset" />
+        </div>
     </form>
 </div>
-
-
-
+<br /><p th:text="${errormessage}"></p>
 <p th:text="${warning}"></p>
 </body>
+<footer class="card-footer">
+    <div class=".container">
+        <div class="lead">
+            <p>Logged in as: </p>
+        </div>
+    </div>
+</footer>
 </html>
