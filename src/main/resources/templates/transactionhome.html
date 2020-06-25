@@ -4,8 +4,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <!--    <link href="../static/css/transaction.css" th:href="@{/css/transaction.css}" rel="stylesheet"/>-->
-
     <title>Home</title>
 </head>
 <body>
@@ -20,18 +18,12 @@
     </div>
     <hr class="header-line"/>
 </header>
-
-
 <div class="container-fluid">
-    <div class="content-button">
-        <a href="deposit" class="btn btn-primary stretched-link">Deposit</a>
-        <a href="withdraw" class="btn btn-primary stretched-link">Withdraw</a>
-        <a href="log" class="btn btn-primary stretched-link">Log</a>
-        <a href="transaction" class="btn btn-primary stretched-link">Transaction</a>
-    </div>
+        <a href="deposit" class="btn btn-primary">Deposit</a>
+        <a href="withdraw" class="btn btn-primary">Withdraw</a>
+        <a href="log" class="btn btn-primary">Log</a>
+        <a href="transaction"  class="btn btn-primary">Transaction</a>
 </div>
-<br /><p th:text="${errormessage}"></p>
-<p th:text="${warning}"></p>
 </body>
 <footer class="card-footer">
     <div class=".container">

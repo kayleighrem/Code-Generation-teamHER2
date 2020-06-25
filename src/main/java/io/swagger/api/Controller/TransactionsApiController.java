@@ -108,7 +108,7 @@ public class TransactionsApiController implements TransactionsApi {
     }
 
     @PostMapping("/deposit")
-    public String PostDeposit(Model model,@ModelAttribute Transaction transaction) {
+    public String PostDeposit(Model model, @ModelAttribute Transaction transaction) {
         String result = transService.depositTransaction(transaction);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
@@ -136,11 +136,6 @@ public class TransactionsApiController implements TransactionsApi {
 
     @GetMapping("/transhome")
     public String Home(HttpSession session) {
-        System.out.println("Home");
-        System.out.println(session.getAttribute("loggedin_user"));
         return "transactionhome";
-
-
-
     }
 }
