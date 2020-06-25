@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 /**
@@ -50,6 +52,10 @@ public class Account   {
       return String.valueOf(value);
     }
 
+
+
+
+
     @JsonCreator
     public static TypeAccountEnum fromValue(String text) {
       for (TypeAccountEnum b : TypeAccountEnum.values()) {
@@ -60,6 +66,10 @@ public class Account   {
       return null;
     }
   }
+
+
+
+
   @JsonProperty("typeAccount")
   private TypeAccountEnum typeAccount = null;
 
@@ -67,7 +77,7 @@ public class Account   {
     this.userId = id;
     return this;
   }
-
+private accountType type;
   /**
    * Get id
    * @return id

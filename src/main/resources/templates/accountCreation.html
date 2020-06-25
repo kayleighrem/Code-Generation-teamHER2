@@ -12,7 +12,7 @@
 <body>
 
 <div class="container-fluid">
-<!--    <form action="#" th:action="@{/account}" th:object="${account}" method="post">-->
+    <form action="#" th:action="@{/account}" th:object="${user}" method="post">
 <!--        hier komt accountnaam-account id van de session-->
         <h3 class="form-signin-heading" th:text="Accountname"></h3>
         <br /><p th:text="${errormessage}"></p>
@@ -22,8 +22,8 @@
 
 
         <br />
-       </button><a href="transaction"> go to transactions</a>
-<!--    </form>-->
+        <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit"></button><a href="transactionhome"> go to transactions</a>
+    </form>
 </div>
 </body>
 </html>
