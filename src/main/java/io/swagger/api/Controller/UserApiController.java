@@ -124,6 +124,11 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+
+
+
+
+
     public ResponseEntity<Void> logoutUser() {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
@@ -179,12 +184,14 @@ public class UserApiController implements UserApi {
         return "index";
     }
 
-    @GetMapping("/logout")
-    public String logout(@ModelAttribute("user") User user,Model model) {
-        logoutUser();
-        SessionInfo(user);
-        return "/login";
-    }
+//    @GetMapping("/logout")
+//    public String logout(@ModelAttribute("user") User user,Model model) {
+//        System.out.println("logout" + user.getEmail());
+//        logoutUser();
+//        System.out.println("logged out" + user.getEmail());
+//        SessionInfo(user);
+//        return "/login";
+//    }
 
 
 //    Work with the mapping url's
@@ -217,6 +224,16 @@ public class UserApiController implements UserApi {
             model.addAttribute("errormessage", error);
             return "login";
         }
+    }
+
+    @GetMapping("/login")
+    public String login(HttpSession session) {
+        return "login";
+    }
+
+    @GetMapping("/transactionhome")
+    public String transactionhome(HttpSession session) {
+        return "transactionhome";
     }
 
     public void SessionInfo(User user) {
