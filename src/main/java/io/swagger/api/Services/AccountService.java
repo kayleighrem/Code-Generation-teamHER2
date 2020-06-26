@@ -13,7 +13,7 @@ import java.util.Random;
 
 @Service
 public class AccountService {
-
+static int maxRangeIban =999999999;
     @Autowired
     private AccountRepository accountRepository;
 
@@ -25,7 +25,7 @@ public class AccountService {
 //makes a iban string
     public static String generatedIban(int upperRange){
         Random random = new Random();
-        int test = random.nextInt(999999999);
+        int test = random.nextInt(maxRangeIban);
         String iban= "Nl20TEST"+test;
         System.out.println(iban);
         System.out.println("hoi");
@@ -38,12 +38,28 @@ public class AccountService {
 //        System.out.println(TypeList);
 //        return TypeList;
     }
-
-    public String newAccount(Account account)
+    public String newAccount(Account account, Integer user)
     {
-        account.setId(3);
-        account.setIBAN("IBAN4040TESTLOL");
+        account.setId(user);
+        System.out.println("--------------");
+        System.out.println(user);
+        System.out.println("--------------");
+        String iban = generatedIban(maxRangeIban);
+        account.setIBAN(iban);
         account.setTypeAccount(Account.TypeAccountEnum.BASIC);
+        account.setAcountAmount(100);
+        accountRepository.save(account);
+        return "Saved";
+    }
+    public String newAccount(Account account, Integer user,String type)
+    {
+        account.setId(user);
+        System.out.println("--------------");
+        System.out.println(user);
+        System.out.println("--------------");
+        String iban = generatedIban(maxRangeIban);
+        account.setIBAN(iban);
+        account.setTypeAccount(Account.TypeAccountEnum.fromValue(type));
         account.setAcountAmount(100);
         accountRepository.save(account);
         return "Saved";

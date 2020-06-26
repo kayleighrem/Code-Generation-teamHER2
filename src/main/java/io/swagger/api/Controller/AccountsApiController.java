@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiParam;
 import io.swagger.api.Services.AccountService;
 import io.swagger.model.Account;
+import io.swagger.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -76,29 +78,80 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     }
 
 
-    @GetMapping("/account")
-    public String acountForm(Model model) {
-//        Account account = new Account();
-//        account.typeAccount(Account.TypeAccountEnum.BASIC);
-//        System.out.println(account);
-//
-//     model.addAttribute("account", account);
-//        serviceAccount.newAccount(account);
-        return "account";
-    }
+    //    @GetMapping("/accountCreation")
+//    public String acountForm(Account account, Model model,HttpSession session) {
+////        Account account = new Account();
+////        account.typeAccount(Account.TypeAccountEnum.BASIC);
+////        System.out.println(account);
+//        User user= (User) session.getAttribute("loggedin_user");
+//        Integer uId = user.getUserId();
+//        System.out.println(uId);
+//        serviceAccount.newAccount(account,uId);
+////     model.addAttribute("account", account);
+////        serviceAccount.newAccount(account);
+//        return "account";
+//    }
     @GetMapping("/accountcreation")
     public String acountCreation(Model model) {
-        model.addAttribute("accountcreation", new Account());
-        return "accountCreation";
-    }
 
-    @PostMapping("/accountcreation")
-    public String newAccount(@ModelAttribute Account account, Model model) {
+
+        model.addAttribute("accountcreation", new Account());
+        return "accountcreation";
+    }
+    boolean basicAccountCheck = false;
+    boolean savingAccountCheck = false;
+    @GetMapping("/account")
+    public String newAccount(@ModelAttribute Account account, Model model,HttpSession session) {
         if(account==null)
         {
             return "null";
         }
-        serviceAccount.newAccount(account);
-        return "accountCreation";
+
+        model.addAttribute("basicAccountCheck", basicAccountCheck);
+
+        model.addAttribute("savingAccountCheck", savingAccountCheck);
+        return "account";
     }
+    @PostMapping("/accountcreation")
+    public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session) {
+        if(account==null)
+        {
+            return "null";
+        }
+        User user= (User) session.getAttribute("loggedin_user");
+        Integer uId = user.getUserId();
+        System.out.println(uId);
+
+//        String redirectUrl = "account";
+//        return "redirect:" + redirectUrl;
+        if(basicAccountCheck == true){
+            String basic = "BASIC";
+            serviceAccount.newAccount(account,uId);
+        }else if(savingAccountCheck == true){
+            String saving = "SAVING";
+            serviceAccount.newAccount(account,uId,saving);
+        }else{
+//            alarm popup
+            System.out.println("no type selected");
+        }
+
+        return "accountcreation";
+    }
+
+
+//    hier onder word de uid gebruikt die user doorgeeft
+//    @PostMapping("/accountcreation")
+//    public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session, User user) {
+//        if(account==null)
+//        {
+//            return "null";
+//        }
+//        user= (User) session.getAttribute("loggedin_user");
+//        Integer uId = user.getUserId();
+//        System.out.println(uId);
+//        serviceAccount.newAccount(account,uId);
+////        String redirectUrl = "account";
+////        return "redirect:" + redirectUrl;
+//        return "accountcreation";
+//    }
 }

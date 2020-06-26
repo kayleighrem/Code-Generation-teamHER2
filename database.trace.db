@@ -629,6 +629,9 @@ select account0_.iban as iban1_0_0_, account0_.account_amount as account_2_0_0_,
 2020-06-25 17:38:01 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP ACCOUNT[*]"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"; SQL statement:
 DROP ACCOUNT [42001-193]
-2020-06-26 15:14:03 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE FROM USER WHERE UISEMP[*] == NULL "; SQL statement:
-DELETE FROM USER WHERE UISEMP == null [42000-193]
+2020-06-26 11:08:18 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP_TABLE[*] ACCOUNT "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+drop_table ACCOUNT [42001-193]
+2020-06-26 11:08:23 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROPTABLE[*] ACCOUNT "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+droptable ACCOUNT [42001-193]
