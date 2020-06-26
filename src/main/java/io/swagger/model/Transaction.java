@@ -43,7 +43,7 @@ public class Transaction   {
 
   @Column(name="Trans_Amount")
   @JsonProperty("amount")
-  private Double amount = 100d;
+  private Double amount = null;
 
   @Column(name="Trans_Description")
   @JsonProperty("description")

@@ -4,11 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiParam;
 import io.swagger.api.Api.TransactionsApi;
 import io.swagger.api.Repositories.TransactionRepository;
+import io.swagger.api.Services.AccountService;
 import io.swagger.api.Services.TransactionService;
+import io.swagger.model.Account;
 import io.swagger.model.Transaction;
 import io.swagger.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +31,11 @@ import java.util.List;
 @Controller
 public class TransactionsApiController implements TransactionsApi {
 
+    @Autowired
     private TransactionService transService;
+
+    @Autowired
+    private AccountService accountService;
 
     private TransactionRepository transrepo;
 
@@ -86,14 +93,17 @@ public class TransactionsApiController implements TransactionsApi {
     }
 
     @RequestMapping(path = "/transaction", method = RequestMethod.GET)
-    public String greetingForm(Model model,HttpSession session) {
+    public String getTransaction(Model model,HttpSession session) {
+        List<Account> accounts = accountService.getAccount();
+        model.addAttribute("account",new Account());
+        model.addAttribute("accounts",accounts);
         model.addAttribute("transaction", new Transaction());
         return "transactionperform";
     }
 
     @PostMapping("/transaction")
-    public String transactionSubmit(@ModelAttribute Transaction transaction, HttpSession session,Model model) {
-        String result = transService.newTransaction(transaction,session);
+    public String transactionSubmit(@ModelAttribute Transaction transaction,@ModelAttribute Account account,HttpSession session,Model model) {
+        String result = transService.newTransaction(transaction,session,account);
         System.out.println(transaction);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());

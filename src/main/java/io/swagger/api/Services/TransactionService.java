@@ -1,6 +1,7 @@
 package io.swagger.api.Services;
 
 import io.swagger.api.Repositories.TransactionRepository;
+import io.swagger.model.Account;
 import io.swagger.model.Transaction;
 import io.swagger.model.User;
 import nl.garvelink.iban.Modulo97;
@@ -41,36 +42,39 @@ public class TransactionService
         return userTransactions;
     }
 
-    public String newTransaction(Transaction transaction, HttpSession session)
+    public String newTransaction(Transaction transaction, HttpSession session, Account account)
     {
         User performingUser = (User) session.getAttribute("loggedin_user");
         transaction.setUserPerforming(performingUser.getUserId());
         transaction.setFrom(performingUser.getName());
         transaction.status(Transaction.StatusEnum.PENDING);
+        transaction.setAmount(100.00d);
+
+        System.out.println(transaction);
 
         String IBAN =transaction.getTo();
         if(Modulo97.verifyCheckDigits(IBAN))
         {
-            if(transaction.getAmount() > 1000f)
+            if(transaction.getAmount() < 1000d)
             {
-                return "Transaction amount is too high";
+                if(account.getAcountAmount()-transaction.getAmount() > 0)
+                {
+                    //else if gebruiker voert zoveelste transaction uit
+                    Date date = new Date();
+                    transaction.setTransactionDate(date);
+                    transaction.status(Transaction.StatusEnum.COMPLETE);
+                    transRepo.save(transaction);
+                    return "Transaction Success!";
+                }
+                return "Transaction will put account in red";
             }
-            //else if account amout lager wordt dan getal
-            //else if gebruiker voert zoveelste transaction uit
-            else {
-                Date date = new Date();
-                transaction.setTransactionDate(date);
-                transaction.status(Transaction.StatusEnum.COMPLETE);
-                transRepo.save(transaction);
-                return "Transaction Success!";
-            }
+            return "Transaction amount is too high";
         }
         else
         {
             transaction.status(Transaction.StatusEnum.ERROR);
             return "Invalid IBAN";
         }
-
     }
 
     public String depositTransaction(Transaction transaction)

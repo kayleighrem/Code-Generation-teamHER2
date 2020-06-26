@@ -150,6 +150,10 @@ public class UserApiController implements UserApi {
                 Navbar(model);
                 return "index";
             }
+            else
+            {
+
+            }
         }
         catch (NullPointerException e) { // if no one is logged in (no session), go to the login page
             return "login";
@@ -158,8 +162,9 @@ public class UserApiController implements UserApi {
     }
     public void Navbar(Model model) {
         HttpSession session=request.getSession(false);
-        String fname = session.getAttribute("session_firstname").toString();
-        String lname = session.getAttribute("session_lastname").toString();
+        User currentUser = (User) session.getAttribute("loggedin_user");
+        String fname = currentUser.getName();
+        String lname =currentUser.getLastname();
         String fullname = fname + " " + lname;
         model.addAttribute("session_fullname", fullname);
     }
@@ -185,7 +190,7 @@ public class UserApiController implements UserApi {
         if ( userService.CheckInlog(user) != null) {
             User u = userService.CheckInlog(user);
             SessionInfo(u); // just some terminal line info
-            String redirectUrl = "/index";
+            String redirectUrl = "index";
             return "redirect:" + redirectUrl;
         }
         else {
@@ -204,19 +209,20 @@ public class UserApiController implements UserApi {
     }
     public void SessionInfo(User user) {
         HttpSession session = request.getSession();
-        session.setAttribute("loggedin_user", user.getEmail());
-        session.setAttribute("session_uid", user.getUserId());
-        session.setAttribute("session_firstname", user.getName());
-        session.setAttribute("session_lastname", user.getLastname());
-        session.setAttribute("session_email", user.getEmail());
-        String username = (String)session.getAttribute("loggedin_user");
+        session.setAttribute("loggedin_user", user);
+        User currentUser = (User) session.getAttribute("loggedin_user");
+//        session.setAttribute("session_uid", user.getUserId());
+//        session.setAttribute("session_firstname", user.getName());
+//        session.setAttribute("session_lastname", user.getLastname());
+//        session.setAttribute("session_email", user.getEmail());
+//        String username = (String)session.getAttribute("loggedin_user");
         System.out.println("session id: " + session.getId());
         System.out.println("Session creation time: " + new Date(session.getCreationTime()));
-        System.out.println("Session user: " + session.getAttribute("loggedin_user"));
-        System.out.println("Session id user: " + session.getAttribute("session_uid"));
-        System.out.println("Session firstname user: " + session.getAttribute("session_firstname"));
-        System.out.println("Session lastname user: " + session.getAttribute("session_lastname"));
-        System.out.println("Session email user: " + session.getAttribute("session_email"));
+        System.out.println("Session user: " + currentUser.getName());
+        System.out.println("Session id user: " + currentUser.getUserId());
+        System.out.println("Session firstname user: " + currentUser.getName());
+        System.out.println("Session lastname user: " + currentUser.getLastname());
+        System.out.println("Session email user: " + currentUser.getEmail());
     }
 }
 // test
