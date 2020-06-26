@@ -13,7 +13,7 @@ import java.util.Random;
 
 @Service
 public class AccountService {
-
+static int maxRangeIban =999999999;
     @Autowired
     private AccountRepository accountRepository;
 
@@ -25,7 +25,7 @@ public class AccountService {
 //makes a iban string
     public static String generatedIban(int upperRange){
         Random random = new Random();
-        int test = random.nextInt(999999999);
+        int test = random.nextInt(maxRangeIban);
         String iban= "Nl20TEST"+test;
         System.out.println(iban);
         System.out.println("hoi");
@@ -41,9 +41,10 @@ public class AccountService {
 
     public String newAccount(Account account)
     {
-        account.setId(3);
-        account.setIBAN("IBAN4040TESTLOL");
-        account.setTypeAccount(Account.TypeAccountEnum.BASIC);
+        account.setId(4);
+        String iban = generatedIban(maxRangeIban);
+        account.setIBAN(iban);
+        account.setTypeAccount(Account.TypeAccountEnum.SAVING);
         account.setAcountAmount(100);
         accountRepository.save(account);
         return "Saved";

@@ -81,7 +81,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
 //        Account account = new Account();
 //        account.typeAccount(Account.TypeAccountEnum.BASIC);
 //        System.out.println(account);
-//
+      serviceAccount.newAccount(new Account());
 //     model.addAttribute("account", account);
 //        serviceAccount.newAccount(account);
         return "account";
