@@ -5,8 +5,11 @@ import io.swagger.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+
 
 @Service
 public class AccountService {
@@ -43,9 +46,20 @@ public class AccountService {
         account.setTypeAccount(Account.TypeAccountEnum.BASIC);
         account.setAcountAmount(100);
         accountRepository.save(account);
-
-
         return "Saved";
+    }
+
+    public java.util.List<Account> getUserAccounts(Integer id)
+    {
+        java.util.List<Account> userAccounts = new ArrayList<>();
+        for(Account account : getAccount())
+        {
+            if(account.getId().equals(id))
+            {
+                userAccounts.add(account);
+            }
+        }
+        return userAccounts;
     }
 
 

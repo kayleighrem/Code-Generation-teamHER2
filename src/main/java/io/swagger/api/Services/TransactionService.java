@@ -1,7 +1,6 @@
 package io.swagger.api.Services;
 
 import io.swagger.api.Repositories.TransactionRepository;
-import io.swagger.model.Account;
 import io.swagger.model.Transaction;
 import io.swagger.model.User;
 import nl.garvelink.iban.Modulo97;
@@ -84,9 +83,4 @@ public class TransactionService
         return "Withdraw Error Message";
     }
 
-    public String test(Account account)
-    {
-        System.out.println(account);
-        return "account";
-    }
 }
