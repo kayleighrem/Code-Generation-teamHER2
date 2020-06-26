@@ -38,13 +38,28 @@ static int maxRangeIban =999999999;
 //        System.out.println(TypeList);
 //        return TypeList;
     }
-
-    public String newAccount(Account account)
+    public String newAccount(Account account, Integer user)
     {
-        account.setId(4);
+        account.setId(user);
+        System.out.println("--------------");
+        System.out.println(user);
+        System.out.println("--------------");
         String iban = generatedIban(maxRangeIban);
         account.setIBAN(iban);
-        account.setTypeAccount(Account.TypeAccountEnum.SAVING);
+        account.setTypeAccount(Account.TypeAccountEnum.BASIC);
+        account.setAcountAmount(100);
+        accountRepository.save(account);
+        return "Saved";
+    }
+    public String newAccount(Account account, Integer user,String type)
+    {
+        account.setId(user);
+        System.out.println("--------------");
+        System.out.println(user);
+        System.out.println("--------------");
+        String iban = generatedIban(maxRangeIban);
+        account.setIBAN(iban);
+        account.setTypeAccount(Account.TypeAccountEnum.fromValue(type));
         account.setAcountAmount(100);
         accountRepository.save(account);
         return "Saved";

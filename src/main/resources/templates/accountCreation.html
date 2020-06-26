@@ -7,12 +7,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <title>Register</title>
+    <title>Account creation</title>
 </head>
 <body>
 
 <div class="container-fluid">
-    <form action="#" th:action="@{/accountcreation}" th:object="${account}" method="post">
+    <form action="#" th:action="@{/accountcreation}" th:object="${account}" method="POST">
 <!--        hier komt accountnaam-account id van de session-->
         <h3 class="form-signin-heading" th:text="Accountname"></h3>
         <br /><p th:text="${errormessage}"></p>
@@ -20,9 +20,20 @@
         <br /><a>Iban</a>
         <br /> <a>bedrag</a>
 
-
+        <br/> <input
+                type="checkbox"
+                name="BASIC"
+                th:checked="${basicAccountCheck}"
+                value="true" />
+         <a>    Basic account</a>
+        <br/> <input
+            type="checkbox"
+            name="SAVING"
+            th:checked="${savingAccountCheck}"
+            value="true" />
+        <a>    saving account</a>
         <br />
-        <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit"></button><a href="transactionhome"> go to transactions</a>
+        <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit" ></button><a href="transactionhome"> go to transactions</a>
     </form>
 </div>
 </body>

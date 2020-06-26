@@ -16,7 +16,7 @@
                 <h3 class="form-signin-heading" th:text="Login"></h3>
                 <br /><p th:text="${errormessage}"></p>
                 <br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" />
-                <br /> <input type="text" id="password" name="password" th:placeholder="Password" class="form-control" />
+                <br /> <input type="password" id="password" name="password" th:placeholder="Password" class="form-control" />
 
                 <div align="center" th:if="${param.error}">
                     <p style="font-size: 20; color: #FF1C19;">Email or Password is invalid</p>

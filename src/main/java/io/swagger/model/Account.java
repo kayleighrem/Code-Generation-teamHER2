@@ -21,11 +21,12 @@ import java.util.Objects;
 @Table(name="account")
 public class Account   {
 
+  @Id
   @Column(name="Iban")
   @JsonProperty("Iban")
   private String Iban = "IBAN";
 
-  @Id
+
   @Column(name="userId")
   @JsonProperty("userId")
   private Integer userId = 2;
