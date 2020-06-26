@@ -164,9 +164,11 @@ public class UserApiController implements UserApi {
         HttpSession session=request.getSession(false);
         User currentUser = (User) session.getAttribute("loggedin_user");
         String fname = currentUser.getName();
-        String lname =currentUser.getLastname();
+        String lname = currentUser.getLastname();
         String fullname = fname + " " + lname;
         model.addAttribute("session_fullname", fullname);
+        model.addAttribute("session_uid", currentUser.getUserId());
+        System.out.println(currentUser.getUserId());
     }
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") User user, Model model) throws SendFailedException {
@@ -207,15 +209,17 @@ public class UserApiController implements UserApi {
         Navbar(model);
         return "updateaccount";
     }
+    @GetMapping("/employees")
+    public String Employees(HttpSession session, Model model) {
+        Navbar(model);
+        model.addAttribute("allclients", userService.getClients());
+        model.addAttribute("allemployees", userService.getEmployees());
+        return "employees";
+    }
     public void SessionInfo(User user) {
         HttpSession session = request.getSession();
         session.setAttribute("loggedin_user", user);
         User currentUser = (User) session.getAttribute("loggedin_user");
-//        session.setAttribute("session_uid", user.getUserId());
-//        session.setAttribute("session_firstname", user.getName());
-//        session.setAttribute("session_lastname", user.getLastname());
-//        session.setAttribute("session_email", user.getEmail());
-//        String username = (String)session.getAttribute("loggedin_user");
         System.out.println("session id: " + session.getId());
         System.out.println("Session creation time: " + new Date(session.getCreationTime()));
         System.out.println("Session user: " + currentUser.getName());
@@ -225,4 +229,3 @@ public class UserApiController implements UserApi {
         System.out.println("Session email user: " + currentUser.getEmail());
     }
 }
-// test

@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.SendFailedException;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -24,10 +24,12 @@ public class UserService {
     {
         userRepository.save(user);
     }
-    public List<User> getUser()
+    public List<User> getUsers()
     {
         return (List<User>) userRepository.findAll();
     }
+    public List<User> getEmployees() { return (List<User>) findEmployees(); }
+    public List<User> getClients() { return (List<User>) findClients(); }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -54,7 +56,7 @@ public class UserService {
     }
 
     public boolean CheckIfEmailExists(String email) {
-        for ( User u : getUser()) {
+        for ( User u : getUsers()) {
             if (email.equals(u.getEmail())) {
                 return true;
             }
@@ -64,8 +66,9 @@ public class UserService {
 
     public User CheckInlog(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        for ( User u : getUser()) {
+        for ( User u : getUsers()) {
             if (user.getEmail().equals(u.getEmail()) && encoder.matches(user.getPassword(), u.getPassword()) == true) {
+
                 return u;
             }
         }
@@ -75,7 +78,7 @@ public class UserService {
     public User getUserByLogin(User user)
     {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        for(User u : getUser())
+        for(User u : getUsers())
         {
             if(u.getEmail().equals(user.getEmail()) && encoder.matches(user.getPassword(),u.getPassword()))
             {
@@ -83,5 +86,24 @@ public class UserService {
             }
         }
         return new User();
+    }
+
+
+    public List<User> findEmployees() {
+        List<User> employees = new ArrayList<User>();
+        for (User user : userRepository.findAll()) {
+            if(user.isIsEmployee() == true)
+                employees.add(user);
+        }
+        return employees;
+    }
+
+    public List<User> findClients() {
+        List<User> clients = new ArrayList<User>();
+        for (User user : userRepository.findAll()) {
+            if(user.isIsEmployee() == false)
+                clients.add(user);
+        }
+        return clients;
     }
 }

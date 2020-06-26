@@ -598,6 +598,13 @@ insert into transaction (trans_id, trans_amount, trans_from, trans_status, trans
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-06-25 17:03:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE USER
+SET UID = 1, UISEMP = TRUE
+WHERE UEMAIL = BANK@[*]API.COM "; SQL statement:
+UPDATE USER
+SET UID = 1, UISEMP = TRUE
+WHERE UEMAIL = bank@api.com [42000-193]
 2020-06-25 16:00:53 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE *[*] FROM TRANSACTION"; expected "identifier"; SQL statement:
 DELETE * FROM TRANSACTION [42001-193]
