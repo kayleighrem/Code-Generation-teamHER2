@@ -19,14 +19,14 @@
 <div class="container-fluid">
     <h3>Transaction Log</h3>
     <p class="blockquote">Review your transaction history</p>
-    <table class="table table-hover table-dark">
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Sender</th>
                 <th scope="col">Recipient</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Date</th>
+                <th scope="col">Description</th>
             </tr>
         </thead>
             <tbody>
@@ -34,9 +34,9 @@
                     <tr>
                         <th scope ="row" th:text="${transaction.id}"></th>
                         <td th:text="${transaction.to}"></td>
-                        <td th:text="${transaction.from}"></td>
                         <td th:text="${transaction.amount}"></td>
                         <td th:text="${transaction.transactionDate}"></td>
+                        <td th:text="${transaction.description}"></td>
                     </tr>
                 </th:block>
                 </tbody>

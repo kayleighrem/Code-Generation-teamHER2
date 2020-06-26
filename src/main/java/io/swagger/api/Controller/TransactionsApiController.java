@@ -23,10 +23,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-
-
-
-
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
 public class TransactionsApiController implements TransactionsApi {
@@ -79,7 +75,7 @@ public class TransactionsApiController implements TransactionsApi {
 , @ApiParam(value = "The amount to deposit" ,required=true) @RequestHeader(value="amount", required=true) Double amount
             , @RequestBody Transaction transaction)
     {
-        transService.depositTransaction(transaction);
+//        transService.depositTransaction(transaction);
     }
 
     /*
@@ -103,36 +99,50 @@ public class TransactionsApiController implements TransactionsApi {
 
     @PostMapping("/transaction")
     public String transactionSubmit(@ModelAttribute Transaction transaction,@ModelAttribute Account account,HttpSession session,Model model) {
+        System.out.println(model.addAttribute("amount"));
         String result = transService.newTransaction(transaction,session,account);
-        System.out.println(transaction);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
         return "transactionperform";
     }
 
     @GetMapping("/deposit")
-    public String Deposit(Model model) {
+    public String Deposit(Model model,HttpSession session) {
+        User user = (User) session.getAttribute("loggedin_user");
+        Integer uid = user.getUserId();
+        model.addAttribute("account",new Account());
+        List<Account> accounts = accountService.getUserAccountByType("BASIC",uid);
+        model.addAttribute("accounts",accounts);
         model.addAttribute("transaction", new Transaction());
         return "transactiondeposit";
     }
 
     @PostMapping("/deposit")
-    public String PostDeposit(Model model, @ModelAttribute Transaction transaction) {
-        String result = transService.depositTransaction(transaction);
+    public String PostDeposit(Model model, @Valid @ModelAttribute("transaction") Transaction transaction, @Valid @ModelAttribute("account") Account account,HttpSession session)
+    {
+        System.out.println(transaction);
+        String result = transService.depositTransaction(transaction,account,session);
+        System.out.println(transaction);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
         return "transactiondeposit";
     }
 
     @GetMapping("/withdraw")
-    public String Log(Model model) {
+    public String Log(Model model,HttpSession session) {
+        User user = (User) session.getAttribute("loggedin_user");
+        Integer uid = user.getUserId();
+
+        List<Account> accounts = accountService.getUserAccountByType("SAVING",uid);
+        model.addAttribute("accounts",accounts);
+        model.addAttribute("account",new Account());
         model.addAttribute("transaction", new Transaction());
         return "transactionwithdraw";
     }
 
     @PostMapping("/withdraw")
-    public String PostWithdraw(Model model,@ModelAttribute Transaction transaction) {
-        String result = transService.withdrawTransaction(transaction);
+    public String PostWithdraw(Model model, @ModelAttribute Transaction transaction, @ModelAttribute Account account,HttpSession session) {
+        String result = transService.withdrawTransaction(transaction,account,session);
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
         return "transactionwithdraw";

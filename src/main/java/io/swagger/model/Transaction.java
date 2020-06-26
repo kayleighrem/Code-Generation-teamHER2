@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.Objects;
 /**
  * Transaction
  */
+@Configuration
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Entity
@@ -23,34 +25,31 @@ public class Transaction   {
   @Column(name="Trans_ID")
   @GeneratedValue(strategy= GenerationType.IDENTITY)
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id;
 
   @Column(name="Trans_From")
   @JsonProperty("from")
-  private String from = null;
+  private String from;
 
   @Column(name="Trans_To")
   @JsonProperty("to")
-  private String to = null;
+  private String to;
 
   @Column(name="Trans_userPerf")
   @JsonProperty("userPerforming")
-  private Integer userPerforming = null;
+  private Integer userPerforming;
 
   @Column(name="Trans_Date")
   @JsonProperty("transactionDate")
-  private Date transactionDate = null;
+  private Date transactionDate;
 
   @Column(name="Trans_Amount")
   @JsonProperty("amount")
-  private Double amount = null;
+  private Double amount;
 
   @Column(name="Trans_Description")
   @JsonProperty("description")
-  private String description = null;
-
-
-
+  private String description;
 
   /**
    * Gets or Sets status
