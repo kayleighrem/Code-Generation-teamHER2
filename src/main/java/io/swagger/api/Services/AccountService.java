@@ -13,7 +13,7 @@ import java.util.Random;
 
 @Service
 public class AccountService {
-static int maxRangeIban =999999999;
+    static int maxRangeIban =999999999;
     @Autowired
     private AccountRepository accountRepository;
 
@@ -22,7 +22,7 @@ static int maxRangeIban =999999999;
         return (List<Account>) accountRepository.findAll();
     }
 
-//makes a iban string
+    //makes a iban string
     public static String generatedIban(int upperRange){
         Random random = new Random();
         int test = random.nextInt(maxRangeIban);
@@ -38,19 +38,7 @@ static int maxRangeIban =999999999;
 //        System.out.println(TypeList);
 //        return TypeList;
     }
-    public String newAccount(Account account, Integer user)
-    {
-        account.setId(user);
-        System.out.println("--------------");
-        System.out.println(user);
-        System.out.println("--------------");
-        String iban = generatedIban(maxRangeIban);
-        account.setIBAN(iban);
-        account.setTypeAccount(Account.TypeAccountEnum.BASIC);
-        account.setAcountAmount(100);
-        accountRepository.save(account);
-        return "Saved";
-    }
+
     public String newAccount(Account account, Integer user,String type)
     {
         account.setId(user);
@@ -79,6 +67,38 @@ static int maxRangeIban =999999999;
     }
 
 
+    public String newAccount(Account account, Integer user)
+    {
+        account.setId(user);
+        System.out.println("--------------");
+        System.out.println(user);
+        System.out.println("--------------");
+        String iban = generatedIban(maxRangeIban);
+        account.setIBAN(iban);
+        account.setTypeAccount(Account.TypeAccountEnum.BASIC);
+        account.setAcountAmount(100);
+        accountRepository.save(account);
+        return "Saved";
+    }
+
+    public boolean CheckIfAccountExists(String string) {
+        return false;
+    }
 
 
+
+    public List<Account> getUserAccountByType(String basic, Integer uid)
+    {
+        List<Account> accounts = new ArrayList<>();
+
+        for(Account account : getUserAccounts(uid))
+        {
+            if(account.getTypeAccount().equals(Account.TypeAccountEnum.valueOf(basic)))
+            {
+                accounts.add(account);
+            }
+        }
+        System.out.println(accounts);
+        return accounts;
+    }
 }
