@@ -15,6 +15,7 @@
     <div class="jumbotron">
         <h1 class="display-3">Users</h1>
         <p class="lead">An overview of all users and employees</p>
+        <button type="button" class="btn btn-primary btn-lg"><a href="newuser" style="color:white">New user</a></button>
         <hr class="my-4"/>
 <!--        <img src="/resources/static/photos/bin.png"/>-->
         <ul class="nav nav-tabs">
@@ -54,6 +55,10 @@
                         <td th:text="${user.name}"> </td>
                         <td th:text="${user.lastname}"> </td>
                         <td th:text="${user.email}"> </td>
+                        <td th:unless="${user.userId == 1}">
+                            <a th:href="@{delete_user(userId=${user.userId})}">Delete</a> -
+                            <a th:href="@{update_user(userId=${user.userId})}">Update</a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -77,7 +82,11 @@
                             <td th:text="${user.name}"> </td>
                             <td th:text="${user.lastname}"> </td>
                             <td th:text="${user.email}"> </td>
-                            <td><a href="deleteuser">Delete</a> - <a href="updateuser">Update</a></td>
+                            <td>
+                                <a th:href="@{delete_user(userId=${user.userId})}">Delete</a> -
+                                <a th:href="@{update_user(userId=${user.userId})}">Update</a> -
+                                <a th:href="@{accounts_user(userId=${user.userId})}">Bank accounts</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
