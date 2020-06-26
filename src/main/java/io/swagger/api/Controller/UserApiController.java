@@ -132,27 +132,13 @@ public class UserApiController implements UserApi {
 
 
 //    Get mapping url's
-    @GetMapping("/register")
-    public String userForm(Model model) {
-        model.addAttribute("user", new User());
-        return "register";
-    }
-
     @RequestMapping(value="/index" , method=RequestMethod.GET)
     public String Index(@ModelAttribute("user") User user, Model model)  {
         try { // look if there's a session
             HttpSession session=request.getSession(false);
-//            String fname = session.getAttribute("session_firstname").toString();
-//            String lname = session.getAttribute("session_lastname").toString();
-//            String fullname = fname + " " + lname;
             if(session!=null){ // if there is a session, go to the index page
-//                model.addAttribute("session_fullname", fullname);
                 Navbar(model);
                 return "index";
-            }
-            else
-            {
-
             }
         }
         catch (NullPointerException e) { // if no one is logged in (no session), go to the login page
@@ -160,16 +146,13 @@ public class UserApiController implements UserApi {
         };
         return "";
     }
-    public void Navbar(Model model) {
-        HttpSession session=request.getSession(false);
-        User currentUser = (User) session.getAttribute("loggedin_user");
-        String fname = currentUser.getName();
-        String lname = currentUser.getLastname();
-        String fullname = fname + " " + lname;
-        model.addAttribute("session_fullname", fullname);
-        model.addAttribute("session_uid", currentUser.getUserId());
-        System.out.println(currentUser.getUserId());
+
+    @GetMapping("/register")
+    public String userForm(Model model) {
+        model.addAttribute("user", new User());
+        return "register";
     }
+
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") User user, Model model) throws SendFailedException {
         String error = "Er bestaat al een gebruiker met dit emailadres.";
@@ -182,10 +165,12 @@ public class UserApiController implements UserApi {
         }
         return "register";
     }
+
     @GetMapping("/login")
     public String login(HttpSession session) {
         return "login";
     }
+
     @RequestMapping(value="/login" , method=RequestMethod.POST)
     public String LoginInfo(@ModelAttribute("user") User user, Model model)  {
         String error = "username of password niet juist";
@@ -200,15 +185,19 @@ public class UserApiController implements UserApi {
             return "login";
         }
     }
+
     @GetMapping("/transactionhome")
     public String transactionhome(HttpSession session) {
         return "transactionhome";
     }
+
     @GetMapping("/updateaccount")
     public String UpdateAccount(HttpSession session, Model model) {
         Navbar(model);
+        System.out.println(session.getAttribute("loggedin_user"));
         return "updateaccount";
     }
+
     @GetMapping("/employees")
     public String Employees(HttpSession session, Model model) {
         Navbar(model);
@@ -216,10 +205,67 @@ public class UserApiController implements UserApi {
         model.addAttribute("allemployees", userService.getEmployees());
         return "employees";
     }
+
+    @RequestMapping(value = "/delete_user", method = RequestMethod.GET)
+    public String handleDeleteUser(@RequestParam(name="userId")String userId) {
+//        System.out.println(userId);
+//        System.out.println("test");
+        int uid = Integer.parseInt(userId);
+        userService.deleteUser(uid);
+
+        String redirectUrl = "employees";
+        return "redirect:" + redirectUrl;
+    }
+
+    @RequestMapping(value = "/update_user", method = RequestMethod.GET)
+    public String handleUpdateUser(@RequestParam(name="userId")String userId) {
+        int uid = Integer.parseInt(userId);
+        userService.updateUser(uid);
+
+        String redirectUrl = "employees";
+        return "redirect:" + redirectUrl;
+    }
+
+    @GetMapping("/newuser")
+    public String newUserForm(Model model) {
+        model.addAttribute("user", new User());
+        return "newuser";
+    }
+
+    @RequestMapping(value = "/newuser", method = RequestMethod.POST)
+    public String newUser(Model model, User user) throws  SendFailedException{
+
+        String error = "Er bestaat al een gebruiker met dit emailadres.";
+        if (userService.CheckIfEmailExists(user.getEmail()) == true) {
+            model.addAttribute("errormessage", error);
+        }
+        else {
+            userService.registerNewUserAccount(user);
+            return "employees";
+        }
+
+        Navbar(model);
+        return "newuser";
+    }
+
+
+
+    public void Navbar(Model model) {
+        HttpSession session=request.getSession(false);
+        User currentUser = (User) session.getAttribute("loggedin_user");
+        String fullname = currentUser.getName() + " " + currentUser.getLastname();
+
+        model.addAttribute("session_fullname", fullname);
+        model.addAttribute("session_uid", currentUser.getUserId());
+
+        System.out.println(currentUser.getUserId());
+    }
+
     public void SessionInfo(User user) {
         HttpSession session = request.getSession();
         session.setAttribute("loggedin_user", user);
         User currentUser = (User) session.getAttribute("loggedin_user");
+
         System.out.println("session id: " + session.getId());
         System.out.println("Session creation time: " + new Date(session.getCreationTime()));
         System.out.println("Session user: " + currentUser.getName());

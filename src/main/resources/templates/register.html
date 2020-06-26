@@ -20,10 +20,11 @@
         <br /> <input type="text" th:field="*{name}" id="name" name="name" th:placeholder="Name" class="form-control" />
         <br /> <input type="text" th:field="*{lastname}" id="lastName" name="lastName" th:placeholder="Lastname" class="form-control" />
         <br /> <input type="text" th:field="*{email}" id="email" name="email" th:placeholder="Email" class="form-control" />
-        <br /> <input type="text" th:field="*{password}" id="password" name="password" th:placeholder="Password" class="form-control" />
+        <br /> <input type="password" th:field="*{password}" id="password" name="password" th:placeholder="Password" class="form-control" />
 
         <br />
-        <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit"></button><a href="login"> Back to login</a>
+        <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit"></button>
+        <a href="login"> Back to login</a>
     </form>
 </div>
 </body>

@@ -9,7 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.SendFailedException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -20,14 +22,8 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    public void createUser(User user)
-    {
-        userRepository.save(user);
-    }
-    public List<User> getUsers()
-    {
-        return (List<User>) userRepository.findAll();
-    }
+    public void createUser(User user) { userRepository.save(user); }
+    public List<User> getUsers() { return (List<User>) userRepository.findAll(); }
     public List<User> getEmployees() { return (List<User>) findEmployees(); }
     public List<User> getClients() { return (List<User>) findClients(); }
 
@@ -47,11 +43,12 @@ public class UserService {
         User newuser = new User();
         newuser.setName(user.getName());
         newuser.setLastname(user.getLastname());
-
         newuser.setPassword(passwordEncoder.encode(user.getPassword()));
-
         newuser.setEmail(user.getEmail());
-        newuser.setIsEmployee(false);
+        if (user.getIsEmployee() == true)
+            newuser.setIsEmployee(true);
+        if (user.getIsEmployee() == null | user.getIsEmployee() == false)
+            newuser.setIsEmployee(false);
         return userRepository.save(newuser);
     }
 
@@ -92,7 +89,7 @@ public class UserService {
     public List<User> findEmployees() {
         List<User> employees = new ArrayList<User>();
         for (User user : userRepository.findAll()) {
-            if(user.isIsEmployee() == true)
+            if(user.getIsEmployee() == true)
                 employees.add(user);
         }
         return employees;
@@ -101,9 +98,21 @@ public class UserService {
     public List<User> findClients() {
         List<User> clients = new ArrayList<User>();
         for (User user : userRepository.findAll()) {
-            if(user.isIsEmployee() == false)
+            if(user.getIsEmployee() == false)
                 clients.add(user);
         }
         return clients;
+    }
+
+    public void deleteUser(int userId) {
+        ArrayList<User> allusers = (ArrayList<User>) userRepository.findAll();
+        User us = allusers.stream().filter(a -> a.getUserId() == (int)userId).collect(Collectors.toList()).get(0);
+        userRepository.delete(us);
+    }
+
+    public void updateUser(int userId) {
+        ArrayList<User> allusers = (ArrayList<User>) userRepository.findAll();
+        User us = allusers.stream().filter(a -> a.getUserId() == (int)userId).collect(Collectors.toList()).get(0);
+//        userRepository.(us);
     }
 }

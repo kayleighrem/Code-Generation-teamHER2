@@ -157,7 +157,7 @@ public User(String name, String lastname, String email, Boolean isEmployee, Stri
    **/
   @ApiModelProperty(example = "false", value = "")
 
-  public Boolean isIsEmployee() {
+  public Boolean getIsEmployee() {
     return isEmployee;
   }
 
