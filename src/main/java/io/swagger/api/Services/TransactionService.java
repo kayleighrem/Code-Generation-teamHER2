@@ -47,12 +47,14 @@ public class TransactionService
 
     public String newTransaction(Transaction transaction, HttpSession session, Account account)
     {
-
         User performingUser = (User) session.getAttribute("loggedin_user");
         transaction.setUserPerforming(performingUser.getUserId());
         transaction.setFrom(performingUser.getName());
         transaction.status(Transaction.StatusEnum.PENDING);
-        transaction.setAmount(10d);
+        transaction.setAmount(transaction.getAmount());
+        System.out.println("Money: "+transaction.getMoney());
+
+        Integer amount = Integer.parseInt(transaction.getAmount());
 
         if(accountService.CheckIfAccountExists(transaction.getTo()))
         {
@@ -62,7 +64,7 @@ public class TransactionService
         String IBAN = transaction.getTo();
         if(Modulo97.verifyCheckDigits(IBAN.toString()))
         {
-            if(transaction.getAmount() < 1000) {
+            if(amount < 1000) {
 //                if(account.getAcountAmount() - transaction.getAmount() > 0)
 //                {
                 //else if gebruiker voert zoveelste transaction uit
@@ -85,37 +87,37 @@ public class TransactionService
 
     public String depositTransaction(Transaction transaction,Account account,HttpSession session)
     {
-        if(transaction.getAmount() > 0)
-        {
-            User performingUser = (User) session.getAttribute("loggedin_user");
-            transaction.setUserPerforming(performingUser.getUserId());
-            transaction.setDescription("Deposit");
-            transaction.setUserPerforming(performingUser.getUserId());
-            transaction.setFrom(performingUser.getName());
-            transaction.setTransactionDate(new Date());
-            transaction.setTo("STATIC IBAN");
-            transaction.setStatus(Transaction.StatusEnum.COMPLETE);
-            transRepo.save(transaction);
-            return "Success";
-        }
+//        if(transaction.getAmount() > 0)
+//        {
+//            User performingUser = (User) session.getAttribute("loggedin_user");
+//            transaction.setUserPerforming(performingUser.getUserId());
+//            transaction.setDescription("Deposit");
+//            transaction.setUserPerforming(performingUser.getUserId());
+//            transaction.setFrom(performingUser.getName());
+//            transaction.setTransactionDate(new Date());
+//            transaction.setTo("STATIC IBAN");
+//            transaction.setStatus(Transaction.StatusEnum.COMPLETE);
+//            transRepo.save(transaction);
+//            return "Success";
+//        }
         return "Deposit Error Message";
     }
 
     public String withdrawTransaction(Transaction transaction,Account account,HttpSession session)
     {
-        if(transaction.getAmount() > 0)
-        {
-            User performingUser = (User) session.getAttribute("loggedin_user");
-            transaction.setUserPerforming(performingUser.getUserId());
-            transaction.setDescription("Withdraw");
-            transaction.setUserPerforming(performingUser.getUserId());
-            transaction.setFrom(performingUser.getName());
-            transaction.setTransactionDate(new Date());
-            transaction.setTo("STATIC IBAN");
-            transaction.setStatus(Transaction.StatusEnum.COMPLETE);
-            transRepo.save(transaction);
-            return "Success";
-        }
+//        if(transaction.getAmount() > 0)
+//        {
+//            User performingUser = (User) session.getAttribute("loggedin_user");
+//            transaction.setUserPerforming(performingUser.getUserId());
+//            transaction.setDescription("Withdraw");
+//            transaction.setUserPerforming(performingUser.getUserId());
+//            transaction.setFrom(performingUser.getName());
+//            transaction.setTransactionDate(new Date());
+//            transaction.setTo("STATIC IBAN");
+//            transaction.setStatus(Transaction.StatusEnum.COMPLETE);
+//            transRepo.save(transaction);
+//            return "Success";
+//        }
         return "Success";
     }
 

@@ -45,11 +45,17 @@ public class Transaction   {
 
   @Column(name="Trans_Amount")
   @JsonProperty("amount")
-  private Double amount;
+  private String amount;
+
+
 
   @Column(name="Trans_Description")
   @JsonProperty("description")
   private String description;
+
+  @Column(name="Trans_Money")
+  @JsonProperty("money")
+  public Double money;
 
   /**
    * Gets or Sets status
@@ -107,8 +113,17 @@ public class Transaction   {
     this.description = description;
   }
 
+  public Double getMoney(){return money;}
+
+  public void setMoney(Double money){this.money = money;}
+
   public Transaction id(Integer id) {
     this.id = id;
+    return this;
+  }
+
+  public Transaction money(Double money) {
+    this.money = money;
     return this;
   }
 
@@ -228,15 +243,15 @@ public class Transaction   {
    **/
   @ApiModelProperty(example = "10.00", value = "")
 
-  public Double getAmount() {
+  public String getAmount() {
     return amount;
   }
 
-  public void setAmount(Double Amount) {
+  public void setAmount(String Amount) {
     this.amount = amount;
   }
 
-  public Transaction amount(Double amount) {
+  public Transaction amount(String amount) {
     this.amount = amount;
     return this;
   }
@@ -277,6 +292,7 @@ public class Transaction   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    money: ").append(toIndentedString(money)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -292,7 +308,7 @@ public class Transaction   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, Double amount,String description)
+  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, String amount,String description,Double money)
   {
     this.id = id;
     this.to = to;
@@ -301,6 +317,7 @@ public class Transaction   {
     this.transactionDate = transactionDate;
     this.amount = amount;
     this.description = description;
+    this.money = money;
   }
 
   public Transaction()
