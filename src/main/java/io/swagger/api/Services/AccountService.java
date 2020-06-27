@@ -52,7 +52,7 @@ public class AccountService {
         }else if (type.equals("saving")){
             account.setTypeAccount(Account.TypeAccountEnum.SAVING);
         }
-        account.setAcountAmount(100);
+        account.setAcountAmount(0.00);
         accountRepository.save(account);
         return "Saved";
     }
