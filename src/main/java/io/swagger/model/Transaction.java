@@ -43,12 +43,6 @@ public class Transaction   {
   @JsonProperty("transactionDate")
   private Date transactionDate;
 
-  @Column(name="Trans_Amount")
-  @JsonProperty("amount")
-  private String amount;
-
-
-
   @Column(name="Trans_Description")
   @JsonProperty("description")
   private String description;
@@ -56,6 +50,9 @@ public class Transaction   {
   @Column(name="Trans_Money")
   @JsonProperty("money")
   public Double money;
+
+  @JsonProperty("amount")
+  public Double amount;
 
   /**
    * Gets or Sets status
@@ -116,6 +113,9 @@ public class Transaction   {
   public Double getMoney(){return money;}
 
   public void setMoney(Double money){this.money = money;}
+
+
+  public void setAmount(Double amount){this.amount = amount;}
 
   public Transaction id(Integer id) {
     this.id = id;
@@ -243,18 +243,7 @@ public class Transaction   {
    **/
   @ApiModelProperty(example = "10.00", value = "")
 
-  public String getAmount() {
-    return amount;
-  }
 
-  public void setAmount(String Amount) {
-    this.amount = amount;
-  }
-
-  public Transaction amount(String amount) {
-    this.amount = amount;
-    return this;
-  }
 
 
   @Override
@@ -308,14 +297,13 @@ public class Transaction   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, String amount,String description,Double money)
+  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate,String description,Double money)
   {
     this.id = id;
     this.to = to;
     this.from = from;
     this.userPerforming = userPerforming;
     this.transactionDate = transactionDate;
-    this.amount = amount;
     this.description = description;
     this.money = money;
   }
