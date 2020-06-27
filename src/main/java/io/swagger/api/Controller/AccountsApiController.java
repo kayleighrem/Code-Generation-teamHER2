@@ -29,6 +29,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
 
     private final HttpServletRequest request;
 
+
     @Autowired
     private AccountService serviceAccount;
 
@@ -112,6 +113,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         model.addAttribute("savingAccountCheck", savingAccountCheck);
         return "account";
     }
+
     @PostMapping("/accountcreation")
     public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session) {
         if(account==null)
@@ -121,19 +123,24 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         User user= (User) session.getAttribute("loggedin_user");
         Integer uId = user.getUserId();
         System.out.println(uId);
+        String[] assignedResources = request.getParameterValues("selectionAccountType");
+        if (assignedResources != null) {
+            for(String item: assignedResources){
+//                String keyValue[]= item.split(":");
+                System.out.println("-------Key: " + item);
+                serviceAccount.newAccount(account,uId,item);
+//                System.out.println("--------Value: " + keyValue[1]);
+            }
+        }else {
 
+            System.out.println("no values selected");
+        }
+        String valuewords = assignedResources.toString();
+        System.out.println("-----------------"+assignedResources);
 //        String redirectUrl = "account";
 //        return "redirect:" + redirectUrl;
-        if(basicAccountCheck == true){
-            String basic = "BASIC";
-            serviceAccount.newAccount(account,uId);
-        }else if(savingAccountCheck == true){
-            String saving = "SAVING";
-            serviceAccount.newAccount(account,uId,saving);
-        }else{
-//            alarm popup
-            System.out.println("no type selected");
-        }
+
+
 
         return "accountcreation";
     }

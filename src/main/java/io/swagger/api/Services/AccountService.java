@@ -42,12 +42,16 @@ public class AccountService {
     public String newAccount(Account account, Integer user,String type)
     {
         account.setId(user);
-        System.out.println("--------------");
-        System.out.println(user);
-        System.out.println("--------------");
+//        System.out.println("--------------");
+//        System.out.println(user);
+//        System.out.println("--------------");
         String iban = generatedIban(maxRangeIban);
         account.setIBAN(iban);
-        account.setTypeAccount(Account.TypeAccountEnum.fromValue(type));
+        if(type.equals("basic")  ) {
+            account.setTypeAccount(Account.TypeAccountEnum.BASIC);
+        }else if (type.equals("saving")){
+            account.setTypeAccount(Account.TypeAccountEnum.SAVING);
+        }
         account.setAcountAmount(100);
         accountRepository.save(account);
         return "Saved";
@@ -66,20 +70,20 @@ public class AccountService {
         return userAccounts;
     }
 
-
-    public String newAccount(Account account, Integer user)
-    {
-        account.setId(user);
-        System.out.println("--------------");
-        System.out.println(user);
-        System.out.println("--------------");
-        String iban = generatedIban(maxRangeIban);
-        account.setIBAN(iban);
-        account.setTypeAccount(Account.TypeAccountEnum.BASIC);
-        account.setAcountAmount(100);
-        accountRepository.save(account);
-        return "Saved";
-    }
+//   basicly not needed anymore
+//    public String newAccountbasic(Account account, Integer user)
+//    {
+//        account.setId(user);
+//        System.out.println("--------------");
+//        System.out.println(user);
+//        System.out.println("--------------");
+//        String iban = generatedIban(maxRangeIban);
+//        account.setIBAN(iban);
+//        account.setTypeAccount(Account.TypeAccountEnum.BASIC);
+//        account.setAcountAmount(100);
+//        accountRepository.save(account);
+//        return "Saved";
+//    }
 
     public boolean CheckIfAccountExists(String string) {
         return false;
