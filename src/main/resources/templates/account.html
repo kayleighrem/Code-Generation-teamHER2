@@ -13,15 +13,46 @@
 
 <div class="container-fluid">
     <form action="#" th:action="@{/account}" th:object="${account}" method="GET">
-        <!--        hier komt accountnaam-account id van de session-->
+
         <h3 class="form-signin-heading" th:text="Accountname"></h3>
-        <br /><p th:text="${errormessage}"></p>
+        <p th:text="${errormessage}"></p>
+<!--        <br /><a th:text="${listAccounts}"></a>-->
+<!--        <tr th:each="list: ${listAccounts}">-->
+<!--            <br/>-->
+<!--            <td th:text="${list.IBAN}" />-->
+<!--            <td th:text="${list.typeAccount}" />-->
+<!--            <td th:text="${list.acountAmount}" />-->
+<!--        </tr>-->
 
-        <br /><a>Iban</a>
-        <br /> <a>bedrag</a>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">IBAN</th>
+                <th scope="col">Type of Account</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="list : ${listAccounts}">
+                <tr>
+                    <td th:text="${list.IBAN}"></td>
+                    <td th:text="${list.typeAccount}"></td>
+                    <td th:text="${list.acountAmount}"></td>
+                    <td th:unless="${list.id == 1}">
+                        <a th:href="@{remove_iban(IBAN=${list.IBAN},userId=${list.id})}">Delete</a>
+                    </td>
+
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
 
 
-        <br />
+   <br/>
+        <a href="accountcreation">+ create account</a>
+
+
 
     </form>
 </div>

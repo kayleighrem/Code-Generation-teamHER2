@@ -24,16 +24,16 @@ public class Account   {
   @Id
   @Column(name="Iban")
   @JsonProperty("Iban")
-  private String Iban = "IBAN";
+  private String Iban;
 
 
   @Column(name="userId")
   @JsonProperty("userId")
-  private Integer userId = 2;
+  private Integer userId;
 
   @Column(name="accountAmount")
   @JsonProperty("accountAmount")
-  private Integer accountAmount = 200;
+  private Double accountAmount;
 
   /**
    * Gets or Sets typeAccount
@@ -106,7 +106,7 @@ public class Account   {
     this.Iban = Iban;
   }
 
-  public Account acountAmount(Integer acountAmount) {
+  public Account acountAmount(Double acountAmount) {
     this.accountAmount = acountAmount;
     return this;
   }
@@ -117,11 +117,11 @@ public class Account   {
    **/
   @ApiModelProperty(value = "")
 
-  public Integer getAcountAmount() {
+  public Double getAcountAmount() {
     return accountAmount;
   }
 
-  public void setAcountAmount(Integer acountAmount) {
+  public void setAcountAmount(Double acountAmount) {
     this.accountAmount = acountAmount;
   }
 
@@ -189,7 +189,7 @@ public class Account   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Account(String Iban, Integer accountAmount,Integer userId)
+  public Account(String Iban, Double accountAmount,Integer userId)
   {
     this.Iban = Iban;
     this.accountAmount = accountAmount;
