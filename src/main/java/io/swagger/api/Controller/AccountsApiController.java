@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
 public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
@@ -28,8 +29,6 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
-
-
     @Autowired
     private AccountService serviceAccount;
 
@@ -79,6 +78,68 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     }
 
 
+    @GetMapping("/accountcreation")
+    public String acountCreation(Model model,HttpSession session) {
+
+
+        model.addAttribute("accountcreation", new Account());
+        return "accountcreation";
+    }
+
+    @GetMapping("/account")
+    public String newAccount(@ModelAttribute Account account, Model model,HttpSession session) {
+        if(account==null)
+        {
+            return "null";
+        }
+        User user= (User) session.getAttribute("loggedin_user");
+        Integer uId = user.getUserId();
+        java.util.List<Account> accountByUser = serviceAccount.getUserAccounts(uId);
+        model.addAttribute("listAccounts", accountByUser);
+        return "account";
+    }
+    @RequestMapping(value = "/remove_iban", method = RequestMethod.GET)
+    public String handleRemoveIban(@RequestParam(name="IBAN")String iban,@RequestParam(name="userId")String userId ) {
+        int uid = Integer.parseInt(userId);
+        serviceAccount.deleteIban(iban,uid);
+        String redirectUrl = "account";
+        return "redirect:" + redirectUrl;
+    }
+    @PostMapping("/accountcreation")
+    public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session) {
+        if(account==null)
+        {
+            return "null";
+        }
+        User user= (User) session.getAttribute("loggedin_user");
+        Integer uId = user.getUserId();
+        String message = "account created!!";
+        String error = "no account type selected";
+        String[] getValues = request.getParameterValues("selectionAccountType");
+        if (getValues != null) {
+            for(String valueString: getValues){
+//                String keyValue[]= valueString.split(":");
+                System.out.println("-------Key: " + valueString);
+                serviceAccount.newAccount(account,uId,valueString);
+//                System.out.println("--------Value: " + keyValue[1]);
+
+                model.addAttribute("completeMessage", message);
+            }
+        }else  {
+            model.addAttribute("errormessage", error);
+            return "accountcreation";
+        }
+        String valuewords = getValues.toString();
+        System.out.println("-----------------"+getValues);
+//        String redirectUrl = "account";
+//        return "redirect:" + redirectUrl;
+
+
+
+        return "accountcreation";
+    }
+
+
     //    @GetMapping("/accountCreation")
 //    public String acountForm(Account account, Model model,HttpSession session) {
 ////        Account account = new Account();
@@ -92,59 +153,6 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
 ////        serviceAccount.newAccount(account);
 //        return "account";
 //    }
-    @GetMapping("/accountcreation")
-    public String acountCreation(Model model) {
-
-
-        model.addAttribute("accountcreation", new Account());
-        return "accountcreation";
-    }
-    boolean basicAccountCheck = false;
-    boolean savingAccountCheck = false;
-    @GetMapping("/account")
-    public String newAccount(@ModelAttribute Account account, Model model,HttpSession session) {
-        if(account==null)
-        {
-            return "null";
-        }
-
-        model.addAttribute("basicAccountCheck", basicAccountCheck);
-
-        model.addAttribute("savingAccountCheck", savingAccountCheck);
-        return "account";
-    }
-
-    @PostMapping("/accountcreation")
-    public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session) {
-        if(account==null)
-        {
-            return "null";
-        }
-        User user= (User) session.getAttribute("loggedin_user");
-        Integer uId = user.getUserId();
-        System.out.println(uId);
-        String[] assignedResources = request.getParameterValues("selectionAccountType");
-        if (assignedResources != null) {
-            for(String item: assignedResources){
-//                String keyValue[]= item.split(":");
-                System.out.println("-------Key: " + item);
-                serviceAccount.newAccount(account,uId,item);
-//                System.out.println("--------Value: " + keyValue[1]);
-            }
-        }else {
-
-            System.out.println("no values selected");
-        }
-        String valuewords = assignedResources.toString();
-        System.out.println("-----------------"+assignedResources);
-//        String redirectUrl = "account";
-//        return "redirect:" + redirectUrl;
-
-
-
-        return "accountcreation";
-    }
-
 
 //    hier onder word de uid gebruikt die user doorgeeft
 //    @PostMapping("/accountcreation")
@@ -159,6 +167,14 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
 //        serviceAccount.newAccount(account,uId);
 ////        String redirectUrl = "account";
 ////        return "redirect:" + redirectUrl;
+//        return "accountcreation";
+//    }
+
+//    @PostMapping("/account")
+//    public String goToaccount(Model model) {
+//
+//
+//        model.addAttribute("accountcreation", new Account());
 //        return "accountcreation";
 //    }
 }

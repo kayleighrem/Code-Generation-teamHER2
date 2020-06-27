@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+import java.util.stream.Collectors;
 
 
 @Service
@@ -29,25 +29,19 @@ public class AccountService {
         Random random = new Random();
         int test = random.nextInt((maxRangeIban - minRangeIban)+1)+ minRangeIban;
         String iban= "Nl20TEST"+test;
-        System.out.println("---------------------");
-        System.out.println(iban);
-        System.out.println("---------------------");
         return iban;
     }
 
-    public void  GetAllEnums(){
-        System.out.println("hoi");
-//        List<Account.TypeAccountEnum> TypeList =new ArrayList<>(EnumSet.allOf(Account.TypeAccountEnum.class));
-//        System.out.println(TypeList);
-//        return TypeList;
-    }
+//    public void  GetAllEnums(){
+//        System.out.println("hoi");
+////        List<Account.TypeAccountEnum> TypeList =new ArrayList<>(EnumSet.allOf(Account.TypeAccountEnum.class));
+////        System.out.println(TypeList);
+////        return TypeList;
+//    }
 
     public String newAccount(Account account, Integer user,String type)
     {
         account.setId(user);
-//        System.out.println("--------------");
-//        System.out.println(user);
-//        System.out.println("--------------");
         String iban = generatedIban();
         account.setIBAN(iban);
         if(type.equals("basic")  ) {
@@ -60,18 +54,7 @@ public class AccountService {
         return "Saved";
     }
 
-    public java.util.List<Account> getUserAccounts(Integer id)
-    {
-        java.util.List<Account> userAccounts = new ArrayList<>();
-        for(Account account : getAccount())
-        {
-            if(account.getId().equals(id))
-            {
-                userAccounts.add(account);
-            }
-        }
-        return userAccounts;
-    }
+
 
 //   basicly not needed anymore
 //    public String newAccountbasic(Account account, Integer user)
@@ -105,7 +88,44 @@ public class AccountService {
                 accounts.add(account);
             }
         }
-        System.out.println(accounts);
+        System.out.println("---------ayayayayaya------------"+accounts);
         return accounts;
     }
+    public Account getUserAccountByIBAN(String Iban)
+    {
+        for(Account account : getAccount())
+        {
+            if(account.getIBAN().equals(Iban))
+            {
+                return account;
+            }
+        }
+        return null;
+    }
+    public void deleteIban(String IbanID, Integer id) {
+
+        java.util.List<Account> IBANlist = getUserAccounts(id);
+        IBANlist.remove(IbanID);
+        ArrayList<Account> allAccounts = (ArrayList<Account>) accountRepository.findAll();
+        Account us = allAccounts.stream().filter(a -> a.getIBAN() == IbanID).collect(Collectors.toList()).get(0);
+
+    }
+    public java.util.List<Account> getUserAccounts(Integer id)
+    {
+        java.util.List<Account> userAccounts = new ArrayList<>();
+        for(Account account : getAccount())
+        {
+            if(account.getId().equals(id))
+            {
+
+                userAccounts.add(account);
+
+            }
+
+        }
+        System.out.println(userAccounts);
+        System.out.println("we gonna do it");
+        return userAccounts;
+    }
+
 }
