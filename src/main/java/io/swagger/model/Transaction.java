@@ -51,6 +51,9 @@ public class Transaction   {
   @JsonProperty("money")
   public Double money;
 
+  @JsonProperty("amount")
+  public Double amount;
+
   /**
    * Gets or Sets status
    */
@@ -110,6 +113,9 @@ public class Transaction   {
   public Double getMoney(){return money;}
 
   public void setMoney(Double money){this.money = money;}
+
+
+  public void setAmount(Double amount){this.amount = amount;}
 
   public Transaction id(Integer id) {
     this.id = id;
@@ -231,6 +237,12 @@ public class Transaction   {
     this.status = status;
   }
 
+  /**
+   * Get amount
+   * @return amount
+   **/
+  @ApiModelProperty(example = "10.00", value = "")
+
 
 
 
@@ -248,12 +260,12 @@ public class Transaction   {
         Objects.equals(this.to, transaction.to) &&
         Objects.equals(this.userPerforming, transaction.userPerforming) &&
         Objects.equals(this.transactionDate, transaction.transactionDate) &&
-        Objects.equals(this.status, transaction.status) && Objects.equals(this.money, transaction.money);
+        Objects.equals(this.status, transaction.status) && Objects.equals(this.amount, transaction.amount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, from, to, userPerforming, transactionDate, status, money);
+    return Objects.hash(id, from, to, userPerforming, transactionDate, status, amount);
   }
 
   @Override
@@ -267,6 +279,7 @@ public class Transaction   {
     sb.append("    userPerforming: ").append(toIndentedString(userPerforming)).append("\n");
     sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    money: ").append(toIndentedString(money)).append("\n");
     sb.append("}");

@@ -64,8 +64,18 @@ public class UserService {
     public User CheckInlog(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         for ( User u : getUsers()) {
-            if (user.getEmail().equals(u.getEmail()) && encoder.matches(user.getPassword(), u.getPassword()) == true) {
+            if (user.getEmail().equals(u.getEmail()) && encoder.matches(user.getPassword(), u.getPassword()) == true)
+                return u;
+        }
+        return null;
+    }
 
+    public User getUserById(int id) {
+        System.out.println("userid2: " + id);
+        for ( User u : getUsers()) {
+            if (id == u.getUserId()) {
+//            if (u.getUserId().equals(id)){
+                System.out.println("found user1" + u);
                 return u;
             }
         }
@@ -78,9 +88,7 @@ public class UserService {
         for(User u : getUsers())
         {
             if(u.getEmail().equals(user.getEmail()) && encoder.matches(user.getPassword(),u.getPassword()))
-            {
                 return u;
-            }
         }
         return new User();
     }
@@ -110,9 +118,11 @@ public class UserService {
         userRepository.delete(us);
     }
 
-    public void updateUser(int userId) {
-        ArrayList<User> allusers = (ArrayList<User>) userRepository.findAll();
-        User us = allusers.stream().filter(a -> a.getUserId() == (int)userId).collect(Collectors.toList()).get(0);
+    public void updateUser(User user) {
+//        ArrayList<User> allusers = (ArrayList<User>) userRepository.findAll();
+//        User us = allusers.stream().filter(a -> a.getUserId() == (int)userId).collect(Collectors.toList()).get(0);
 //        userRepository.(us);
+
+        System.out.println("update");
     }
 }

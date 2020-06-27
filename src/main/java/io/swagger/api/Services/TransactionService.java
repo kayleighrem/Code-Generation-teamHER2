@@ -5,6 +5,7 @@ import io.swagger.model.Account;
 import io.swagger.model.Transaction;
 import io.swagger.model.User;
 import nl.garvelink.iban.Modulo97;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +23,19 @@ public class TransactionService
     @Autowired
     private AccountService accountService;
 
-    public TransactionService(TransactionRepository transRepo,HttpSession session)
+    //Sets the service layer for transaction
+    public TransactionService(TransactionRepository transRepo)
     {
        this.transRepo = transRepo;
     }
 
+    //Retrieves all transactions in the database
     public List<Transaction> getTransactions()
     {
        return (List<Transaction>) transRepo.findAll();
     }
 
+    //Retrieves all transactions by user id
     public List<Transaction> getTransactionsById(Integer id)
     {
         List<Transaction> userTransactions = new ArrayList<>();
@@ -45,8 +49,23 @@ public class TransactionService
         return userTransactions;
     }
 
-    public String newTransaction(Transaction transaction, HttpSession session,String type)
-    {
+    //Retrieves the amount of transactions a user has performed today
+    public Integer getTodaysUserTransactions(Integer id)  {
+        Date today = new Date();
+        Integer dailyTransactions = 0;
+
+        for(Transaction transaction : getTransactionsById(id))
+        {
+            if(DateUtils.isSameDay(today,transaction.getTransactionDate()))
+            {
+                dailyTransactions++;
+            }
+        }
+        return dailyTransactions;
+    }
+
+    //Setting the first transactions variables and controlling what type of transaction the current transaction is
+    public String newTransaction(Transaction transaction, HttpSession session,String type)  {
         User performingUser = (User) session.getAttribute("loggedin_user");
         transaction.setUserPerforming(performingUser.getUserId());
         transaction.status(Transaction.StatusEnum.ERROR);
@@ -55,40 +74,49 @@ public class TransactionService
 
         switch(type)
         {
-            case "Secondary":
+            case"Deposit":
+            case"Withdraw":
                 return secondaryTransactionConditions(transaction,accountFrom,accountTo,type);
-            case"Primary":
+            case"Transaction":
                 return transactionConditions(transaction,accountFrom,accountTo);
         }
         return "Unknown Error";
     }
 
+    //Checks if the current transaction can be performed. Type = Deposit/Withdraw
     public String secondaryTransactionConditions(Transaction transaction,Account accountFrom,Account accountTo, String type)
     {
-        if(accountFrom.getAcountAmount() > 0 && accountFrom.getAcountAmount() - transaction.getMoney() > 0)
+        if(accountFrom.getAcountAmount() >= 0 && accountFrom.getAcountAmount() - transaction.getMoney() >= 0)
         {
             transaction.setDescription(type+": "+transaction.getDescription());
             performTransaction(accountFrom,accountTo,transaction);
-            return "Success";
+            return "Transaction Complete";
         }
-        return "Error";
+            return "Insufficient funds";
     }
 
-    private String transactionConditions(Transaction transaction, Account account, Account accountTo)
-    {
+    //Checks if the current transaction can be performed. Type = Normal Transaction
+    private String transactionConditions(Transaction transaction, Account account, Account accountTo)  {
         if(Modulo97.verifyCheckDigits(transaction.getTo()))
         {
-            if(transaction.getMoney() < 1000)
+            if(account.getTypeAccount().equals(Account.TypeAccountEnum.BASIC))
             {
-                if(account.getAcountAmount() - transaction.getMoney() > 0)
+                if (transaction.getMoney() < 1000)
                 {
-                    //else if gebruiker voert zoveelste transaction uit
-                    performTransaction(account,accountTo,transaction);
-                    return "Transaction Success!";
+                    if (account.getAcountAmount() - transaction.getMoney() > 0)
+                    {
+                        if (getTodaysUserTransactions(transaction.getUserPerforming()) < 5)
+                        {
+                            performTransaction(account, accountTo, transaction);
+                            return "Transaction Success!";
+                        }
+                        return "Over daily transaction limit. Please try again Tomorrow.";
+                    }
+                    return "Transaction will put account in red";
                 }
-                return "Transaction will put account in red";
+                return "Transaction amount is too high";
             }
-            return "Transaction amount is too high";
+            return "Cannot transfer to another user's savings account";
         }
         else
         {
@@ -96,6 +124,8 @@ public class TransactionService
         }
     }
 
+    //If the transactionchecks are cleared, the amount of money will be moved from accounts and the transaction will
+    //be saved to the database.
     private void performTransaction(Account accountFrom, Account accountTo,Transaction transaction)
     {
         Date date = new Date();
@@ -107,5 +137,4 @@ public class TransactionService
         transaction.setStatus(Transaction.StatusEnum.COMPLETE);
         transRepo.save(transaction);
     }
-
 }

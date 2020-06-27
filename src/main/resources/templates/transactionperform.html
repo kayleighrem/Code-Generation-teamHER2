@@ -21,18 +21,21 @@
     <p class="blockquote">In order to perform a transaction, we'll need some information</p>
     <form action="#" th:action="@{/transaction}" th:object="${transaction}" method="post">
         <div class="form-group blu-margin">
+            <p class="text-left">* Your Account</p>
             <select class="form-control" th:field="*{from}">
-                <option th:each="account : ${accounts}" th:value="${account.IBAN}" th:text="${account}">Wireframe</option>
+                <option th:each="account : ${accounts}" th:value="${account.IBAN}" th:text="'IBAN:   '+${account.IBAN} + '   Amount:  '+${account.acountAmount} + '   Type:   '+${account.typeAccount}"></option>
             </select>
-        <p class="text-left">* Recipient's IBAN: <input class="form-control" type="text" th:field="*{to}" /></p>
-        <p class="text-left">* Amount: <input class="form-control" type="number" th:field="*{money}"/></p>
-            <p class="text-left">* Description: <input class="form-control" type="text" th:field="*{description}" /></p>
+        <p class="text-left">* Recipient's IBAN: <input class="form-control" required="true" type="text" th:field="*{to}" /></p>
+        <p class="text-left">* Amount: <input class="form-control" required="true" type="number" th:field="*{money}"/></p>
+            <p class="text-left">* Description: <input class="form-control"  required="true" type="text" th:field="*{description}" /></p>
         <input class="btn btn-primary" type="submit" value="Submit" /> <input class="btn btn-primary" type="reset" value="Reset"/>
         </div>
     </form>
 </div>
 <div class="container-fluid">
-<br /><p style="color:red" th:text="${errormessage}"></p>
+    <div id="error" th:if="${(param.error != null)}">
+        <p style="color:red" th:text="${#httpServletRequest.getParameter('error')}"/>
+    </div>
 </div>
 </body>
 <footer class="card-footer">
