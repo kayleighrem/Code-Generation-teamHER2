@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>Settings</title>
+</head>
+<body>
+    <div th:replace="/includes/navbar :: navbar"> </div>
+    <p th:text="${session_user}" style="margin-bottom: 0rem"></p>
+
+    <div class="container-fluid">
+        <form action="#" th:action="@{/update_user}" th:object="${user}" method="post">
+            <h3 class="form-signin-heading">Change settings user</h3>
+            <h5>Please enter the required fields</h5>
+<!--            <br /><p th:text="${errormessage}"></p>-->
+
+            <br /> <p th:value="${user.name}"  th:text="${user.name}" />
+<!--            <br /> <p type="text" th:value="${user.name}" class="form-control" th:placeholder="${user.name}" id="name" name="name"></p>-->
+            <br /> <input type="text" th:value="${user.lastname}" id="lastName" name="lastName" th:placeholder="Lastname" class="form-control" />
+            <br /> <input type="text" th:value="${user.email}" id="email" name="email" th:placeholder="Email" class="form-control" />
+            <!--            <br /> <input type="checkbox" th:field="*{isEmployee}" id="isEmployee" name="isEmployee" th:placeholder="isEmployee" class="form-control" />-->
+            <input type="checkbox" th:value="${user.isEmployee}" /><a style="margin-left: 10px">Employee</a>
+
+            <br />
+            <button class="brn brn-lg btn-primary" type="submit" th:text="Submit" style="margin-top: 10px"></button>
+            <a href="employees"> Back to overview</a>
+        </form>
+    </div>
+</body>
+</html>

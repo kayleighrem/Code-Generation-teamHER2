@@ -10,9 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.SendFailedException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,7 @@ import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
@@ -191,25 +194,24 @@ public class UserApiController implements UserApi {
         return "transactionhome";
     }
 
-    @GetMapping("/updateaccount")
-    public String UpdateAccount(HttpSession session, Model model) {
-        Navbar(model);
-        System.out.println(session.getAttribute("loggedin_user"));
-        return "updateaccount";
-    }
+//    @GetMapping("/updateaccount")
+//    public String UpdateAccount(HttpSession session, Model model) {
+//        Navbar(model);
+//        System.out.println(session.getAttribute("loggedin_user"));
+//        return "updateaccount";
+//    }
 
     @GetMapping("/employees")
     public String Employees(HttpSession session, Model model) {
         Navbar(model);
         model.addAttribute("allclients", userService.getClients());
         model.addAttribute("allemployees", userService.getEmployees());
+        
         return "employees";
     }
 
     @RequestMapping(value = "/delete_user", method = RequestMethod.GET)
     public String handleDeleteUser(@RequestParam(name="userId")String userId) {
-//        System.out.println(userId);
-//        System.out.println("test");
         int uid = Integer.parseInt(userId);
         userService.deleteUser(uid);
 
@@ -217,17 +219,35 @@ public class UserApiController implements UserApi {
         return "redirect:" + redirectUrl;
     }
 
-    @RequestMapping(value = "/update_user", method = RequestMethod.GET)
-    public String handleUpdateUser(@RequestParam(name="userId")String userId) {
-        int uid = Integer.parseInt(userId);
-        userService.updateUser(uid);
+    @GetMapping("/update_user")
+    public String updateUserForm(@RequestParam(name="userId")String userId, @ModelAttribute("user") User user) {
+        System.out.println(userService.getUserById(Integer.parseInt(userId)));
+        System.out.println("userid: " + userId);
 
-        String redirectUrl = "employees";
-        return "redirect:" + redirectUrl;
+        return "update_user";
     }
+
+
+    @RequestMapping(value = "update_user", method = RequestMethod.POST)
+    public String changeUserFirstName(RedirectAttributes rm, final Locale locale) {
+        final User user = (User) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
+        userService.updateUser(user);
+
+//        rm.addFlashAttribute(
+//                "message",
+//                messages.getMessage("message.updateFirstNameSuc", null, locale)
+//        );
+        return "update_user";
+    }
+
+
+
 
     @GetMapping("/newuser")
     public String newUserForm(Model model) {
+        Navbar(model);
         model.addAttribute("user", new User());
         return "newuser";
     }
@@ -240,15 +260,15 @@ public class UserApiController implements UserApi {
             model.addAttribute("errormessage", error);
         }
         else {
+            Navbar(model);
             userService.registerNewUserAccount(user);
-            return "employees";
+            String redirectUrl = "employees";
+            return "redirect:" + redirectUrl;
         }
 
         Navbar(model);
         return "newuser";
     }
-
-
 
     public void Navbar(Model model) {
         HttpSession session=request.getSession(false);

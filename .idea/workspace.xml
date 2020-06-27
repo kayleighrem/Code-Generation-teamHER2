@@ -25,25 +25,26 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="">
+    <list default="true" id="51012bc9-d7d2-4187-a6fb-760cb29791e9" name="Default Changelist" comment="employees delete user and create user works">
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/AccountTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/TransactionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.trace.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/Swagger2SpringBoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/Swagger2SpringBoot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/AccountsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/AccountsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/TransactionsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/TransactionsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Controller/UserApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/TransactionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/model/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/accountCreation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/accountCreation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactiondeposit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactiondeposit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactionhome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactionhome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactionlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactionlog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactionperform.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactionperform.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transactionwithdraw.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transactionwithdraw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/Deposit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/PerformTransaction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/TransactionPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/Withdraw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/hello.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Views/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employees.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/updateaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/update_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger-spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-spring.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,18 +61,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Transaction</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>Account</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -90,21 +83,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/css" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="io.swagger.security" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kayle\IdeaProjects\Code-Generation-teamHER2\src\main\resources\templates" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kayle\IdeaProjects\Code-Generation-teamHER2\src\main\resources\templates\css" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\kayle\IdeaProjects\Code-Generation-teamHER2\src\main\resources\templates" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="io.swagger.security" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -112,7 +105,7 @@
       <command value="mvn dependency:tree" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Swagger2SpringBoot">
     <configuration name="Swagger2SpringBoot" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.swagger.Swagger2SpringBoot" />
       <module name="swagger-spring" />
@@ -126,6 +119,94 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TransactionTest.createTransactionShouldNotBeNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swagger-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.TransactionTest" />
+      <option name="METHOD_NAME" value="createTransactionShouldNotBeNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionTest.insufficientFundsShouldReturnFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swagger-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.TransactionTest" />
+      <option name="METHOD_NAME" value="insufficientFundsShouldReturnFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swagger-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.UserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.invalidPasswordShouldThrowIllegalArgumentException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swagger-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.UserTest" />
+      <option name="METHOD_NAME" value="invalidPasswordShouldThrowIllegalArgumentException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.invalidTypeShouldThrowIllegalArgumentException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swagger-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.UserTest" />
+      <option name="METHOD_NAME" value="invalidTypeShouldThrowIllegalArgumentException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TransactionTest.createTransactionShouldNotBeNull" />
+        <item itemvalue="JUnit.TransactionTest.insufficientFundsShouldReturnFalse" />
+        <item itemvalue="JUnit.UserTest" />
+        <item itemvalue="JUnit.UserTest.invalidPasswordShouldThrowIllegalArgumentException" />
+        <item itemvalue="JUnit.UserTest.invalidTypeShouldThrowIllegalArgumentException" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -208,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593075064097</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="employees.html show all clients and all employees works">
+      <created>1593165045132</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1593165045132</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -264,16 +352,19 @@
     <MESSAGE value="register check WERKT! :D" />
     <MESSAGE value="login en register werkt, checkt ook, bootstrap toegevoegd" />
     <MESSAGE value="session works, logout works, link from index.html to transactionhome" />
-    <option name="LAST_COMMIT_MESSAGE" value="session works, logout works, link from index.html to transactionhome" />
+    <MESSAGE value="navbar and employees.html updatet" />
+    <MESSAGE value="employees.html show all clients and all employees works" />
+    <option name="LAST_COMMIT_MESSAGE" value="employees.html show all clients and all employees works" />
   </component>
   <component name="WindowStateProjectService">
     <state x="586" y="198" key="#Inspections" timestamp="1590160280853">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1590160280853" />
-    <state x="497" y="132" key="#Project_Structure" timestamp="1591523382553">
+    <state x="497" y="132" key="#Project_Structure" timestamp="1593271221908">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="497" y="132" key="#Project_Structure/0.0.1920.1040/-1920.139.1920.1040@0.0.1920.1040" timestamp="1593271221908" />
     <state x="497" y="132" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1591523382553" />
     <state x="657" y="139" key="#Swagger2SpringBoot" timestamp="1591471064269">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -287,26 +378,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591472941717" />
-    <state width="1146" height="234" key="GridCell.Tab.0.bottom" timestamp="1593099501396">
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom" timestamp="1593290759110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
-    <state width="1146" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593099501396" />
-    <state width="1146" height="234" key="GridCell.Tab.0.center" timestamp="1593099501396">
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593175820368" />
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.139.1920.1040@0.0.1920.1040" timestamp="1593290759110" />
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593182706092" />
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593223066214" />
+    <state width="1877" height="364" key="GridCell.Tab.0.center" timestamp="1593290759110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
-    <state width="1146" height="234" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593099501396" />
-    <state width="1146" height="234" key="GridCell.Tab.0.left" timestamp="1593099501396">
+    <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593175820368" />
+    <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.139.1920.1040@0.0.1920.1040" timestamp="1593290759110" />
+    <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593182706092" />
+    <state width="1877" height="364" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593223066214" />
+    <state width="1877" height="364" key="GridCell.Tab.0.left" timestamp="1593290759110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
-    <state width="1146" height="234" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593099501396" />
-    <state width="1146" height="234" key="GridCell.Tab.0.right" timestamp="1593099501396">
+    <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593175820366" />
+    <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.139.1920.1040@0.0.1920.1040" timestamp="1593290759110" />
+    <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593182706092" />
+    <state width="1877" height="364" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593223066214" />
+    <state width="1877" height="364" key="GridCell.Tab.0.right" timestamp="1593290759110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593079534172" />
-    <state width="1146" height="234" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593099501396" />
+    <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593175820368" />
+    <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.139.1920.1040@0.0.1920.1040" timestamp="1593290759110" />
+    <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593182706092" />
+    <state width="1877" height="364" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593223066214" />
     <state width="1877" height="346" key="GridCell.Tab.1.bottom" timestamp="1591531638731">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -328,13 +427,15 @@
     </state>
     <state x="490" y="175" key="Maven.ArtifactSearchDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593078534644" />
     <state x="490" y="175" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591531500001" />
-    <state x="184" y="86" key="MergeDialog" timestamp="1590420235031">
+    <state x="184" y="86" key="MergeDialog" timestamp="1593181722819">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593181722819" />
     <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590420235031" />
-    <state x="848" y="388" width="442" height="264" key="MultipleFileMergeDialog" timestamp="1590420240180">
+    <state x="848" y="388" width="442" height="264" key="MultipleFileMergeDialog" timestamp="1593181714496">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="848" y="388" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593181714496" />
     <state x="848" y="388" width="442" height="264" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590420240180" />
     <state x="643" y="222" key="RollbackChangesDialog" timestamp="1590418833199">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -344,19 +445,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1593098527033" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1593075068234">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1593181738402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593075068234" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593165052829" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593181738402" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591617564378" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590419553737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590419553737" />
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593096628442">
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593270527192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593075832351" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593162397321" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.139.1920.1040@0.0.1920.1040" timestamp="1593270527192" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593182412900" />
     <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1593096628442" />
     <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1593005709741">
       <screen x="0" y="0" width="1920" height="1040" />

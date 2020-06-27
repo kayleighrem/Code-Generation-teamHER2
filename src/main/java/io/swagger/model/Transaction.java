@@ -308,7 +308,7 @@ public class Transaction   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, String amount,String description,Double money)
+  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, String amount, String description,Double money)
   {
     this.id = id;
     this.to = to;
