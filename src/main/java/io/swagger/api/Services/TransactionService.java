@@ -45,85 +45,67 @@ public class TransactionService
         return userTransactions;
     }
 
-    public String newTransaction(Transaction transaction, HttpSession session, Account account)
+    public String newTransaction(Transaction transaction, HttpSession session,String type)
     {
         User performingUser = (User) session.getAttribute("loggedin_user");
         transaction.setUserPerforming(performingUser.getUserId());
-        transaction.setFrom(performingUser.getName());
-        transaction.status(Transaction.StatusEnum.PENDING);
-        transaction.setAmount(transaction.getAmount());
-        System.out.println("Money: "+transaction.getMoney());
+        transaction.status(Transaction.StatusEnum.ERROR);
+        Account accountFrom = accountService.getUserAccountByIBAN(transaction.getFrom());
+        Account accountTo = accountService.getUserAccountByIBAN(transaction.getTo());
 
-        Integer amount = Integer.parseInt(transaction.getAmount());
-
-        if(accountService.CheckIfAccountExists(transaction.getTo()))
+        switch(type)
         {
-            return "Recipient's IBAN not found.";
+            case "Secondary":
+                return secondaryTransactionConditions(transaction,accountFrom,accountTo,type);
+            case"Primary":
+                return transactionConditions(transaction,accountFrom,accountTo);
         }
+        return "Unknown Error";
+    }
 
-        String IBAN = transaction.getTo();
-        if(Modulo97.verifyCheckDigits(IBAN.toString()))
+    public String secondaryTransactionConditions(Transaction transaction,Account accountFrom,Account accountTo, String type)
+    {
+        if(accountFrom.getAcountAmount() > 0 && accountFrom.getAcountAmount() - transaction.getMoney() > 0)
         {
-            if(amount < 1000) {
-//                if(account.getAcountAmount() - transaction.getAmount() > 0)
-//                {
-                //else if gebruiker voert zoveelste transaction uit
-                Date date = new Date();
-                transaction.setTransactionDate(date);
-                transaction.status(Transaction.StatusEnum.COMPLETE);
-                transRepo.save(transaction);
-                return "Transaction Success!";
-//            }
-//                return "Transaction will put account in red";
+            transaction.setDescription(type+": "+transaction.getDescription());
+            performTransaction(accountFrom,accountTo,transaction);
+            return "Success";
+        }
+        return "Error";
+    }
+
+    private String transactionConditions(Transaction transaction, Account account, Account accountTo)
+    {
+        if(Modulo97.verifyCheckDigits(transaction.getTo()))
+        {
+            if(transaction.getMoney() < 1000)
+            {
+                if(account.getAcountAmount() - transaction.getMoney() > 0)
+                {
+                    //else if gebruiker voert zoveelste transaction uit
+                    performTransaction(account,accountTo,transaction);
+                    return "Transaction Success!";
+                }
+                return "Transaction will put account in red";
             }
             return "Transaction amount is too high";
         }
         else
         {
-            transaction.status(Transaction.StatusEnum.ERROR);
             return "Invalid IBAN";
         }
     }
 
-    public String depositTransaction(Transaction transaction,Account account,HttpSession session)
+    private void performTransaction(Account accountFrom, Account accountTo,Transaction transaction)
     {
-//        if(transaction.getAmount() > 0)
-//        {
-//            User performingUser = (User) session.getAttribute("loggedin_user");
-//            transaction.setUserPerforming(performingUser.getUserId());
-//            transaction.setDescription("Deposit");
-//            transaction.setUserPerforming(performingUser.getUserId());
-//            transaction.setFrom(performingUser.getName());
-//            transaction.setTransactionDate(new Date());
-//            transaction.setTo("STATIC IBAN");
-//            transaction.setStatus(Transaction.StatusEnum.COMPLETE);
-//            transRepo.save(transaction);
-//            return "Success";
-//        }
-        return "Deposit Error Message";
-    }
+        Date date = new Date();
+        transaction.setTransactionDate(date);
 
-    public String withdrawTransaction(Transaction transaction,Account account,HttpSession session)
-    {
-//        if(transaction.getAmount() > 0)
-//        {
-//            User performingUser = (User) session.getAttribute("loggedin_user");
-//            transaction.setUserPerforming(performingUser.getUserId());
-//            transaction.setDescription("Withdraw");
-//            transaction.setUserPerforming(performingUser.getUserId());
-//            transaction.setFrom(performingUser.getName());
-//            transaction.setTransactionDate(new Date());
-//            transaction.setTo("STATIC IBAN");
-//            transaction.setStatus(Transaction.StatusEnum.COMPLETE);
-//            transRepo.save(transaction);
-//            return "Success";
-//        }
-        return "Success";
-    }
-
-    private boolean transactionConditions(Transaction transaction, Account account, User user)
-    {
-        return false;
+        Double transactionAmount = transaction.getMoney();
+        accountTo.setAcountAmount(accountTo.getAcountAmount()+transactionAmount);
+        accountFrom.setAcountAmount(accountFrom.getAcountAmount() - transactionAmount);
+        transaction.setStatus(Transaction.StatusEnum.COMPLETE);
+        transRepo.save(transaction);
     }
 
 }
