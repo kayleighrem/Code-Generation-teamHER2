@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -88,7 +87,7 @@ public class AccountService {
                 accounts.add(account);
             }
         }
-        System.out.println("---------ayayayayaya------------"+accounts);
+//        System.out.println("---------testing------------"+accounts);
         return accounts;
     }
     public Account getUserAccountByIBAN(String Iban)
@@ -102,14 +101,16 @@ public class AccountService {
         }
         return null;
     }
-    public void deleteIban(String IbanID, Integer id) {
+    public void deleteIban(String IbanID) {
 
-        java.util.List<Account> IBANlist = getUserAccounts(id);
-        IBANlist.remove(IbanID);
-        ArrayList<Account> allAccounts = (ArrayList<Account>) accountRepository.findAll();
-        Account us = allAccounts.stream().filter(a -> a.getIBAN() == IbanID).collect(Collectors.toList()).get(0);
+        Account ac = getUserAccountByIBAN(IbanID);
+        System.out.println(ac+"------");
+
+            accountRepository.delete(ac);
 
     }
+
+
     public java.util.List<Account> getUserAccounts(Integer id)
     {
         java.util.List<Account> userAccounts = new ArrayList<>();
@@ -123,8 +124,7 @@ public class AccountService {
             }
 
         }
-        System.out.println(userAccounts);
-        System.out.println("we gonna do it");
+//        System.out.println(userAccounts);
         return userAccounts;
     }
 

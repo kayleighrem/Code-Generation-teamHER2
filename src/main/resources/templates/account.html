@@ -10,12 +10,11 @@
     <title>Account  overview</title>
 </head>
 <body>
-
+<div th:replace="/includes/navbar :: navbar"> </div>
 <div class="container-fluid">
     <form action="#" th:action="@{/account}" th:object="${account}" method="GET">
 
-        <h3 class="form-signin-heading" th:text="Accountname"></h3>
-        <p th:text="${errormessage}"></p>
+        <br /><p th:text="${errormessage}"></p>
 <!--        <br /><a th:text="${listAccounts}"></a>-->
 <!--        <tr th:each="list: ${listAccounts}">-->
 <!--            <br/>-->
@@ -39,8 +38,8 @@
                     <td th:text="${list.IBAN}"></td>
                     <td th:text="${list.typeAccount}"></td>
                     <td th:text="${list.acountAmount}"></td>
-                    <td th:unless="${list.id == 1}">
-                        <a th:href="@{remove_iban(IBAN=${list.IBAN},userId=${list.id})}">Delete</a>
+                    <td>
+                        <a th:href="@{remove_iban(IBAN=${list.IBAN})}">Delete</a>
                     </td>
 
                 </tr>

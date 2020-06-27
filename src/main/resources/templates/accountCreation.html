@@ -10,6 +10,7 @@
     <title>Account creation</title>
 </head>
 <body>
+<div th:replace="/includes/navbar :: navbar"> </div>
 
 <div class="container-fluid">
     <form action="#" th:action="@{/accountcreation}" th:object="${account}" method="POST">

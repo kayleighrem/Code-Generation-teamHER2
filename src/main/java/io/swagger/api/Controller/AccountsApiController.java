@@ -27,7 +27,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     private static final Logger log = LoggerFactory.getLogger(AccountsApiController.class);
 
     private final ObjectMapper objectMapper;
-
+    private UserApiController uPi;
     private final HttpServletRequest request;
     @Autowired
     private AccountService serviceAccount;
@@ -93,18 +93,23 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
             return "null";
         }
         User user= (User) session.getAttribute("loggedin_user");
+//        uPi.Navbar(model);
         Integer uId = user.getUserId();
         java.util.List<Account> accountByUser = serviceAccount.getUserAccounts(uId);
         model.addAttribute("listAccounts", accountByUser);
         return "account";
     }
-    @RequestMapping(value = "/remove_iban", method = RequestMethod.GET)
-    public String handleRemoveIban(@RequestParam(name="IBAN")String iban,@RequestParam(name="userId")String userId ) {
-        int uid = Integer.parseInt(userId);
-        serviceAccount.deleteIban(iban,uid);
+    @RequestMapping( value = "/remove_iban", method = RequestMethod.GET)
+    public String handleRemoveIban(Model model,@RequestParam(name="IBAN")String iban ) {
+        System.out.println(iban);
+        String error="something went wrong";
+        serviceAccount.deleteIban(iban);
+
+        model.addAttribute("errormessage", error);
         String redirectUrl = "account";
         return "redirect:" + redirectUrl;
     }
+
     @PostMapping("/accountcreation")
     public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session) {
         if(account==null)
