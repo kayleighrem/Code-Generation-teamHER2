@@ -43,12 +43,6 @@ public class Transaction   {
   @JsonProperty("transactionDate")
   private Date transactionDate;
 
-  @Column(name="Trans_Amount")
-  @JsonProperty("amount")
-  private String amount;
-
-
-
   @Column(name="Trans_Description")
   @JsonProperty("description")
   private String description;
@@ -237,24 +231,7 @@ public class Transaction   {
     this.status = status;
   }
 
-  /**
-   * Get amount
-   * @return amount
-   **/
-  @ApiModelProperty(example = "10.00", value = "")
 
-  public String getAmount() {
-    return amount;
-  }
-
-  public void setAmount(String Amount) {
-    this.amount = amount;
-  }
-
-  public Transaction amount(String amount) {
-    this.amount = amount;
-    return this;
-  }
 
 
   @Override
@@ -271,12 +248,12 @@ public class Transaction   {
         Objects.equals(this.to, transaction.to) &&
         Objects.equals(this.userPerforming, transaction.userPerforming) &&
         Objects.equals(this.transactionDate, transaction.transactionDate) &&
-        Objects.equals(this.status, transaction.status) && Objects.equals(this.amount, transaction.amount);
+        Objects.equals(this.status, transaction.status) && Objects.equals(this.money, transaction.money);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, from, to, userPerforming, transactionDate, status, amount);
+    return Objects.hash(id, from, to, userPerforming, transactionDate, status, money);
   }
 
   @Override
@@ -290,7 +267,6 @@ public class Transaction   {
     sb.append("    userPerforming: ").append(toIndentedString(userPerforming)).append("\n");
     sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    money: ").append(toIndentedString(money)).append("\n");
     sb.append("}");
@@ -308,14 +284,13 @@ public class Transaction   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate, String amount,String description,Double money)
+  public Transaction(Integer id, String to, String from, Integer userPerforming, Date transactionDate,String description,Double money)
   {
     this.id = id;
     this.to = to;
     this.from = from;
     this.userPerforming = userPerforming;
     this.transactionDate = transactionDate;
-    this.amount = amount;
     this.description = description;
     this.money = money;
   }

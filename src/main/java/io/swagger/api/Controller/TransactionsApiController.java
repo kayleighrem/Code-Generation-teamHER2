@@ -88,31 +88,40 @@ public class TransactionsApiController implements TransactionsApi {
         transService.getTransactions();
     }
 
+
+
+
+
     @RequestMapping(path = "/transaction", method = RequestMethod.GET)
     public String getTransaction(Model model,HttpSession session) {
         List<Account> accounts = accountService.getAccount();
-        model.addAttribute("account",new Account());
         model.addAttribute("accounts",accounts);
         model.addAttribute("transaction", new Transaction());
         return "transactionperform";
     }
 
     @PostMapping("/transaction")
-    public String transactionSubmit(@ModelAttribute Transaction transaction,@ModelAttribute Account account,HttpSession session,Model model) {
-        System.out.println(model.addAttribute("amount"));
-        String result = transService.newTransaction(transaction,session,account);
+    public String transactionSubmit(Model model,HttpSession session,@ModelAttribute Transaction transaction) {
+        String result = transService.newTransaction(transaction,session,"Primary");
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
         return "transactionperform";
     }
+
+
+
+
+
 
     @GetMapping("/deposit")
     public String Deposit(Model model,HttpSession session) {
         User user = (User) session.getAttribute("loggedin_user");
         Integer uid = user.getUserId();
         model.addAttribute("account",new Account());
-        List<Account> accounts = accountService.getUserAccountByType("BASIC",uid);
-        model.addAttribute("accounts",accounts);
+        List<Account> accountsFrom = accountService.getUserAccountByType("BASIC",uid);
+        List<Account> accountsTo = accountService.getUserAccountByType("SAVING",uid);
+        model.addAttribute("accountsFrom",accountsFrom);
+        model.addAttribute("accountsTo",accountsTo);
         model.addAttribute("transaction", new Transaction());
         return "transactiondeposit";
     }
@@ -120,21 +129,25 @@ public class TransactionsApiController implements TransactionsApi {
     @PostMapping("/deposit")
     public String PostDeposit(Model model, @Valid @ModelAttribute("transaction") Transaction transaction, @Valid @ModelAttribute("account") Account account,HttpSession session)
     {
-        System.out.println(transaction);
-        String result = transService.depositTransaction(transaction,account,session);
-        System.out.println(transaction);
+        String result = transService.newTransaction(transaction,session,"Secondary");
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
         return "transactiondeposit";
     }
 
+
+
+
+
+
     @GetMapping("/withdraw")
     public String Log(Model model,HttpSession session) {
         User user = (User) session.getAttribute("loggedin_user");
         Integer uid = user.getUserId();
-
-        List<Account> accounts = accountService.getUserAccountByType("SAVING",uid);
-        model.addAttribute("accounts",accounts);
+        List<Account> accountsFrom = accountService.getUserAccountByType("SAVING",uid);
+        List<Account> accountsTo = accountService.getUserAccountByType("BASIC",uid);
+        model.addAttribute("accountsFrom",accountsFrom);
+        model.addAttribute("accountsTo",accountsTo);
         model.addAttribute("account",new Account());
         model.addAttribute("transaction", new Transaction());
         return "transactionwithdraw";
@@ -142,11 +155,16 @@ public class TransactionsApiController implements TransactionsApi {
 
     @PostMapping("/withdraw")
     public String PostWithdraw(Model model, @ModelAttribute Transaction transaction, @ModelAttribute Account account,HttpSession session) {
-        String result = transService.withdrawTransaction(transaction,account,session);
+        String result = transService.newTransaction(transaction,session,"Secondary");
         model.addAttribute("errormessage",result);
         model.addAttribute("transaction", new Transaction());
         return "transactionwithdraw";
     }
+
+
+
+
+
     @GetMapping("/log")
     public String Withdraw(Model model,HttpSession session) {
         User user = (User) session.getAttribute("loggedin_user");
@@ -159,7 +177,6 @@ public class TransactionsApiController implements TransactionsApi {
     public String Home(HttpSession session,Model model) {
         User user= (User) session.getAttribute("loggedin_user");
         String uName = user.getName();
-        System.out.println(uName);
         model.addAttribute("username",uName);
         return "transactionhome";
     }
