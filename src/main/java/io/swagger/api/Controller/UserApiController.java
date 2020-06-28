@@ -28,11 +28,8 @@ import java.util.List;
 public class UserApiController implements UserApi {
 
     private static final Logger log = LoggerFactory.getLogger(UserApiController.class);
-
     private final ObjectMapper objectMapper;
-
     private final HttpServletRequest request;
-
     private HttpSession session;
 
     @Autowired
@@ -130,13 +127,12 @@ public class UserApiController implements UserApi {
     }
 
     @RequestMapping(value="/index" , method=RequestMethod.GET)
-    public String Index(@ModelAttribute("user") User user, Model model)  {
+    public String Index(@ModelAttribute("user") User user, Model model, HttpSession session)  {
         try { // look if there's a session
-            HttpSession session=request.getSession(false);
+//            HttpSession session=request.getSession();
             if(session!=null){ // if there is a session, go to the index page
                 Navbar(model,session);
-                System.out.println("ok");
-                return "account";
+                return "index";
             }
         }
         catch (NullPointerException e) { // if no one is logged in (no session), go to the login page
@@ -172,10 +168,11 @@ public class UserApiController implements UserApi {
     public String LoginInfo(@ModelAttribute("user") User user, Model model,HttpSession session)  {
         String error = "username of password niet juist";
         if ( userService.CheckInlog(user) != null) {
-
             User u = userService.CheckInlog(user);
             session.setAttribute("loggedin_user",u);
-            String redirectUrl = "account";
+            model.addAttribute("loggedin_user",u);
+            Navbar(model,session);
+            String redirectUrl = "index";
             return "redirect:" + redirectUrl;
         }
         else {
@@ -188,7 +185,6 @@ public class UserApiController implements UserApi {
     public String transactionhome(HttpSession session) {
         return "transactionhome";
     }
-
 
     @GetMapping("/employees")
     public String Employees(HttpSession session, Model model) {
@@ -209,14 +205,14 @@ public class UserApiController implements UserApi {
     }
 
     @GetMapping("/newuser")
-    public String newUserForm(Model model) {
+    public String newUserForm(Model model, HttpSession session) {
         Navbar(model,session);
         model.addAttribute("user", new User());
         return "newuser";
     }
 
     @RequestMapping(value = "/newuser", method = RequestMethod.POST)
-    public String newUser(Model model, User user) throws  SendFailedException{
+    public String newUser(Model model, User user, HttpSession session) throws  SendFailedException{
 
         String error = "Er bestaat al een gebruiker met dit emailadres.";
         if (userService.CheckIfEmailExists(user.getEmail()) == true)
@@ -235,9 +231,8 @@ public class UserApiController implements UserApi {
         User currentUser = (User) session.getAttribute("loggedin_user");
         String fullname = currentUser.getName() + " " + currentUser.getLastname();
 
+        System.out.println(currentUser);
         model.addAttribute("session_fullname", fullname);
-        model.addAttribute("session_uid", currentUser.getUserId());
-
-        System.out.println(currentUser.getUserId());
+        model.addAttribute("session_isemployee", currentUser.getIsEmployee());
     }
 }

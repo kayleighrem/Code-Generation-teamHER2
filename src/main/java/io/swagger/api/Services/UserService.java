@@ -22,7 +22,6 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    public void createUser(User user) { userRepository.save(user); }
     public List<User> getUsers() { return (List<User>) userRepository.findAll(); }
     public List<User> getEmployees() { return (List<User>) findEmployees(); }
     public List<User> getClients() { return (List<User>) findClients(); }
@@ -46,10 +45,6 @@ public class UserService {
         newuser.setPassword(passwordEncoder.encode(user.getPassword()));
         newuser.setEmail(user.getEmail());
         newuser.setIsEmployee(false);
-//        if (user.getIsEmployee() == true)
-//            newuser.setIsEmployee(true);
-//        if (user.getIsEmployee() == null | user.getIsEmployee() == false)
-//            newuser.setIsEmployee(false);
         return userRepository.save(newuser);
     }
 
@@ -75,7 +70,6 @@ public class UserService {
         System.out.println("userid2: " + id);
         for ( User u : getUsers()) {
             if (id == u.getUserId()) {
-//            if (u.getUserId().equals(id)){
                 System.out.println("found user1" + u);
                 return u;
             }
@@ -117,13 +111,5 @@ public class UserService {
         ArrayList<User> allusers = (ArrayList<User>) userRepository.findAll();
         User us = allusers.stream().filter(a -> a.getUserId() == (int)userId).collect(Collectors.toList()).get(0);
         userRepository.delete(us);
-    }
-
-    public void updateUser(User user) {
-//        ArrayList<User> allusers = (ArrayList<User>) userRepository.findAll();
-//        User us = allusers.stream().filter(a -> a.getUserId() == (int)userId).collect(Collectors.toList()).get(0);
-//        userRepository.(us);
-
-        System.out.println("update");
     }
 }
