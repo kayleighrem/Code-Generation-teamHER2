@@ -10,11 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.SendFailedException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +21,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
@@ -133,17 +129,14 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-
-
-
-//    Get mapping url's
     @RequestMapping(value="/index" , method=RequestMethod.GET)
     public String Index(@ModelAttribute("user") User user, Model model)  {
         try { // look if there's a session
             HttpSession session=request.getSession(false);
             if(session!=null){ // if there is a session, go to the index page
                 Navbar(model,session);
-                return "index";
+                System.out.println("ok");
+                return "account";
             }
         }
         catch (NullPointerException e) { // if no one is logged in (no session), go to the login page
@@ -161,9 +154,8 @@ public class UserApiController implements UserApi {
     @RequestMapping(value="/register" , method=RequestMethod.POST)
     public String processLoginInfo(@ModelAttribute("user") User user, Model model) throws SendFailedException {
         String error = "Er bestaat al een gebruiker met dit emailadres.";
-        if (userService.CheckIfEmailExists(user.getEmail()) == true) {
+        if (userService.CheckIfEmailExists(user.getEmail()) == true)
             model.addAttribute("errormessage", error);
-        }
         else {
             userService.registerNewUserAccount(user);
             return "login";
@@ -172,17 +164,18 @@ public class UserApiController implements UserApi {
     }
 
     @GetMapping("/login")
-    public String login(HttpSession session) {
+    public String login() {
         return "login";
     }
 
     @RequestMapping(value="/login" , method=RequestMethod.POST)
-    public String LoginInfo(@ModelAttribute("user") User user, Model model)  {
+    public String LoginInfo(@ModelAttribute("user") User user, Model model,HttpSession session)  {
         String error = "username of password niet juist";
         if ( userService.CheckInlog(user) != null) {
+
             User u = userService.CheckInlog(user);
-            SessionInfo(u); // just some terminal line info
-            String redirectUrl = "index";
+            session.setAttribute("loggedin_user",u);
+            String redirectUrl = "account";
             return "redirect:" + redirectUrl;
         }
         else {
@@ -196,12 +189,6 @@ public class UserApiController implements UserApi {
         return "transactionhome";
     }
 
-//    @GetMapping("/updateaccount")
-//    public String UpdateAccount(HttpSession session, Model model) {
-//        Navbar(model);
-//        System.out.println(session.getAttribute("loggedin_user"));
-//        return "updateaccount";
-//    }
 
     @GetMapping("/employees")
     public String Employees(HttpSession session, Model model) {
@@ -221,32 +208,6 @@ public class UserApiController implements UserApi {
         return "redirect:" + redirectUrl;
     }
 
-    @GetMapping("/update_user")
-    public String updateUserForm(@RequestParam(name="userId")String userId, @ModelAttribute("user") User user) {
-        System.out.println(userService.getUserById(Integer.parseInt(userId)));
-        System.out.println("userid: " + userId);
-
-        return "update_user";
-    }
-
-
-    @RequestMapping(value = "update_user", method = RequestMethod.POST)
-    public String changeUserFirstName(RedirectAttributes rm, final Locale locale) {
-        final User user = (User) SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getPrincipal();
-        userService.updateUser(user);
-
-//        rm.addFlashAttribute(
-//                "message",
-//                messages.getMessage("message.updateFirstNameSuc", null, locale)
-//        );
-        return "update_user";
-    }
-
-
-
-
     @GetMapping("/newuser")
     public String newUserForm(Model model) {
         Navbar(model,session);
@@ -258,22 +219,19 @@ public class UserApiController implements UserApi {
     public String newUser(Model model, User user) throws  SendFailedException{
 
         String error = "Er bestaat al een gebruiker met dit emailadres.";
-        if (userService.CheckIfEmailExists(user.getEmail()) == true) {
+        if (userService.CheckIfEmailExists(user.getEmail()) == true)
             model.addAttribute("errormessage", error);
-        }
         else {
             Navbar(model,session);
             userService.registerNewUserAccount(user);
             String redirectUrl = "employees";
             return "redirect:" + redirectUrl;
         }
-
         Navbar(model,session);
         return "newuser";
     }
 
     public void Navbar(Model model,HttpSession session) {
-//        HttpSession session=request.getSession(true);
         User currentUser = (User) session.getAttribute("loggedin_user");
         String fullname = currentUser.getName() + " " + currentUser.getLastname();
 
@@ -281,19 +239,5 @@ public class UserApiController implements UserApi {
         model.addAttribute("session_uid", currentUser.getUserId());
 
         System.out.println(currentUser.getUserId());
-    }
-
-    public void SessionInfo(User user) {
-        HttpSession session = request.getSession();
-        session.setAttribute("loggedin_user", user);
-        User currentUser = (User) session.getAttribute("loggedin_user");
-
-        System.out.println("session id: " + session.getId());
-        System.out.println("Session creation time: " + new Date(session.getCreationTime()));
-        System.out.println("Session user: " + currentUser.getName());
-        System.out.println("Session id user: " + currentUser.getUserId());
-        System.out.println("Session firstname user: " + currentUser.getName());
-        System.out.println("Session lastname user: " + currentUser.getLastname());
-        System.out.println("Session email user: " + currentUser.getEmail());
     }
 }

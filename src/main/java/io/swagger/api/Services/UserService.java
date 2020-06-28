@@ -45,10 +45,11 @@ public class UserService {
         newuser.setLastname(user.getLastname());
         newuser.setPassword(passwordEncoder.encode(user.getPassword()));
         newuser.setEmail(user.getEmail());
-        if (user.getIsEmployee() == true)
-            newuser.setIsEmployee(true);
-        if (user.getIsEmployee() == null | user.getIsEmployee() == false)
-            newuser.setIsEmployee(false);
+        newuser.setIsEmployee(false);
+//        if (user.getIsEmployee() == true)
+//            newuser.setIsEmployee(true);
+//        if (user.getIsEmployee() == null | user.getIsEmployee() == false)
+//            newuser.setIsEmployee(false);
         return userRepository.save(newuser);
     }
 
