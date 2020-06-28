@@ -14,8 +14,7 @@
 
 <div class="container-fluid">
     <form action="#" th:action="@{/accountcreation}" th:object="${account}" method="POST">
-            <br /><p th:text="${errormessage}"></p>
-        <br /><p th:text="${completeMessage}"></p>
+
         <br /><h1>Chose your type of account.</h1>
 
         <br />
@@ -23,10 +22,8 @@
             <option value="basic">basic</option>
             <option value="saving">saving</option>
         </select>
-
-
-
-        <br />
+        <p th:text="${errormessage}"></p>
+        <p th:text="${completeMessage}"></p>
         <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit" ></button> <a href="account">Go back to account </a>
     </form>
 </div>

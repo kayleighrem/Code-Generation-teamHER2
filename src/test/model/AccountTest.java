@@ -11,7 +11,41 @@ public class AccountTest {
         Account account = new Account(69,600.2,"saving","NL00INHO001122334455");
         Assert.assertNotNull(account);
     }
+    @Test
+    public void invalidIdToReturnFalse() {
+        Account account = new Account(69,600.2,"saving","NL00INHO001122334455");
+        boolean check;
+        public boolean integerTest(Object any)
+        {
+            return any instanceof Integer;
 
+        }
+        if(integerTest(account.getId()) = true) {// true
+            check = true;
+        }else{
+            check = false;
+        }
+
+        Assert.assertTrue(check);
+
+    }
+
+@Test
+public void invalidEnumToReturnFalse() {
+
+    Account account = new Account(69,600.2,"saving","NL00INHO001122334455");
+
+    boolean check;
+    String enumCheck = getTypeAccount();
+    if(enumCheck.equals("saving")) || enumCheck.equals("basic"))) {// true
+        check = true;
+    }else{
+        check = false;
+    }
+
+    Assert.assertTrue(check);
+
+}
     @Test
     public void invalidIBANReturnFalse() {
         Account account = new Account(69,600.2,"saving","NL00INHO001122334455");
@@ -33,9 +67,5 @@ public class AccountTest {
         Assert.assertTrue(checkMoney);
     }
 
-    @Test
-    public void invalidPerformingUserIDToReturnFalse() {
-        Account account = new Account(69,600.2,"saving","NL00INHO001122334455");
-        Assert.assertTrue(transaction.getUserPerforming() > 0);
-    }
+
 }
