@@ -21,22 +21,17 @@ public class AccountService {
         return (List<Account>) accountRepository.findAll();
     }
 
-    //makes a iban string
+    //makes a iban string with a random 10 long number
     public static String generatedIban(){
          int maxRangeIban =999999999;
-        int minRangeIban =10000000;
-        Random random = new Random();
-        int test = random.nextInt((maxRangeIban - minRangeIban)+1)+ minRangeIban;
-        String iban= "Nl20TEST"+test;
+        int minRangeIban =100000000;
+        Random lastTen = new Random();
+        Random firstTwo = new Random();
+        int lTen = lastTen.nextInt((maxRangeIban - minRangeIban)+1)+ minRangeIban;
+        int fTWo = lastTen.nextInt((99 - 0)+1)+ 0;
+        String iban= "NL"+fTWo+"INHO0"+lTen;
         return iban;
     }
-
-//    public void  GetAllEnums(){
-//        System.out.println("hoi");
-////        List<Account.TypeAccountEnum> TypeList =new ArrayList<>(EnumSet.allOf(Account.TypeAccountEnum.class));
-////        System.out.println(TypeList);
-////        return TypeList;
-//    }
 
     public String newAccount(Account account, Integer user,String type)
     {
@@ -53,28 +48,9 @@ public class AccountService {
         return "Saved";
     }
 
-
-
-//   basicly not needed anymore
-//    public String newAccountbasic(Account account, Integer user)
-//    {
-//        account.setId(user);
-//        System.out.println("--------------");
-//        System.out.println(user);
-//        System.out.println("--------------");
-//        String iban = generatedIban(maxRangeIban);
-//        account.setIBAN(iban);
-//        account.setTypeAccount(Account.TypeAccountEnum.BASIC);
-//        account.setAcountAmount(100);
-//        accountRepository.save(account);
-//        return "Saved";
-//    }
-
     public boolean CheckIfAccountExists(String string) {
         return false;
     }
-
-
 
     public List<Account> getUserAccountByType(String basic, Integer uid)
     {
@@ -87,9 +63,9 @@ public class AccountService {
                 accounts.add(account);
             }
         }
-//        System.out.println("---------testing------------"+accounts);
         return accounts;
     }
+
     public Account getUserAccountByIBAN(String Iban)
     {
         for(Account account : getAccount())
@@ -101,15 +77,15 @@ public class AccountService {
         }
         return null;
     }
-    public void deleteIban(String IbanID) {
 
+    public String deleteIban(String IbanID, String amount) {
         Account ac = getUserAccountByIBAN(IbanID);
-        System.out.println(ac+"------");
-
-            accountRepository.delete(ac);
-
+       if(amount.equals("0.0")) {
+           accountRepository.delete(ac);
+           return "IBAN has been deleted";
+       }
+            return  "you still got money on this iban";
     }
-
 
     public java.util.List<Account> getUserAccounts(Integer id)
     {
@@ -118,14 +94,9 @@ public class AccountService {
         {
             if(account.getId().equals(id))
             {
-
                 userAccounts.add(account);
-
             }
-
         }
-//        System.out.println(userAccounts);
         return userAccounts;
     }
-
 }
