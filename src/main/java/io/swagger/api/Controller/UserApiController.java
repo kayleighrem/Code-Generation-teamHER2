@@ -37,6 +37,8 @@ public class UserApiController implements UserApi {
 
     private final HttpServletRequest request;
 
+    private HttpSession session;
+
     @Autowired
     private UserService userService;
 
@@ -140,7 +142,7 @@ public class UserApiController implements UserApi {
         try { // look if there's a session
             HttpSession session=request.getSession(false);
             if(session!=null){ // if there is a session, go to the index page
-                Navbar(model);
+                Navbar(model,session);
                 return "index";
             }
         }
@@ -203,7 +205,7 @@ public class UserApiController implements UserApi {
 
     @GetMapping("/employees")
     public String Employees(HttpSession session, Model model) {
-        Navbar(model);
+        Navbar(model,session);
         model.addAttribute("allclients", userService.getClients());
         model.addAttribute("allemployees", userService.getEmployees());
         
@@ -247,7 +249,7 @@ public class UserApiController implements UserApi {
 
     @GetMapping("/newuser")
     public String newUserForm(Model model) {
-        Navbar(model);
+        Navbar(model,session);
         model.addAttribute("user", new User());
         return "newuser";
     }
@@ -260,18 +262,18 @@ public class UserApiController implements UserApi {
             model.addAttribute("errormessage", error);
         }
         else {
-            Navbar(model);
+            Navbar(model,session);
             userService.registerNewUserAccount(user);
             String redirectUrl = "employees";
             return "redirect:" + redirectUrl;
         }
 
-        Navbar(model);
+        Navbar(model,session);
         return "newuser";
     }
 
-    public void Navbar(Model model) {
-        HttpSession session=request.getSession(false);
+    public void Navbar(Model model,HttpSession session) {
+//        HttpSession session=request.getSession(true);
         User currentUser = (User) session.getAttribute("loggedin_user");
         String fullname = currentUser.getName() + " " + currentUser.getLastname();
 
