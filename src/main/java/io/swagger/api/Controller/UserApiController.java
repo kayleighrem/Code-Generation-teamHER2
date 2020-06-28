@@ -135,7 +135,8 @@ public class UserApiController implements UserApi {
             HttpSession session=request.getSession(false);
             if(session!=null){ // if there is a session, go to the index page
                 Navbar(model,session);
-                return "index";
+                System.out.println("ok");
+                return "account";
             }
         }
         catch (NullPointerException e) { // if no one is logged in (no session), go to the login page
@@ -163,16 +164,18 @@ public class UserApiController implements UserApi {
     }
 
     @GetMapping("/login")
-    public String login(HttpSession session) {
+    public String login() {
         return "login";
     }
 
     @RequestMapping(value="/login" , method=RequestMethod.POST)
-    public String LoginInfo(@ModelAttribute("user") User user, Model model)  {
+    public String LoginInfo(@ModelAttribute("user") User user, Model model,HttpSession session)  {
         String error = "username of password niet juist";
         if ( userService.CheckInlog(user) != null) {
+
             User u = userService.CheckInlog(user);
-            String redirectUrl = "index";
+            session.setAttribute("loggedin_user",u);
+            String redirectUrl = "account";
             return "redirect:" + redirectUrl;
         }
         else {

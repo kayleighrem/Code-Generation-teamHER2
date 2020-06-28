@@ -100,12 +100,10 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         return "account";
     }
     @RequestMapping( value = "/remove_iban", method = RequestMethod.GET)
-    public String handleRemoveIban(Model model,@RequestParam (name="IBAN")String iban, @RequestParam(name="acountAmount") String amount ) {
-        System.out.println(iban+"*************");
-        System.out.println(amount+"*************");
+    public String handleRemoveIban(Model model,@RequestParam(name="IBAN")String iban ) {
+        System.out.println(iban);
         String error="something went wrong";
-//        int am = Integer.parseInt(amount);
-        serviceAccount.deleteIban(iban, amount);
+        serviceAccount.deleteIban(iban);
 
         model.addAttribute("errormessage", error);
         String redirectUrl = "account";

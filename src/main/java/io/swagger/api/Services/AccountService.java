@@ -101,22 +101,14 @@ public class AccountService {
         }
         return null;
     }
-    public void deleteIban(String IbanID, String amount) {
-        System.out.println(amount+"------");
+    public void deleteIban(String IbanID) {
+
         Account ac = getUserAccountByIBAN(IbanID);
         System.out.println(ac+"------");
-       if(amount.equals("0.0")){
-           accountRepository.delete(ac);
-           System.out.println("int werkt");
-       }else{
-           System.out.println("werkt niet");
 
-       }
-        System.out.println(amount);
-//    if(amount!= 0.00) {
+            accountRepository.delete(ac);
 
     }
-//    }
 
 
     public java.util.List<Account> getUserAccounts(Integer id)
