@@ -7,6 +7,7 @@ import io.swagger.model.User;
 import nl.garvelink.iban.Modulo97;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -126,7 +127,7 @@ public class TransactionService
 
     //If the transactionchecks are cleared, the amount of money will be moved from accounts and the transaction will
     //be saved to the database.
-    private void performTransaction(Account accountFrom, Account accountTo,Transaction transaction)
+    private ResponseEntity performTransaction(Account accountFrom, Account accountTo,Transaction transaction)
     {
         Date date = new Date();
         transaction.setTransactionDate(date);
@@ -136,5 +137,28 @@ public class TransactionService
         accountFrom.setAcountAmount(accountFrom.getAcountAmount() - transactionAmount);
         transaction.setStatus(Transaction.StatusEnum.COMPLETE);
         transRepo.save(transaction);
+        return TransactionResponseEntity(transaction);
+    }
+
+    public ResponseEntity getAllTransactionsResponseEntity() {
+        List<Transaction> transactions = getTransactions();
+        return ResponseEntity
+                .status(200)
+                .body(transactions);
+    }
+
+    public ResponseEntity getTransactionByIdResponseEntity(Integer id) {
+        List<Transaction> transactions = getTransactionsById(id);
+        return ResponseEntity
+                .status(200)
+                .body(transactions);
+    }
+
+    public ResponseEntity TransactionResponseEntity(Transaction body){
+      return ResponseEntity
+              .status(200)
+              .body(body);
     }
 }
+
+

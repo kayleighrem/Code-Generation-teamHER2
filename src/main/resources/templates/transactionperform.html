@@ -9,9 +9,7 @@
     <title>Perform</title>
 </head>
 <body>
-<div class="container-fluid">
-    <h1>REST Banking</h1>
-</div>
+<div th:replace="/includes/navbar :: navbar"> </div>
 <hr class="header-line"/>
 
 
@@ -19,7 +17,7 @@
 <div class="container-fluid">
     <h3>Perform a transaction</h3>
     <p class="blockquote">In order to perform a transaction, we'll need some information</p>
-    <form action="#" th:action="@{/transaction}" th:object="${transaction}" method="post">
+    <form action="#" th:action="@{/Transactions/pay}" th:object="${transaction}" method="post">
         <div class="form-group blu-margin">
             <p class="text-left">* Your Account</p>
             <select class="form-control" th:field="*{from}">
