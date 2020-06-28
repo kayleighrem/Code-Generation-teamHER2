@@ -14,7 +14,7 @@
 <div class="container-fluid">
     <form action="#" th:action="@{/account}" th:object="${account}" method="GET">
 
-        <br /><p th:text="${errormessage}"></p>
+
 <!--        <br /><a th:text="${listAccounts}"></a>-->
 <!--        <tr th:each="list: ${listAccounts}">-->
 <!--            <br/>-->
@@ -41,7 +41,9 @@
                     <td>
                         <a th:href="@{remove_iban(IBAN=${list.IBAN}, acountAmount=${list.acountAmount})}">Delete</a>
                     </td>
-
+                    <td>
+                        <a th:text="${message}"></a>
+                    </td>
                 </tr>
             </th:block>
             </tbody>
@@ -50,7 +52,6 @@
 
    <br/>
         <a href="accountcreation">+ create account</a>
-
 
 
     </form>

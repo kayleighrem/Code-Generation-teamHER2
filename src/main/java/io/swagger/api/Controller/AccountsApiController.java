@@ -53,8 +53,8 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         return new ResponseEntity<Account>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> accountPost(@ApiParam(value = "userID",required=true) @PathVariable("userID") String userID
-            ,@NotNull @ApiParam(value = "Type of the new account", required = true) @Valid @RequestParam(value = "typeAcount", required = true) Account typeAcount
+    public ResponseEntity<Void> accountPost(@ApiParam(value = "userID", required = true) @PathVariable("userID") String userID
+            , @NotNull @ApiParam(value = "Type of the new account", required = true) @Valid @RequestParam(value = "typeAcount", required = true) Account typeAcount
     ) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
@@ -71,15 +71,15 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     }
 
 
-    @RequestMapping(value= "add", method = RequestMethod.POST)
-    public String processAddCheeseForm(Model model){
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String processAddCheeseForm(Model model) {
         model.addAttribute("accountType", io.swagger.model.accountType.values());
         return "account/add";
     }
 
 
     @GetMapping("/accountcreation")
-    public String acountCreation(Model model,HttpSession session) {
+    public String acountCreation(Model model, HttpSession session) {
 
 
         model.addAttribute("accountcreation", new Account());
@@ -87,101 +87,53 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
     }
 
     @GetMapping("/account")
-    public String newAccount(@ModelAttribute Account account, Model model,HttpSession session) {
-        if(account==null)
-        {
+    public String newAccount(@ModelAttribute Account account, Model model, HttpSession session) {
+        if (account == null) {
             return "null";
         }
-        User user= (User) session.getAttribute("loggedin_user");
-//        uPi.Navbar(model);
+
+        User user = (User) session.getAttribute("loggedin_user");
         Integer uId = user.getUserId();
         java.util.List<Account> accountByUser = serviceAccount.getUserAccounts(uId);
+
         model.addAttribute("listAccounts", accountByUser);
+
         return "account";
     }
-    @RequestMapping( value = "/remove_iban", method = RequestMethod.GET)
-    public String handleRemoveIban(Model model,@RequestParam (name="IBAN")String iban, @RequestParam(name="acountAmount") String amount ) {
-        System.out.println(iban+"*************");
-        System.out.println(amount+"*************");
-        String error="something went wrong";
-//        int am = Integer.parseInt(amount);
-        serviceAccount.deleteIban(iban, amount);
 
-        model.addAttribute("errormessage", error);
+    @RequestMapping(value = "/remove_iban", method = RequestMethod.GET)
+    public String handleRemoveIban(Model model, @RequestParam(name = "IBAN") String iban, @RequestParam(name = "acountAmount") String amount) {
+        String error = serviceAccount.deleteIban(iban, amount);
+        System.out.println(error);
+        model.addAttribute("message", error);
+
         String redirectUrl = "account";
         return "redirect:" + redirectUrl;
     }
 
     @PostMapping("/accountcreation")
-    public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session) {
-        if(account==null)
-        {
+    public String newAccountCreation(@ModelAttribute Account account, Model model, HttpSession session) {
+        if (account == null) {
             return "null";
         }
-        User user= (User) session.getAttribute("loggedin_user");
+        User user = (User) session.getAttribute("loggedin_user");
         Integer uId = user.getUserId();
         String message = "account created!!";
         String error = "no account type selected";
         String[] getValues = request.getParameterValues("selectionAccountType");
         if (getValues != null) {
-            for(String valueString: getValues){
-//                String keyValue[]= valueString.split(":");
-                System.out.println("-------Key: " + valueString);
-                serviceAccount.newAccount(account,uId,valueString);
-//                System.out.println("--------Value: " + keyValue[1]);
-
+            for (String valueString : getValues) {
+                serviceAccount.newAccount(account, uId, valueString);
                 model.addAttribute("completeMessage", message);
             }
-        }else  {
+        } else {
             model.addAttribute("errormessage", error);
             return "accountcreation";
         }
         String valuewords = getValues.toString();
-        System.out.println("-----------------"+getValues);
-//        String redirectUrl = "account";
-//        return "redirect:" + redirectUrl;
-
+        System.out.println("-----------------" + getValues);
 
 
         return "accountcreation";
     }
-
-
-    //    @GetMapping("/accountCreation")
-//    public String acountForm(Account account, Model model,HttpSession session) {
-////        Account account = new Account();
-////        account.typeAccount(Account.TypeAccountEnum.BASIC);
-////        System.out.println(account);
-//        User user= (User) session.getAttribute("loggedin_user");
-//        Integer uId = user.getUserId();
-//        System.out.println(uId);
-//        serviceAccount.newAccount(account,uId);
-////     model.addAttribute("account", account);
-////        serviceAccount.newAccount(account);
-//        return "account";
-//    }
-
-//    hier onder word de uid gebruikt die user doorgeeft
-//    @PostMapping("/accountcreation")
-//    public String newAccountCreation(@ModelAttribute Account account, Model model,HttpSession session, User user) {
-//        if(account==null)
-//        {
-//            return "null";
-//        }
-//        user= (User) session.getAttribute("loggedin_user");
-//        Integer uId = user.getUserId();
-//        System.out.println(uId);
-//        serviceAccount.newAccount(account,uId);
-////        String redirectUrl = "account";
-////        return "redirect:" + redirectUrl;
-//        return "accountcreation";
-//    }
-
-//    @PostMapping("/account")
-//    public String goToaccount(Model model) {
-//
-//
-//        model.addAttribute("accountcreation", new Account());
-//        return "accountcreation";
-//    }
 }

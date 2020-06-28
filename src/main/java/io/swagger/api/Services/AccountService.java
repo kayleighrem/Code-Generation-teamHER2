@@ -24,10 +24,10 @@ public class AccountService {
     //makes a iban string
     public static String generatedIban(){
          int maxRangeIban =999999999;
-        int minRangeIban =10000000;
+        int minRangeIban =100000000;
         Random random = new Random();
         int test = random.nextInt((maxRangeIban - minRangeIban)+1)+ minRangeIban;
-        String iban= "Nl20TEST"+test;
+        String iban= "NL00INHO0"+test;
         return iban;
     }
 
@@ -101,18 +101,18 @@ public class AccountService {
         }
         return null;
     }
-    public void deleteIban(String IbanID, String amount) {
+    public String deleteIban(String IbanID, String amount) {
         System.out.println(amount+"------");
         Account ac = getUserAccountByIBAN(IbanID);
-        System.out.println(ac+"------");
-       if(amount.equals("0.0")){
+       System.out.println(ac+"------");
+       if(amount.equals("0.0")) {
            accountRepository.delete(ac);
            System.out.println("int werkt");
-       }else{
-           System.out.println("werkt niet");
-
+           return "gelukt";
        }
-        System.out.println(amount);
+
+            return  "you still got money on this iban";
+
 //    if(amount!= 0.00) {
 
     }
