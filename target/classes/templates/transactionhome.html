@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>Home</title>
+</head>
+<body>
+<div th:replace="/includes/navbar :: navbar"> </div>
+<hr class="header-line"/>
+<div class="container-fluid">
+    <h3>Transaction Options</h3>
+    <p class="blockquote">Please choose an option</p>
+</div>
+<div class="container-fluid">
+        <a href="deposit" class="btn btn-primary">Deposit</a>
+        <a href="withdraw" class="btn btn-primary">Withdraw</a>
+        <a href="log" class="btn btn-primary">Log</a>
+        <a href="transaction"  class="btn btn-primary">Transaction</a>
+</div>
+</body>
+<footer class="card-footer">
+    <div class=".container">
+        <div class="lead">
+            <p th:text="${username}"></p>
+        </div>
+    </div>
+</footer>
+</html>

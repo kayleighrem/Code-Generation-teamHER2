@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/account.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>Account  overview</title>
+</head>
+<body>
+<div th:replace="/includes/navbar :: navbar"> </div>
+<div class="container-fluid">
+    <form action="#" th:action="@{/account}" th:object="${account}" method="GET">
+
+
+<!--        <br /><a th:text="${listAccounts}"></a>-->
+<!--        <tr th:each="list: ${listAccounts}">-->
+<!--            <br/>-->
+<!--            <td th:text="${list.IBAN}" />-->
+<!--            <td th:text="${list.typeAccount}" />-->
+<!--            <td th:text="${list.acountAmount}" />-->
+<!--        </tr>-->
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">IBAN</th>
+                <th scope="col">Type of Account</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="list : ${listAccounts}">
+                <tr>
+                    <td th:text="${list.IBAN}"></td>
+                    <td th:text="${list.typeAccount}"></td>
+                    <td th:text="${list.acountAmount}"></td>
+                    <td>
+                        <a th:href="@{remove_iban(IBAN=${list.IBAN}, acountAmount=${list.acountAmount})}">Delete</a>
+                    </td>
+                    <td>
+                        <a th:text="${message}"></a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+
+
+   <br/>
+        <a href="accountcreation">+ create account</a>
+
+
+    </form>
+</div>
+</body>
+</html>

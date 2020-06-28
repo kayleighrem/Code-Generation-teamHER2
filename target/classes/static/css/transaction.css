@@ -1,0 +1,67 @@
+.content-button a
+{
+    background-color:red;
+    color:white;
+    text-decoration:none;
+    max-width:500px;
+    font-family:arial;
+    display:block;
+    margin:20px auto;
+    text-align:center;
+}
+
+.logo
+{
+    font-size:40px;
+    margin:10px 10px;
+}
+
+.link-container
+{
+    margin:10px 10px;
+
+}
+
+.link-container a
+{
+    margin:10px 20px;
+}
+
+.user-container
+{
+    margin:10px 30px;
+}
+
+.container-content
+{
+    background-color:grey;
+    margin:10px 30px;
+    border-radius:20px;
+    max-width:150vw;
+    padding:10px 10px;
+}
+
+.container-content input[type=text],input[type=number]
+{
+    border: none;
+    border-bottom: 2px solid red;
+    background-color:grey;
+    margin:0 auto;
+    width:50%;
+}
+
+.container-content input[type=submit],input[type=reset]
+{
+    border-radius:5px;
+    border:none;
+
+    text-align:center;
+    top:45%;
+    left:45%;
+    position:relative;
+    margin:0px 20px;
+
+}
+
+
+

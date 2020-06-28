@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <!--    <link href="../static/css/transaction.css" th:href="@{/css/transaction.css}" rel="stylesheet"/>-->
+
+    <title>Withdrawal</title>
+</head>
+<body>
+<div th:replace="/includes/navbar :: navbar"> </div>
+<hr class="header-line"/>
+
+
+
+<div class="container-fluid">
+    <h3>Transaction Log</h3>
+    <p class="blockquote">Review your transaction history</p>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Recipient</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+            <tbody>
+                <th:block th:each="transaction : ${listall}">
+                    <tr>
+                        <th scope ="row" th:text="${transaction.id}"></th>
+                        <td th:text="${transaction.to}"></td>
+                        <td th:text="${transaction.money}"></td>
+                        <td th:text="${transaction.transactionDate}"></td>
+                        <td th:text="${transaction.description}"></td>
+                    </tr>
+                </th:block>
+                </tbody>
+        </table>
+</div>
+</body>
+</html>

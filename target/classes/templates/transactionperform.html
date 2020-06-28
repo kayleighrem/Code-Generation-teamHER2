@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<!--    <link href="../static/css/transaction.css" th:href="@{/css/transaction.css}" rel="stylesheet"/>-->
+
+    <title>Perform</title>
+</head>
+<body>
+<div th:replace="/includes/navbar :: navbar"> </div>
+<hr class="header-line"/>
+
+
+
+<div class="container-fluid">
+    <h3>Perform a transaction</h3>
+    <p class="blockquote">In order to perform a transaction, we'll need some information</p>
+    <form action="#" th:action="@{/Transactions/pay}" th:object="${transaction}" method="post">
+        <div class="form-group blu-margin">
+            <p class="text-left">* Your Account</p>
+            <select class="form-control" th:field="*{from}">
+                <option th:each="account : ${accounts}" th:value="${account.IBAN}" th:text="'IBAN:   '+${account.IBAN} + '   Amount:  '+${account.acountAmount} + '   Type:   '+${account.typeAccount}"></option>
+            </select>
+        <p class="text-left">* Recipient's IBAN: <input class="form-control" required="true" type="text" th:field="*{to}" /></p>
+        <p class="text-left">* Amount: <input class="form-control" required="true" type="number" th:field="*{money}"/></p>
+            <p class="text-left">* Description: <input class="form-control"  required="true" type="text" th:field="*{description}" /></p>
+        <input class="btn btn-primary" type="submit" value="Submit" /> <input class="btn btn-primary" type="reset" value="Reset"/>
+        </div>
+    </form>
+</div>
+<div class="container-fluid">
+    <div id="error" th:if="${(param.error != null)}">
+        <p style="color:red" th:text="${#httpServletRequest.getParameter('error')}"/>
+    </div>
+</div>
+</body>
+<footer class="card-footer">
+    <div class=".container">
+        <div class="lead">
+            <p th:text="${username}"></p>
+        </div>
+    </div>
+</footer>
+</html>
