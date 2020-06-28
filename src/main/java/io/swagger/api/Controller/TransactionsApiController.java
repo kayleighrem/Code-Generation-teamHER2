@@ -1,6 +1,7 @@
 package io.swagger.api.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wordnik.swagger.annotations.ApiParam;
 import io.swagger.api.Api.TransactionsApi;
 import io.swagger.api.Repositories.TransactionRepository;
 import io.swagger.api.Services.AccountService;
@@ -19,8 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.text.ParseException;
-import java.util.List;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-05-20T13:24:55.413Z[GMT]")
 @Controller
@@ -34,6 +36,9 @@ public class TransactionsApiController implements TransactionsApi {
 
     private TransactionRepository transrepo;
 
+    @Autowired
+    private UserApiController userApiController;
+
     private static final Logger log = LoggerFactory.getLogger(TransactionsApiController.class);
 
     private final ObjectMapper objectMapper;
@@ -42,7 +47,38 @@ public class TransactionsApiController implements TransactionsApi {
 
     private HttpSession session;
 
-    @org.springframework.beans.factory.annotation.Autowired
+
+    public ResponseEntity getTransactionById(@ApiParam(value = "Transaction ID",required=true) @PathVariable("id") Integer id) {
+        return transService.getTransactionByIdResponseEntity(id);
+    }
+    public ResponseEntity getTransactions(@Min(1)@ApiParam(value = "The user's id", allowableValues = "") @Valid @RequestParam(value = "userid", required = false) Integer userid
+            , @Min(1)@ApiParam(value = "The id of a specific transaction", allowableValues = "") @Valid @RequestParam(value = "transactionid", required = false) Integer transactionid)
+    {
+        return transService.getAllTransactionsResponseEntity();
+    }
+
+    public void newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid  Transaction body
+            , @NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = false) Integer id
+            , @RequestBody Transaction transaction)
+    {
+
+    }
+
+    public void postDeposit(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
+            , @ApiParam(value = "The amount to deposit" ,required=true) @RequestHeader(value="amount", required=true) Double amount
+            , @RequestBody Transaction transaction)
+    {
+
+    }
+
+    public void postWithdraw(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
+            ,@ApiParam(value = "The amount to withdraw" ,required=true) @RequestHeader(value="amount", required=true) Double amount
+            , @RequestBody Transaction transaction)
+    {
+
+    }
+
+    @Autowired
     public TransactionsApiController(ObjectMapper objectMapper, HttpServletRequest request,TransactionService transService) {
         this.objectMapper = objectMapper;
         this.request = request;
@@ -51,6 +87,7 @@ public class TransactionsApiController implements TransactionsApi {
 
     @RequestMapping(path = "/transaction", method = RequestMethod.GET)
     public String getTransaction(Model model,HttpSession session) {
+        userApiController.Navbar(model);
         User user = (User) session.getAttribute("loggedin_user");
         model.addAttribute("accounts",accountService.getUserAccountByType("BASIC",user.getUserId()));
         model.addAttribute("transaction", new Transaction());
@@ -65,6 +102,7 @@ public class TransactionsApiController implements TransactionsApi {
 
     @GetMapping("/deposit")
     public String Deposit(Model model,HttpSession session) {
+        userApiController.Navbar(model);
         User user = (User) session.getAttribute("loggedin_user");
         model.addAttribute("account",new Account());;
         model.addAttribute("accountsFrom",accountService.getUserAccountByType("BASIC",user.getUserId()));
@@ -81,6 +119,7 @@ public class TransactionsApiController implements TransactionsApi {
 
     @GetMapping("/withdraw")
     public String Log(Model model,HttpSession session) {
+        userApiController.Navbar(model);
         User user = (User) session.getAttribute("loggedin_user");
         model.addAttribute("accountsFrom",accountService.getUserAccountByType("SAVING",user.getUserId()));
         model.addAttribute("accountsTo",accountService.getUserAccountByType("BASIC",user.getUserId()));
@@ -97,6 +136,7 @@ public class TransactionsApiController implements TransactionsApi {
 
     @GetMapping("/log")
     public String Withdraw(Model model,HttpSession session) {
+        userApiController.Navbar(model);
         User user = (User) session.getAttribute("loggedin_user");
         model.addAttribute("listall", transService.getTransactionsById(user.getUserId()));
         return "transactionlog";
@@ -104,28 +144,9 @@ public class TransactionsApiController implements TransactionsApi {
 
     @GetMapping("/transhome")
     public String Home(HttpSession session,Model model) {
+        userApiController.Navbar(model);
         User user= (User) session.getAttribute("loggedin_user");
         model.addAttribute("username",user.getName());
         return "transactionhome";
-    }
-
-    @Override
-    public ResponseEntity<List<Transaction>> getAllTransactions() {
-        return null;
-    }
-
-    @Override
-    public String newTransaction(Transaction body, Integer id, Transaction transaction) {
-        return null;
-    }
-
-    @Override
-    public void postDeposit(Integer userid, Double amount, Transaction transaction) {
-
-    }
-
-    @Override
-    public void postWithdraw(Integer userid, Double amount, Transaction transaction) {
-
     }
 }

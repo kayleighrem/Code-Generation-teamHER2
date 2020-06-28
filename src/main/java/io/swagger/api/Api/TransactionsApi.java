@@ -20,55 +20,71 @@ import java.util.List;
 public interface TransactionsApi {
 
     @ApiOperation(value = "Retrieve list of all transactions with optional parameters", nickname = "getTransactions", notes = "", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Retrieve Transaction data"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 405, message = "Bad Input") })
-    @RequestMapping(value = "/transactionlist",
-        method = RequestMethod.GET)
-    ResponseEntity<List<Transaction>> getAllTransactions();
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Retrieve Transaction data"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 405, message = "Bad Input") })
+    @RequestMapping(value = "/transactions",
+            method = RequestMethod.GET)
+    ResponseEntity<List<Transaction>> getTransactions(@Min(1)@ApiParam(value = "The user's id", allowableValues = "") @Valid @RequestParam(value = "userid", required = false) Integer userid
+            ,@Min(1)@ApiParam(value = "The id of a specific transaction", allowableValues = "") @Valid @RequestParam(value = "transactionid", required = false) Integer transactionid
+    );
 
 
     @ApiOperation(value = "Performs a new transaction", nickname = "newTransaction", notes = "", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Transaction success"),
-        @ApiResponse(code = 405, message = "Bad Input") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Transaction success"),
+            @ApiResponse(code = 405, message = "Bad Input") })
     @RequestMapping(value = "/transactions",
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
-    String newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid @RequestBody Transaction body
-,@NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = true) Integer id
+            consumes = { "application/json" },
+            method = RequestMethod.POST)
+    void newTransaction(@ApiParam(value = "Transaction object" ,required=true )  @Valid @RequestBody Transaction body
+            ,@NotNull @Min(1)@ApiParam(value = "ID of user performing request", required = true, allowableValues = "") @Valid @RequestParam(value = "id", required = true) Integer id
             , @RequestBody Transaction transaction);
 
 
     @ApiOperation(value = "Deposit an amount to the user's account", nickname = "postDeposit", notes = "", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Deposit success"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 404, message = "User ID not found"),
-        @ApiResponse(code = 405, message = "Bad Input") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Deposit success"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "User ID not found"),
+            @ApiResponse(code = 405, message = "Bad Input") })
     @RequestMapping(value = "/transactions/deposit",
-        method = RequestMethod.POST)
+            method = RequestMethod.POST)
     void postDeposit(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
-            ,@ApiParam(value = "The amount to withdraw" ,required=true) @RequestHeader(value="amount", required=true) Double amount
+            ,@ApiParam(value = "The amount to deposit" ,required=true) @RequestHeader(value="amount", required=true) Double amount
             , @RequestBody Transaction transaction);
-
 
 
     @ApiOperation(value = "Withdraw an amount to the user's account", nickname = "postWithdraw", notes = "", authorizations = {
-        @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Withdraw success"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 404, message = "User ID not found"),
-        @ApiResponse(code = 405, message = "Bad Input") })
+            @Authorization(value = "ApiKeyAuth")    }, tags={ "Transactions", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Withdraw success"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "User ID not found"),
+            @ApiResponse(code = 405, message = "Bad Input") })
     @RequestMapping(value = "/transactions/withdraw",
-        method = RequestMethod.POST)
+            method = RequestMethod.POST)
+
     void postWithdraw(@ApiParam(value = "The user's id" ,required=true, allowableValues="") @RequestHeader(value="userid", required=true) Integer userid
-,@ApiParam(value = "The amount to withdraw" ,required=true) @RequestHeader(value="amount", required=true) Double amount
+            ,@ApiParam(value = "The amount to withdraw" ,required=true) @RequestHeader(value="amount", required=true) Double amount
             , @RequestBody Transaction transaction);
+
+    @ApiOperation(value = "Get Transaction details", nickname = "getTransactionById", notes = "Gets particular transaction", response = Transaction.class, responseContainer = "List", tags={ "Transactions", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Withdraw success"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "User ID not found"),
+            @ApiResponse(code = 405, message = "Bad Input") })
+    @RequestMapping(value = "/transactions/{id}",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<Transaction> getTransactionById(@PathVariable("id") Integer id
+    );
+
+
 
 }
