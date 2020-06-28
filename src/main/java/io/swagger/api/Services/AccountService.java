@@ -59,7 +59,7 @@ public class AccountService {
 
         for(Account account : getUserAccounts(uid))
         {
-            if(account.getTypeAccount().equals(Account.TypeAccountEnum.valueOf(basic)))
+            if(account.getTypeAccount().equals(Account.TypeAccountEnum.fromValue(basic)))
             {
                 accounts.add(account);
             }

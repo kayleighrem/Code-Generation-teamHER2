@@ -93,7 +93,7 @@ public class TransactionsApiController implements TransactionsApi {
     public String getTransaction(Model model,HttpSession session) {
         userApiController.Navbar(model,session);
         User user = (User) session.getAttribute("loggedin_user");
-        model.addAttribute("accounts",accountService.getUserAccountByType("BASIC",user.getUserId()));
+        model.addAttribute("accounts",accountService.getUserAccountByType("basic",user.getUserId()));
         model.addAttribute("transaction", new Transaction());
         return "transactionperform";
     }
@@ -112,8 +112,8 @@ public class TransactionsApiController implements TransactionsApi {
     public String Deposit(Model model,HttpSession session) {
         userApiController.Navbar(model,session);
         User user = (User) session.getAttribute("loggedin_user");
-        model.addAttribute("accountsFrom",accountService.getUserAccountByType("BASIC",user.getUserId()));
-        model.addAttribute("accountsTo",accountService.getUserAccountByType("SAVING",user.getUserId()));
+        model.addAttribute("accountsFrom",accountService.getUserAccountByType("basic",user.getUserId()));
+        model.addAttribute("accountsTo",accountService.getUserAccountByType("saving",user.getUserId()));
         model.addAttribute("transaction", new Transaction());
         return "transactiondeposit";
     }
@@ -133,8 +133,8 @@ public class TransactionsApiController implements TransactionsApi {
     public String Log(Model model,HttpSession session) {
         userApiController.Navbar(model,session);
         User user = (User) session.getAttribute("loggedin_user");
-        model.addAttribute("accountsFrom",accountService.getUserAccountByType("SAVING",user.getUserId()));
-        model.addAttribute("accountsTo",accountService.getUserAccountByType("BASIC",user.getUserId()));
+        model.addAttribute("accountsFrom",accountService.getUserAccountByType("saving",user.getUserId()));
+        model.addAttribute("accountsTo",accountService.getUserAccountByType("basic",user.getUserId()));
         model.addAttribute("transaction", new Transaction());
         return "transactionwithdraw";
     }
