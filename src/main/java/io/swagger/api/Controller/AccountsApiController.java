@@ -85,7 +85,6 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         model.addAttribute("accountcreation", new Account());
         return "accountcreation";
     }
-///voor kayleigh------------------------------------------
     @GetMapping("/account")
     public String newAccount(@ModelAttribute Account account, Model model, HttpSession session) {
         if (account == null) {
@@ -96,17 +95,16 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         Integer uId = user.getUserId();
         java.util.List<Account> accountByUser = serviceAccount.getUserAccounts(uId);
 
+        model.addAttribute("user", new User());
         model.addAttribute("listAccounts", accountByUser);
 //        uPi.Navbar(model);
         return "account";
     }
-    ///voor kayleigh------------------------------------
+
     @RequestMapping(value = "/remove_iban", method = RequestMethod.GET)
     public String handleRemoveIban(Model model, @RequestParam(name = "IBAN") String iban, @RequestParam(name = "acountAmount") String amount) {
         String error = serviceAccount.deleteIban(iban, amount);
-        System.out.println(error);
         model.addAttribute("message", error);
-
         String redirectUrl = "account";
         return "redirect:" + redirectUrl;
     }
@@ -131,9 +129,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
             return "accountcreation";
         }
         String valuewords = getValues.toString();
-        System.out.println("-----------------" + getValues);
-
-        uPi.Navbar(model);
+//        uPi.Navbar(model);
         return "accountcreation";
     }
 }

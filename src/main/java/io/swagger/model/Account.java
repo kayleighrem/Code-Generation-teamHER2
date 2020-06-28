@@ -26,7 +26,6 @@ public class Account   {
   @JsonProperty("Iban")
   private String Iban;
 
-
   @Column(name="userId")
   @JsonProperty("userId")
   private Integer userId;
@@ -55,10 +54,6 @@ public class Account   {
       return String.valueOf(value);
     }
 
-
-
-
-
     @JsonCreator
     public static TypeAccountEnum fromValue(String text) {
       for (TypeAccountEnum b : TypeAccountEnum.values()) {
@@ -69,9 +64,6 @@ public class Account   {
       return null;
     }
   }
-
-
-
 
   @JsonProperty("typeAccount")
   private TypeAccountEnum typeAccount = null;
@@ -189,11 +181,12 @@ public class Account   {
     return o.toString().replace("\n", "\n    ");
   }
 
-  public Account(String Iban, Double accountAmount,Integer userId)
+  public Account(String Iban, Double accountAmount,Integer userId,TypeAccountEnum type)
   {
     this.Iban = Iban;
     this.accountAmount = accountAmount;
     this.userId = userId;
+    this.typeAccount = type;
   }
 
   public Account()
