@@ -21,11 +21,9 @@
             <br /> <input type="text" th:field="*{lastname}" id="lastName" name="lastName" th:placeholder="Lastname" class="form-control" />
             <br /> <input type="text" th:field="*{email}" id="email" name="email" th:placeholder="Email" class="form-control" />
             <br /> <input type="password" th:field="*{password}" id="password" name="password" th:placeholder="Password" class="form-control" />
-<!--            <br /> <input type="checkbox" th:field="*{isEmployee}" id="isEmployee" name="isEmployee" th:placeholder="isEmployee" class="form-control" />-->
             <input type="checkbox" th:field="*{isEmployee}" /><a style="margin-left: 10px">Employee</a>
 
-            <br />
-            <button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit" style="margin-top: 10px"></button>
+            <br /><button class="brn brn-lg btn-primary" name="Submit" value="Submit" type="submit" th:text="Submit" style="margin-top: 10px"></button>
             <a href="employees"> Back to overview</a>
         </form>
     </div>
