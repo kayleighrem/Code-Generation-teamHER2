@@ -25,9 +25,11 @@ public class AccountService {
     public static String generatedIban(){
          int maxRangeIban =999999999;
         int minRangeIban =100000000;
-        Random random = new Random();
-        int test = random.nextInt((maxRangeIban - minRangeIban)+1)+ minRangeIban;
-        String iban= "NL00INHO0"+test;
+        Random lastTen = new Random();
+        Random firstTwo = new Random();
+        int lTen = lastTen.nextInt((maxRangeIban - minRangeIban)+1)+ minRangeIban;
+        int fTWo = lastTen.nextInt((99 - 0)+1)+ 0;
+        String iban= "NL"+fTWo+"INHO0"+lTen;
         return iban;
     }
 
