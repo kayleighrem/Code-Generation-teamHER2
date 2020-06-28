@@ -39,7 +39,7 @@
                     <td th:text="${list.typeAccount}"></td>
                     <td th:text="${list.acountAmount}"></td>
                     <td>
-                        <a th:href="@{remove_iban(IBAN=${list.IBAN})}">Delete</a>
+                        <a th:href="@{remove_iban(IBAN=${list.IBAN}, acountAmount=${list.acountAmount})}">Delete</a>
                     </td>
 
                 </tr>
