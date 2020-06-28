@@ -97,7 +97,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         java.util.List<Account> accountByUser = serviceAccount.getUserAccounts(uId);
 
         model.addAttribute("listAccounts", accountByUser);
-
+//        uPi.Navbar(model);
         return "account";
     }
     ///voor kayleigh------------------------------------
@@ -133,7 +133,7 @@ public class AccountsApiController implements io.swagger.api.Api.AccountsApi {
         String valuewords = getValues.toString();
         System.out.println("-----------------" + getValues);
 
-
+        uPi.Navbar(model);
         return "accountcreation";
     }
 }
