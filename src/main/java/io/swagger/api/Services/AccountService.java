@@ -22,6 +22,7 @@ public class AccountService {
     }
 
     //makes a iban string with a random 10 long number
+    //makes a iban with 2 random numbers
     public static String generatedIban(){
          int maxRangeIban =999999999;
         int minRangeIban =100000000;
